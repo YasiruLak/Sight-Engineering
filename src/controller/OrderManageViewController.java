@@ -4,13 +4,17 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import model.Item;
 import model.Supplier;
 import util.ItemController;
 import util.SupplierController;
+import view.tm.StockTm;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -30,7 +34,6 @@ public class OrderManageViewController {
     public JFXTextField txtSupContact;
     public JFXTextField txtItmDescription;
     public JFXTextField txtItmSize;
-    public JFXTextField txtQty;
     public JFXTextField txtSupAddress;
     public JFXTextField txtSupEmail;
     public JFXTextField txtQtyOnHand;
@@ -42,9 +45,23 @@ public class OrderManageViewController {
     public TableView tblStock;
     public TableColumn colTotal;
     public JFXTextField txtUnitPrice;
+    public JFXTextField txtQty;
+    public TableColumn colDescription;
+    public TableColumn colUnitPrice;
     private int hour;
 
+    int stockSelectRowForRemove = -1;
+
     public void initialize(){
+
+        colItmCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colItmName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+
         loadDateAndTime();
         try {
             loadSupplierIds();
@@ -73,6 +90,10 @@ public class OrderManageViewController {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
+        });
+
+        tblStock.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            stockSelectRowForRemove = (int) newValue;
         });
 
     }
@@ -137,12 +158,104 @@ public class OrderManageViewController {
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
-    }
+            clear();
+
+        }
+
+    ObservableList<StockTm> stockList = FXCollections.observableArrayList();
 
     public void addToStockOnAction(ActionEvent actionEvent) {
+        String itemCode = cmbItemCode.getSelectionModel().getSelectedItem();
+        String name = txtItmName.getText();
+        String description = txtItmDescription.getText();
+        int quantity = Integer.parseInt(txtQty.getText());
+        int qtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
+        double unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        double total = quantity * unitPrice;
+
+
+        StockTm tm = new StockTm(
+                itemCode,
+                name,
+                description,
+                quantity,
+                unitPrice,
+                total
+        );
+
+        int rowNumber = isExist(tm);
+
+        if(isExist(tm)==-1){
+            stockList.add(tm);
+        }else{
+            StockTm temp = stockList.get(rowNumber);
+            StockTm newTm =new StockTm(
+                    temp.getItemCode(),
+                    temp.getName(),
+                    temp.getDescription(),
+                    temp.getQty()+quantity,
+                    unitPrice,
+                    total+temp.getTotal()
+            );
+            stockList.remove(rowNumber);
+            stockList.add(newTm);
+        }
+
+        tblStock.setItems(stockList);
+
+        txtUnitPrice.clear();
+        txtQty.clear();
+
+        calculateCost();
+    }
+
+    private int isExist(StockTm tm){
+
+        for ( int i = 0; i < stockList.size(); i++ ) {
+            if(tm.getItemCode().equals(stockList.get(i).getItemCode())){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+
+    public void saveOrderOnAction(ActionEvent actionEvent) {
 
     }
 
-    public void saveOrderOnAction(ActionEvent actionEvent) {
+    public void clear(){
+        cmbSupplierId.getSelectionModel().clearSelection();
+        txtSupName.clear();
+        txtSupAddress.clear();
+        txtSupContact.clear();
+        txtSupEmail.clear();
+        cmbItemCode.getSelectionModel().clearSelection();
+        txtItmName.clear();
+        txtItmDescription.clear();
+        txtItmSize.clear();
+        txtQtyOnHand.clear();
+        txtUnitPrice.clear();
+        txtQty.clear();
+    }
+
+    void calculateCost(){
+        double total = 0;
+        for(StockTm stockTm: stockList
+        ){
+            total+=stockTm.getTotal();
+        }
+        txtTtl.setText(total+" /=");
+    }
+
+    public void removeOnAction(ActionEvent actionEvent) {
+        if ( stockSelectRowForRemove == -1 ) {
+            new Alert(Alert.AlertType.WARNING, "Please Select Row").show();
+        } else {
+            stockList.remove(stockSelectRowForRemove);
+            calculateCost();
+            tblStock.refresh();
+        }
     }
 }

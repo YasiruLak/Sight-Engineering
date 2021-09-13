@@ -131,6 +131,7 @@ public class VehicleManageViewController {
     public void clearOnAction(ActionEvent actionEvent) {
         clear();
     }
+
     public void clear(){
         txtVehicleNo.clear();
         txtDescription.clear();

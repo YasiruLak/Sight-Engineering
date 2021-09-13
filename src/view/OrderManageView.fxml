@@ -46,7 +46,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="753.0" layoutY="259.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="608.0" layoutY="259.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -104,12 +104,14 @@
       </JFXButton>
       <TableView fx:id="tblStock" layoutX="28.0" layoutY="317.0" prefHeight="267.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn fx:id="colItmCode" prefWidth="151.0" text="Item Code" />
-            <TableColumn fx:id="colItmName" prefWidth="269.0" text="Name" />
-            <TableColumn fx:id="colQty" prefWidth="142.0" text="Quntity" />
-            <TableColumn fx:id="colTotal" prefWidth="220.0" text="Total" />
-            <TableColumn fx:id="colUpdate" prefWidth="141.0" text="Update" />
-            <TableColumn fx:id="colDelete" prefWidth="136.0" text="Delete" />
+          <TableColumn fx:id="colItmCode" prefWidth="87.0" text="Item Code" />
+            <TableColumn fx:id="colItmName" prefWidth="155.0" text="Name" />
+            <TableColumn fx:id="colDescription" prefWidth="217.0" text="Description" />
+            <TableColumn fx:id="colQty" prefWidth="116.0" text="Quntity" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="138.0" text="Unit Price" />
+            <TableColumn fx:id="colTotal" prefWidth="127.0" text="Total" />
+            <TableColumn prefWidth="111.0" text="Update" />
+            <TableColumn prefWidth="108.0" text="Delete" />
         </columns>
       </TableView>
       <JFXTextField fx:id="txtQty" focusColor="BLACK" layoutX="219.0" layoutY="262.0" prefHeight="35.0" prefWidth="164.0" promptText="Quntity" unFocusColor="BLACK">
@@ -134,7 +136,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="txtTtl" layoutX="92.0" layoutY="604.0" prefHeight="27.0" prefWidth="120.0" text="11111110.00" textFill="#d00000">
+      <Label fx:id="txtTtl" layoutX="92.0" layoutY="604.0" prefHeight="27.0" prefWidth="146.0" text="1000000.00" textFill="#d00000">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -191,5 +193,21 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="759.0" layoutY="260.0" onAction="#removeOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Remove" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001040" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

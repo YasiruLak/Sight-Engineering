@@ -5,21 +5,21 @@ import java.awt.*;
 public class StockTm {
     private String itemCode;
     private String name;
+    private String description;
     private int qty;
+    private double unitPrice;
     private double total;
-    private Button update;
-    private Button delete;
 
     public StockTm() {
     }
 
-    public StockTm(String itemCode, String name, int qty, double total, Button update, Button delete) {
+    public StockTm(String itemCode, String name, String description, int qty, double unitPrice, double total) {
         this.itemCode = itemCode;
         this.name = name;
+        this.description = description;
         this.qty = qty;
+        this.unitPrice = unitPrice;
         this.total = total;
-        this.update = update;
-        this.delete = delete;
     }
 
     public String getItemCode() {
@@ -38,12 +38,28 @@ public class StockTm {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getQty() {
         return qty;
     }
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public double getTotal() {
@@ -54,31 +70,15 @@ public class StockTm {
         this.total = total;
     }
 
-    public Button getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(Button update) {
-        this.update = update;
-    }
-
-    public Button getDelete() {
-        return delete;
-    }
-
-    public void setDelete(Button delete) {
-        this.delete = delete;
-    }
-
     @Override
     public String toString() {
         return "StockTm{" +
                 "itemCode='" + itemCode + '\'' +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", qty=" + qty +
+                ", unitPrice=" + unitPrice +
                 ", total=" + total +
-                ", update=" + update +
-                ", delete=" + delete +
                 '}';
     }
 }
