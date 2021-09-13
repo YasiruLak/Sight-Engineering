@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemManageViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="17.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Items Manage" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbSize" layoutX="42.0" layoutY="182.0" prefHeight="42.0" prefWidth="150.0" promptText="Size">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <TableView fx:id="tblItem" layoutX="122.0" layoutY="385.0" prefHeight="261.0" prefWidth="871.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colItmCode" prefWidth="104.0" text="Item Code" />
+            <TableColumn fx:id="colItmName" prefWidth="211.0" text="Name" />
+            <TableColumn fx:id="colItmDescription" prefWidth="249.0" text="Discription" />
+            <TableColumn fx:id="colItmSize" prefWidth="161.0" text="Size" />
+            <TableColumn fx:id="colItmQtyOnHand" prefWidth="146.0" text="Qty On Hand" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="42.0" layoutY="106.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtItmCode" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="I00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Item Code" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="273.0" layoutY="106.0" prefHeight="42.0" prefWidth="264.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtItmName" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="295.0" promptText="Helmet" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Item Name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="613.0" layoutY="106.0" prefHeight="42.0" prefWidth="345.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtItmDescription" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="443.0" promptText="Item Made by High Quilty" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Description" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="213.0" layoutY="182.0" prefHeight="42.0" prefWidth="179.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtItmQtyOnHand" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="161.0" promptText="10" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Qty On Hand" />
+         </children>
+      </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="950.0" layoutY="304.0" onAction="#saveItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0700ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="806.0" layoutY="304.0" onAction="#updateItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#00ff0d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="663.0" layoutY="304.0" onAction="#deleteItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="304.0" onAction="#cancelItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="42.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8_search_64.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="75.0" layoutY="301.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtItmSearch" layoutX="23.0" layoutY="8.0" onAction="#searchItemOnAction" prefHeight="28.0" prefWidth="242.0" promptText="I00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

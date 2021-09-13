@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VehicleManageViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="24.0" layoutY="9.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Vehicle Manage" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblVehicle" layoutX="39.0" layoutY="366.0" prefHeight="267.0" prefWidth="668.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colVehicleNo" prefWidth="151.0" text="Vehicle No" />
+            <TableColumn fx:id="colDescription" prefWidth="289.0" text="Description" />
+            <TableColumn fx:id="colVehicleType" prefWidth="236.0" text="Vehicle Type" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="24.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8_search_64.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="cmbType" layoutX="828.0" layoutY="121.0" prefHeight="40.0" prefWidth="186.0" promptText="Vehicle Type">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <JFXButton buttonType="RAISED" layoutX="931.0" layoutY="286.0" onAction="#saveVehicleOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0700ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="286.0" onAction="#updateCustomerOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#00ff0d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="646.0" layoutY="286.0" onAction="#deleteVehicleOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="504.0" layoutY="286.0" onAction="#clearOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <AnchorPane layoutX="24.0" layoutY="120.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtVehicleNo" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="242.0" promptText="V00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Vehicle No" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="345.0" layoutY="120.0" prefHeight="42.0" prefWidth="445.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtDescription" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="409.0" promptText="Manufacture By" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Description" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="57.0" layoutY="285.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSearchVehicleNo" layoutX="23.0" layoutY="8.0" onAction="#searchVehicleOnAction" prefHeight="28.0" prefWidth="242.0" promptText="V00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

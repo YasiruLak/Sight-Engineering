@@ -1,0 +1,152 @@
+.button-login{
+    -fx-background-color: #2466f2;
+    -fx-background-radius: 40px;
+    -fx-text-fill: #ffffff;
+}
+.button-login:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #1900fc;
+}
+.button-cancel{
+    -fx-background-color:  #cfd0d1;
+    -fx-background-radius: 40px;
+    -fx-text-fill: #000000;
+}
+.button-cancel:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #646769;
+}
+.button-exit{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 40px;
+    -fx-text-fill: #000000;
+}
+.button-exit:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #9c9c9c;
+}
+.button-admin{
+    -fx-background-color:  rgb(61, 61, 61);
+    -fx-text-fill: #ffffff;
+}
+.button-admin:hover{
+    -fx-cursor: hand;
+    -fx-background-color:#0984e3;
+}
+.button-manager{
+    -fx-background-color:  rgb(61, 61, 61);
+    -fx-text-fill: #ffffff;
+}
+.button-manager:hover{
+    -fx-cursor: hand;
+    -fx-background-color:#0984e3;
+}
+.button-logout:hover{
+    -fx-cursor: hand;
+    -fx-background-radius: 40px;
+    -fx-background-color:  #ff5959;
+}
+.button-help:hover{
+    -fx-cursor: hand;
+    -fx-background-radius: 40px;
+    -fx-background-color:  #b89c00;
+}
+.button-add{
+    -fx-background-color: #227093;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+}
+.button-add:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #34ace0;
+}
+.button-update{
+    -fx-background-color: #218c74;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+}
+.button-update:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #33d9b2;
+}
+.button-delete{
+    -fx-background-color: #b33939;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+}
+.button-delete:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #ff5252;
+}
+.button-goto{
+    -fx-background-color:   rgba(27,138,183,255);
+    -fx-background-radius: 40px;
+    -fx-text-fill: #ffffff;
+}
+.button-goto:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #004cff;
+}
+.landing{
+    -fx-background-radius: 40px;
+    -fx-background-color:  #ffffff;
+}
+.button-cancelOne{
+    -fx-background-color: #34495e;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+}
+.button-cancelOne:hover{
+    -fx-cursor: hand;
+    -fx-background-color:  #7f8c8d;
+}
+.textPane{
+    -fx-background-color: white;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+.textField{
+    -fx-background-color: white;
+    -fx-prompt-text-fill: #726d6d;
+}
+.textLabel{
+    -fx-background-color: white;
+    -fx-padding: 0 5px 0px 5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.table-view:focused{
+    -fx-background-insets: 0px;
+}
+
+.table-view .column-header{
+    -fx-size:32px;
+    -fx-background-color: #003066;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell:empty{
+    -fx-background-color: white;
+}
+.table-view .table-row-cell:selected{
+    -fx-background-color:linear-gradient(to right, rgba(119, 8, 245, 0.29), rgba(15, 93, 255, 0.39));
+}
+
+.table-view .table-row-cell:selected *{
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(54, 49, 49);
+}
+

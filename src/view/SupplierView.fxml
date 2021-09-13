@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="supplierViewContext" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="17.0" layoutY="9.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Suppliers" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="862.0" layoutY="82.0" onAction="#goToAddSupplierOnAction" prefHeight="45.0" prefWidth="200.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Supplier" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="26.0" layoutY="380.0" text="Supplier Details ">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="92.0" prefHeight="35.0" prefWidth="274.0" text="Supplier Wise Outcome">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TableView layoutX="26.0" layoutY="143.0" prefHeight="217.0" prefWidth="1062.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn prefWidth="93.0" text="Supplier Id" />
+            <TableColumn prefWidth="158.0" text="Name" />
+            <TableColumn prefWidth="221.0" text="Address" />
+            <TableColumn prefWidth="185.0" text="Mobile" />
+            <TableColumn prefWidth="194.0" text="Email" />
+            <TableColumn prefWidth="209.0" text="Outcome" />
+         </columns>
+      </TableView>
+      <Separator layoutX="316.0" layoutY="108.0" prefHeight="3.0" prefWidth="519.0" />
+      <Separator layoutX="240.0" layoutY="396.0" prefHeight="3.0" prefWidth="839.0" />
+      <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="422.0" prefHeight="224.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colSupId" prefWidth="127.0" text="Supplier Id" />
+            <TableColumn fx:id="colSupName" prefWidth="224.0" text="Name" />
+            <TableColumn fx:id="colSupAddress" prefWidth="174.0" text="Address" />
+            <TableColumn fx:id="colSupMobile" prefWidth="293.0" text="Mobile" />
+            <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="employeeContext" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="20.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Employees" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="839.0" layoutY="150.0" onAction="#goToAddEmployeeOnAction" prefHeight="45.0" prefWidth="200.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Employees" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="36.0" layoutY="115.0" prefHeight="35.0" prefWidth="225.0" text="Employees Details">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="274.0" layoutY="128.0" prefHeight="6.0" prefWidth="805.0" />
+      <TableView fx:id="tblEmployee" layoutX="31.0" layoutY="216.0" prefHeight="396.0" prefWidth="1058.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colEmpId" prefWidth="76.0" text="Employee Id" />
+            <TableColumn fx:id="colEmpName" prefWidth="129.00003051757812" text="Name" />
+            <TableColumn fx:id="colEmpType" prefWidth="104.0" text="Type" />
+            <TableColumn fx:id="colEmpAge" prefWidth="90.0" text="Age" />
+            <TableColumn fx:id="colEmpAddress" prefWidth="185.0" text="Address" />
+            <TableColumn fx:id="colEmpCity" prefWidth="123.0" text="City" />
+            <TableColumn fx:id="colEmpProvince" prefWidth="115.0" text="Province" />
+            <TableColumn fx:id="colEmpContact" prefWidth="115.0" text="Contact" />
+            <TableColumn fx:id="colEmpSalary" prefWidth="119.0" text="Salary" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

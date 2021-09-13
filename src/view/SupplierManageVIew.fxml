@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierManageViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="17.0" layoutY="10.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Supplier Manage" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="936.0" layoutY="306.0" onAction="#saveSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="794.0" layoutY="306.0" onAction="#updateSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="655.0" layoutY="306.0" onAction="#deleteSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblSupplier" layoutX="26.0" layoutY="387.0" prefHeight="260.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
+        <columns>
+          <TableColumn fx:id="colSupId" prefWidth="127.0" text="Supplier Id" />
+          <TableColumn fx:id="colSupName" prefWidth="224.0" text="Name" />
+            <TableColumn fx:id="colSupAddress" prefWidth="174.0" text="Address" />
+            <TableColumn fx:id="colSupMobile" prefWidth="293.0" text="Mobile" />
+            <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="511.0" layoutY="306.0" onAction="#cancelSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <AnchorPane layoutX="45.0" layoutY="125.0" prefHeight="42.0" prefWidth="192.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupId" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="176.0" promptText="S00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Id" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="271.0" layoutY="125.0" prefHeight="42.0" prefWidth="335.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupName" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="305.0" promptText="Yasiru Dahanayaka" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Name" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="45.0" layoutY="211.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupMobile" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="262.0" promptText="076 - 8383493" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Mobile" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="627.0" layoutY="125.0" prefHeight="42.0" prefWidth="442.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupAddress" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="414.0" promptText="398/2, Galle Road, Udugama" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Address" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="362.0" layoutY="211.0" prefHeight="42.0" prefWidth="363.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupEmail" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="335.0" promptText="yasirudahanayaka19@gmail.com" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Email" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="45.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8_search_64.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="87.0" layoutY="305.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField fx:id="txtSupSearch" layoutX="23.0" layoutY="8.0" onAction="#supplierSearchOnAction" prefHeight="28.0" prefWidth="262.0" promptText="E00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderManageViewController">
+   <children>
+      <Label alignment="CENTER" layoutX="16.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Order Management" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtDate" layoutX="931.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="#78c9ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtTime" layoutX="739.0" layoutY="11.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="#74ff86">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtItmName" focusColor="BLACK" layoutX="195.0" layoutY="167.0" prefHeight="35.0" prefWidth="188.0" promptText="Name" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtSupName" focusColor="BLACK" layoutX="197.0" layoutY="91.0" prefHeight="35.0" prefWidth="188.0" promptText="Supplier Name" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="753.0" layoutY="259.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001040" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXTextField fx:id="txtSupContact" focusColor="BLACK" layoutX="661.0" layoutY="91.0" prefHeight="35.0" prefWidth="157.0" promptText="Contact" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtItmDescription" focusColor="BLACK" layoutX="402.0" layoutY="167.0" prefHeight="35.0" prefWidth="239.0" promptText="Description" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtItmSize" focusColor="BLACK" layoutX="673.0" layoutY="167.0" prefHeight="35.0" prefWidth="172.0" promptText="Size" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="908.0" layoutY="597.0" onAction="#saveOrderOnAction" prefHeight="42.0" prefWidth="146.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save Order" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TableView fx:id="tblStock" layoutX="28.0" layoutY="317.0" prefHeight="267.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
+        <columns>
+          <TableColumn fx:id="colItmCode" prefWidth="151.0" text="Item Code" />
+            <TableColumn fx:id="colItmName" prefWidth="269.0" text="Name" />
+            <TableColumn fx:id="colQty" prefWidth="142.0" text="Quntity" />
+            <TableColumn fx:id="colTotal" prefWidth="220.0" text="Total" />
+            <TableColumn fx:id="colUpdate" prefWidth="141.0" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="136.0" text="Delete" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtQty" focusColor="BLACK" layoutX="219.0" layoutY="262.0" prefHeight="35.0" prefWidth="164.0" promptText="Quntity" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <Separator layoutX="36.0" layoutY="241.0" prefHeight="3.0" prefWidth="694.0" />
+      <JFXTextField fx:id="txtUnitPrice" focusColor="BLACK" layoutX="30.0" layoutY="262.0" prefHeight="35.0" prefWidth="164.0" promptText="Unit Price" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <Label layoutX="36.0" layoutY="604.0" text="Total :" textFill="#d00000">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtTtl" layoutX="92.0" layoutY="604.0" prefHeight="27.0" prefWidth="120.0" text="11111110.00" textFill="#d00000">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="908.0" layoutY="258.0" onAction="#addToStockOnAction" prefHeight="42.0" prefWidth="157.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Add To Stock" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0dff00" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label layoutX="52.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="Order Id :" textFill="#94ff74">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderId" layoutX="164.0" layoutY="8.0" prefHeight="41.0" prefWidth="69.0" text="O001" textFill="#94ff74">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbSupplierId" layoutX="30.0" layoutY="94.0" prefHeight="35.0" prefWidth="146.0" promptText="Supplier Id" />
+      <ComboBox fx:id="cmbItemCode" layoutX="30.0" layoutY="170.0" prefHeight="35.0" prefWidth="146.0" promptText="Item Code" />
+      <JFXTextField fx:id="txtSupAddress" focusColor="BLACK" layoutX="402.0" layoutY="91.0" prefHeight="35.0" prefWidth="239.0" promptText="Address" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtSupEmail" focusColor="BLACK" layoutX="836.0" layoutY="91.0" prefHeight="35.0" prefWidth="229.0" promptText="Email" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtQtyOnHand" focusColor="BLACK" layoutX="867.0" layoutY="167.0" prefHeight="35.0" prefWidth="172.0" promptText="Quntity On Hand" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+   </children>
+</AnchorPane>
