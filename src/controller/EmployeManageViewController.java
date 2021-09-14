@@ -75,12 +75,10 @@ public class EmployeManageViewController {
         ObservableList<EmployeeTm> employeeList = FXCollections.observableArrayList();
         allEmployee.forEach(e -> {
             employeeList.add(new EmployeeTm(e.getId(), e.getName(), e.getType(), e.getAge(), e.getAddress(), e.getCity(),
-                    e.getProvince(), e.getContact(), e.getDailySalary())
-            );
-            tblEmployee.setItems(employeeList);
-            //EmployeeTm selectedItem = tblEmployee.getSelectionModel().getSelectedItem();
+                    e.getProvince(), e.getContact(), e.getDailySalary()));
 
         });
+        tblEmployee.setItems(employeeList);
     }
 
     public void saveEmpOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

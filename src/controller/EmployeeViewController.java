@@ -54,10 +54,10 @@ public class EmployeeViewController {
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
         allEmployee.forEach(e -> {
             obList.add(new EmployeeTm(e.getId(),e.getName(),e.getType(),e.getAge(),e.getAddress(),e.getCity(),
-                    e.getProvince(),e.getContact(),e.getDailySalary())
-            );
-            tblEmployee.setItems(obList);
+                    e.getProvince(),e.getContact(),e.getDailySalary()));
+
         });
+        tblEmployee.setItems(obList);
     }
 
     public void goToAddEmployeeOnAction(ActionEvent actionEvent) throws IOException {

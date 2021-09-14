@@ -51,12 +51,11 @@ public class ItemManageViewController {
         ObservableList<ItemTm> itemList = FXCollections.observableArrayList();
         allItem.forEach(e ->{
             itemList.add(
-                    new ItemTm(e.getId(),e.getName(),e.getDescription(),e.getSize(),e.getQtyOnHand())
-            );
-            tblItem.setItems(itemList);
+                    new ItemTm(e.getId(),e.getName(),e.getDescription(),e.getSize(),e.getQtyOnHand()));
         });
-
+        tblItem.setItems(itemList);
     }
+
     public void saveItemOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Item item = new Item(
                 txtItmCode.getText(), txtItmName.getText(), txtItmDescription.getText(), cmbSize.getValue().toString(),

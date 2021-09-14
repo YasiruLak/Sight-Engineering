@@ -50,10 +50,9 @@ public class SupplierManageViewController {
         ObservableList<SupplierTm> supplierList = FXCollections.observableArrayList();
         allSupplier.forEach(e -> {
             supplierList.add(new SupplierTm(e.getId(), e.getName(), e.getAddress(),
-                    e.getMobil(), e.getEmail())
-            );
-            tblSupplier.setItems(supplierList);
+                    e.getMobil(), e.getEmail()));
         });
+        tblSupplier.setItems(supplierList);
     }
 
     public void saveSupplierOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -102,7 +101,7 @@ public class SupplierManageViewController {
             if (controller.deleteSupplier(txtSupId.getText())) {
                 new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
                 cancelDetail();
-//                supplierToTable(controller.getAllSupplier());
+                supplierToTable(controller.getAllSupplier());
             } else {
                 System.out.println("done");
             }

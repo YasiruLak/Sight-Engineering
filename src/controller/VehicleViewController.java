@@ -54,10 +54,9 @@ public class VehicleViewController extends VehicleManageViewController{
         ObservableList<VehicleTm> obList = FXCollections.observableArrayList();
         allVehicle.forEach(e ->{
             obList.add(
-                    new VehicleTm(e.getVehicleNo(), e.getDescription(), e.getType())
-            );
-            tblVehicle.setItems(obList);
+                    new VehicleTm(e.getVehicleNo(), e.getDescription(), e.getType()));
         });
+        tblVehicle.setItems(obList);
     }
 
 

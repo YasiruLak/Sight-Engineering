@@ -41,11 +41,10 @@ public class ItemViewController {
         ObservableList<ItemTm> itemList = FXCollections.observableArrayList();
         allItem.forEach(e ->{
             itemList.add(
-                    new ItemTm(e.getId(),e.getName(),e.getDescription(),e.getSize(),e.getQtyOnHand())
-            );
-            tblItem.setItems(itemList);
-        });
+                    new ItemTm(e.getId(),e.getName(),e.getDescription(),e.getSize(),e.getQtyOnHand()));
 
+        });
+        tblItem.setItems(itemList);
     }
 
     public void goToItemManage(ActionEvent actionEvent) throws IOException {

@@ -76,10 +76,9 @@ public class AddManagerViewController {
         ObservableList<ManagerTm> managerList = FXCollections.observableArrayList();
         allManager.forEach(e -> {
             managerList.add(new ManagerTm(e.getNicNo(), e.getName(), e.getStatus(), e.getAge(), e.getAddress(), e.getMobile(),
-                    e.getEmail())
-            );
-            tblManager.setItems(managerList);
+                    e.getEmail()));
         });
+        tblManager.setItems(managerList);
     }
 
     private void loadManagerNic() throws SQLException, ClassNotFoundException {

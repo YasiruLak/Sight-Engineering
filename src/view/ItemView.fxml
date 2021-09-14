@@ -3,10 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
@@ -18,7 +20,7 @@
             <Font name="Times New Roman Bold" size="36.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="815.0" layoutY="186.0" onAction="#goToItemManage" prefHeight="45.0" prefWidth="200.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Item Manage" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="857.0" layoutY="209.0" onAction="#goToItemManage" prefHeight="45.0" prefWidth="200.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Item Manage" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -34,20 +36,38 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="36.0" layoutY="107.0" text="Item Stock">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Separator layoutX="182.0" layoutY="119.0" prefHeight="7.0" prefWidth="902.0" />
-      <TableView fx:id="tblItem" layoutX="56.0" layoutY="303.0" prefHeight="334.0" prefWidth="871.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblItem" layoutX="48.0" layoutY="279.0" prefHeight="369.0" prefWidth="1024.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn fx:id="colItmCode" prefWidth="104.0" text="Item Code" />
-            <TableColumn fx:id="colItmName" prefWidth="211.0" text="Name" />
-            <TableColumn fx:id="colItmDescription" prefWidth="249.0" text="Discription" />
-            <TableColumn fx:id="colItmSize" prefWidth="161.0" text="Size" />
+            <TableColumn fx:id="colItmCode" prefWidth="141.0" text="Item Code" />
+            <TableColumn fx:id="colItmName" prefWidth="238.0" text="Name" />
+            <TableColumn fx:id="colItmDescription" prefWidth="314.0" text="Discription" />
+            <TableColumn fx:id="colItmSize" prefWidth="183.0" text="Size" />
             <TableColumn fx:id="colItmQtyOnHand" prefWidth="146.0" text="Qty On Hand" />
          </columns>
       </TableView>
+      <Pane layoutX="444.0" layoutY="73.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/saw_96px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="189.0" layoutY="68.0" prefHeight="53.0" prefWidth="65.0" text="250">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="14.0" prefHeight="47.0" prefWidth="65.0" text="Items">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="206.0" fitWidth="352.0" layoutX="48.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/report.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

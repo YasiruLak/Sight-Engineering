@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS supplier(
     name VARCHAR(45) NOT NULL DEFAULT 'Unknown',
     address TEXT,
     mobile VARCHAR(15),
-    email VARCHAR(25),
+    email VARCHAR(45),
     CONSTRAINT PRIMARY KEY (id)
     );
 SHOW TABLES ;
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS manager(
     age VARCHAR (10),
     address TEXT,
     mobile VARCHAR(15),
-    email VARCHAR(25),
+    email VARCHAR(45),
     CONSTRAINT PRIMARY KEY (nic)
     );
 SHOW TABLES ;

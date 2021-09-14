@@ -53,10 +53,9 @@ public class VehicleManageViewController {
         ObservableList<VehicleTm> obList = FXCollections.observableArrayList();
         allVehicle.forEach(e ->{
             obList.add(
-                    new VehicleTm(e.getVehicleNo(), e.getDescription(), e.getType())
-            );
-            tblVehicle.setItems(obList);
+                    new VehicleTm(e.getVehicleNo(), e.getDescription(), e.getType()));
         });
+        tblVehicle.setItems(obList);
     }
 
     public void saveVehicleOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -98,8 +97,7 @@ public class VehicleManageViewController {
         if(controller.updateVehicle(v1)){
             new Alert(Alert.AlertType.INFORMATION,"Updated").show();
             clear();
-
-            vehicleToTable(new VehicleController().getAllVehicle());
+            vehicleToTable(controller.getAllVehicle());
 
         }else{
             new Alert(Alert.AlertType.ERROR,"Try Again").show();
@@ -114,17 +112,14 @@ public class VehicleManageViewController {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.orElse(no)==yes){
-        if(controller.deleteVehicle(txtVehicleNo.getText())){
-
+            if(controller.deleteVehicle(txtVehicleNo.getText())){
                 new Alert(Alert.AlertType.INFORMATION,"Deleted").show();
-
                 clear();
-
-                vehicleToTable(new VehicleController().getAllVehicle());
-            }
-        }else {
-            new Alert(Alert.AlertType.ERROR,"Try Again").show();
-            clear();
+                vehicleToTable(controller.getAllVehicle());
+                }
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Try Again").show();
+                clear();
         }
     }
 

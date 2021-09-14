@@ -26,7 +26,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <TableView fx:id="tblItem" layoutX="122.0" layoutY="385.0" prefHeight="261.0" prefWidth="871.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblItem" layoutX="42.0" layoutY="271.0" prefHeight="374.0" prefWidth="871.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colItmCode" prefWidth="104.0" text="Item Code" />
             <TableColumn fx:id="colItmName" prefWidth="211.0" text="Name" />
@@ -59,7 +59,7 @@
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Qty On Hand" />
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="950.0" layoutY="304.0" onAction="#saveItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="959.0" layoutY="593.0" onAction="#saveItemOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -75,7 +75,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="806.0" layoutY="304.0" onAction="#updateItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="959.0" layoutY="536.0" onAction="#updateItemOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -91,7 +91,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="663.0" layoutY="304.0" onAction="#deleteItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="959.0" layoutY="479.0" onAction="#deleteItemOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -107,7 +107,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="304.0" onAction="#cancelItemOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="959.0" layoutY="422.0" onAction="#cancelItemOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -123,12 +123,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="42.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="592.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="75.0" layoutY="301.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="625.0" layoutY="224.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtItmSearch" layoutX="23.0" layoutY="8.0" onAction="#searchItemOnAction" prefHeight="28.0" prefWidth="242.0" promptText="I00-001" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />

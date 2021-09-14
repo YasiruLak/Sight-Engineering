@@ -11,14 +11,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import model.Item;
+import model.ItemDetails;
+import model.Order;
 import model.Supplier;
 import util.ItemController;
+import util.OrderController;
 import util.SupplierController;
 import view.tm.StockTm;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,7 +67,9 @@ public class OrderManageViewController {
 
 
         loadDateAndTime();
+
         try {
+            setOrderId();
             loadSupplierIds();
             loadItemCodes();
         } catch (SQLException e) {
@@ -96,6 +102,10 @@ public class OrderManageViewController {
             stockSelectRowForRemove = (int) newValue;
         });
 
+    }
+
+    private void setOrderId() throws SQLException, ClassNotFoundException {
+        lblOrderId.setText(new OrderController().getOrderId());
     }
 
     private void setItemCode(String itemCode) throws SQLException, ClassNotFoundException {
@@ -205,6 +215,11 @@ public class OrderManageViewController {
 
         txtUnitPrice.clear();
         txtQty.clear();
+        cmbSupplierId.setDisable(true);
+        txtSupName.setDisable(true);
+        txtSupAddress.setDisable(true);
+        txtSupContact.setDisable(true);
+        txtSupEmail.setDisable(true);
 
         calculateCost();
     }
@@ -221,8 +236,41 @@ public class OrderManageViewController {
 
 
 
-    public void saveOrderOnAction(ActionEvent actionEvent) {
+    public void saveOrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
+        ArrayList<ItemDetails> items = new ArrayList<>();
+
+        double total = 0;
+
+        for(StockTm stockTm: stockList
+        ){
+            total+=stockTm.getTotal();
+          items.add(
+                  new ItemDetails(
+                          stockTm.getItemCode(),
+                          stockTm.getUnitPrice(),
+                          stockTm.getQty()
+                  )
+          );
+        }
+
+        Order order = new Order(
+                lblOrderId.getText(),
+                cmbSupplierId.getValue(),
+                txtDate.getText(),
+                txtTime.getText(),
+                total,
+                items
+        );
+        if(new OrderController().saveOrder(order)){
+            new Alert(Alert.AlertType.CONFIRMATION, "Success").show();
+            setOrderId();
+            clear();
+            enable();
+        }else{
+            new Alert(Alert.AlertType.ERROR , "Try Again").show();
+        }
+        
     }
 
     public void clear(){
@@ -257,5 +305,13 @@ public class OrderManageViewController {
             calculateCost();
             tblStock.refresh();
         }
+    }
+
+    public void enable(){
+        cmbSupplierId.setDisable(false);
+        txtSupName.setDisable(false);
+        txtSupAddress.setDisable(false);
+        txtSupContact.setDisable(false);
+        txtSupEmail.setDisable(false);
     }
 }
