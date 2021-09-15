@@ -53,7 +53,11 @@ public class AdminMainViewController {
         adminContext.getChildren().add(load);
     }
 
-    public void goToPaymentView(ActionEvent actionEvent) {
+    public void goToPaymentView(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/PaymentView.fxml");
+        Parent load = FXMLLoader.load(resource);
+        adminContext.getChildren().clear();
+        adminContext.getChildren().add(load);
     }
 
     public void goToReportView(ActionEvent actionEvent) throws IOException {

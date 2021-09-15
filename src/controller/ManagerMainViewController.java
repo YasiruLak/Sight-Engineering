@@ -54,7 +54,11 @@ public class ManagerMainViewController {
         managerContext.getChildren().add(load);
     }
 
-    public void loadPayementOnAction(ActionEvent actionEvent) {
+    public void loadPaymentOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/PaymentManage.fxml");
+        Parent load = FXMLLoader.load(resource);
+        managerContext.getChildren().clear();
+        managerContext.getChildren().add(load);
     }
 
     public void goToReportOnAction(ActionEvent actionEvent) throws IOException {

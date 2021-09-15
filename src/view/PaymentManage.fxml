@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaymentManageController">
+   <children>
+      <Label alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Payment Manage" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="30.0" />
+         </font>
+      </Label>
+      <TableView layoutX="29.0" layoutY="266.0" prefHeight="380.0" prefWidth="1057.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn prefWidth="128.0" text="Payment Id" />
+            <TableColumn prefWidth="135.0" text="Order Id" />
+            <TableColumn prefWidth="126.0" text="Supplier Id" />
+            <TableColumn prefWidth="175.0" text="Order Date" />
+            <TableColumn prefWidth="180.0" text="Payment Date" />
+            <TableColumn prefWidth="137.0" text="Payment Time" />
+            <TableColumn prefWidth="179.0" text="Amount" />
+         </columns>
+      </TableView>
+      <Label fx:id="txtDate" layoutX="923.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtTime" layoutX="731.0" layoutY="11.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="Payment Id :" textFill="#84a9ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="197.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="P-0001" textFill="#84a9ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="29.0" layoutY="104.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="O-0001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Order Id" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="253.0" layoutY="104.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto Fill" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Id" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="478.0" layoutY="104.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto fill" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Order Date" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="711.0" layoutY="104.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto fill" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Amount" />
+         </children>
+      </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="965.0" layoutY="208.0" prefHeight="40.0" prefWidth="104.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Pay" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0700ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="851.0" layoutY="208.0" prefHeight="40.0" prefWidth="104.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#00ff0d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="736.0" layoutY="208.0" prefHeight="40.0" prefWidth="104.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="617.0" layoutY="208.0" prefHeight="40.0" prefWidth="104.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#001eff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="29.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8_search_64.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="62.0" layoutY="222.0" prefHeight="42.0" prefWidth="256.0" styleClass="textPane" stylesheets="@../style/Style.css">
+         <children>
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="242.0" promptText="P-0001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

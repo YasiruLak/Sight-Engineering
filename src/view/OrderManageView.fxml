@@ -15,17 +15,17 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderManageViewController">
    <children>
-      <Label alignment="CENTER" layoutX="16.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Order Management" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="16.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Order Management" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="931.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="#78c9ff">
+      <Label fx:id="txtDate" layoutX="931.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="txtTime" layoutX="739.0" layoutY="11.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="#74ff86">
+      <Label fx:id="txtTime" layoutX="739.0" layoutY="11.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -46,7 +46,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="608.0" layoutY="259.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="713.0" layoutY="259.0" onAction="#cancelOnAction" prefHeight="40.0" prefWidth="93.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -86,7 +86,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="908.0" layoutY="597.0" onAction="#saveOrderOnAction" prefHeight="42.0" prefWidth="146.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save Order" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="953.0" layoutY="610.0" onAction="#saveOrderOnAction" prefHeight="42.0" prefWidth="112.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save Order" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -131,17 +131,17 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <Label layoutX="36.0" layoutY="604.0" text="Total :" textFill="#d00000">
+      <Label layoutX="36.0" layoutY="611.0" text="Total :">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="txtTtl" layoutX="92.0" layoutY="604.0" prefHeight="27.0" prefWidth="146.0" text="1000000.00" textFill="#d00000">
+      <Label fx:id="txtTtl" layoutX="112.0" layoutY="611.0" prefHeight="35.0" prefWidth="157.0" text="1000000.00" textFill="#d00000">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="908.0" layoutY="258.0" onAction="#addToStockOnAction" prefHeight="42.0" prefWidth="157.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Add To Stock" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="935.0" layoutY="258.0" onAction="#addToStockOnAction" prefHeight="42.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Add To Stock" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -157,12 +157,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label layoutX="52.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="Order Id :" textFill="#94ff74">
+      <Label layoutX="52.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="Order Id :" textFill="#bfd3ff">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lblOrderId" layoutX="164.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="O-0001" textFill="#94ff74">
+      <Label fx:id="lblOrderId" layoutX="164.0" layoutY="8.0" prefHeight="41.0" prefWidth="112.0" text="O-0001" textFill="#bfd3ff">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -193,7 +193,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="759.0" layoutY="260.0" onAction="#removeOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Remove" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="823.0" layoutY="259.0" onAction="#removeOnAction" prefHeight="40.0" prefWidth="93.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Remove" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>

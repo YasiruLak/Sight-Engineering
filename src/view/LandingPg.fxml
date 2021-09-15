@@ -8,33 +8,62 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1135.0" styleClass="landing" stylesheets="@../style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LandingPgController">
    <children>
-      <JFXButton fx:id="btnLogIn" buttonType="RAISED" layoutX="792.0" layoutY="501.0" onAction="#logInOnAction" prefHeight="45.0" prefWidth="247.0" styleClass="button-login" stylesheets="@../style/Style.css" text="Log In" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
+      <Pane layoutX="641.0" layoutY="121.0" prefHeight="564.0" prefWidth="433.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: black;">
+         <children>
+            <JFXButton fx:id="btnLogIn" buttonType="RAISED" layoutX="93.0" layoutY="396.0" onAction="#logInOnAction" prefHeight="45.0" prefWidth="247.0" styleClass="button-login" stylesheets="@../style/Style.css" text="Log In" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="119.0" layoutY="503.0" text="Copyright © 2021 SIGHT Engineering" />
+            <Label layoutX="89.0" layoutY="522.0" text="All Right Reserved Design By Yasiru Dahanayaka" />
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/user_96px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="45.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/password_96px.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtUserName" focusColor="#00dbff" layoutX="100.0" layoutY="218.0" onAction="#userNameOnAction" prefHeight="45.0" prefWidth="277.0" promptText="User Name" unFocusColor="BLACK">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXTextField>
+            <JFXPasswordField fx:id="txtPassword" focusColor="#00dbff" layoutX="100.0" layoutY="309.0" onAction="#passwordOnAction" prefHeight="45.0" prefWidth="277.0" promptText="Password" unFocusColor="BLACK">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXPasswordField>
+            <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="157.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
       <ImageView fitHeight="415.0" fitWidth="601.0" layoutX="14.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/landing.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="31.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Logo.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="594.0" layoutY="679.0" prefHeight="20.0" prefWidth="517.0" text="Copyright © 2021 SIGHT Engineering All Right Reserved Design By Yasiru Dahanayaka ">
-         <font>
-            <Font name="Times New Roman" size="14.0" />
-         </font></Label>
-      <Label layoutX="176.0" layoutY="24.0" text="SIGHT Engineering Construction">
+      <Label layoutX="28.0" layoutY="24.0" text="SIGHT Engineering Construction GRN">
          <font>
             <Font name="ACaslonPro-Bold" size="48.0" />
          </font>
@@ -42,31 +71,8 @@
       <Label layoutX="17.0" layoutY="685.0" prefHeight="20.0" prefWidth="69.0" text="Version 1.0.0">
          <font>
             <Font name="ACaslonPro-Bold" size="12.0" />
-         </font></Label>
-      <JFXTextField fx:id="txtUserName" focusColor="BLACK" layoutX="777.0" layoutY="325.0" onAction="#userNameOnAction" prefHeight="45.0" prefWidth="277.0" promptText="User Name" unFocusColor="BLACK">
-         <font>
-            <Font size="18.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </JFXTextField>
-      <JFXPasswordField fx:id="txtPassword" focusColor="BLACK" layoutX="778.0" layoutY="413.0" onAction="#passwordOnAction" prefHeight="45.0" prefWidth="277.0" promptText="Password" unFocusColor="BLACK">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </JFXPasswordField>
-      <JFXButton buttonType="RAISED" layoutX="869.0" layoutY="560.0" onAction="#cancelOnAction" prefHeight="25.0" prefWidth="95.0" styleClass="button-cancel" stylesheets="@../style/Style.css" text="Cancel">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
+      </Label>
       <JFXButton fx:id="btnExit" buttonType="RAISED" layoutX="963.0" layoutY="24.0" onAction="#exitOnAction" prefHeight="37.0" prefWidth="120.0" styleClass="button-exit" stylesheets="@../style/Style.css" text="Exit">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -75,15 +81,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="726.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons8_user_64.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="726.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/icons8_key_64.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

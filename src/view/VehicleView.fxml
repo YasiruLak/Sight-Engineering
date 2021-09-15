@@ -15,27 +15,11 @@
 
 <AnchorPane fx:id="vehicleViewContext" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VehicleViewController">
    <children>
-      <Label alignment="CENTER" layoutX="17.0" layoutY="7.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Vehicles" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="17.0" layoutY="7.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Vehicles" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="867.0" layoutY="253.0" onAction="#goToVehicleManageOnAction" prefHeight="45.0" prefWidth="216.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Vehicle Manage" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#001eff" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
       <TableView fx:id="tblVehicle" layoutX="52.0" layoutY="81.0" prefHeight="547.0" prefWidth="545.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colVehicleNo" prefWidth="132.99996948242188" text="Vehicle No" />
@@ -48,16 +32,37 @@
             <Image url="@../assets/vehicle.png" />
          </image>
       </ImageView>
-      <Pane layoutX="681.0" layoutY="81.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="681.0" layoutY="81.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Shuttle%20bus_96px.png" />
                </image>
             </ImageView>
-            <Label layoutX="183.0" layoutY="37.0" prefHeight="40.0" prefWidth="65.0" text="100">
+            <Label layoutX="184.0" layoutY="69.0" prefHeight="40.0" prefWidth="65.0" text="100">
                <font>
                   <Font size="36.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="131.0" onAction="#goToVehicleManageOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Vehicle Manage &gt;&gt;" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <Label layoutX="169.0" layoutY="22.0" prefHeight="47.0" prefWidth="95.0" text="Vehicles">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>

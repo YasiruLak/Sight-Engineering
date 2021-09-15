@@ -18,12 +18,11 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportViewController">
    <children>
-      <Label alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Income Report" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Income Report" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <JFXDatePicker layoutX="875.0" layoutY="71.0" prefHeight="42.0" prefWidth="202.0" />
       <AnchorPane layoutX="33.0" layoutY="71.0" prefHeight="42.0" prefWidth="244.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="257.0" promptText="Payment Report" styleClass="textField" stylesheets="@../style/Style.css" />
@@ -47,7 +46,7 @@
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
                   <Stop color="WHITE" />
-                  <Stop color="#0700ff" offset="1.0" />
+                  <Stop color="#0f00b2" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>
@@ -63,7 +62,7 @@
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
                   <Stop color="WHITE" />
-                  <Stop color="#0700ff" offset="1.0" />
+                  <Stop color="#0f00b2" offset="1.0" />
                </stops>
             </LinearGradient>
          </ripplerFill>

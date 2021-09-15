@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpViewController">
    <children>
@@ -20,5 +23,78 @@
             <Font name="AGaramondPro-Bold" size="24.0" />
          </font>
       </Label>
+      <ImageView fitHeight="244.0" fitWidth="416.0" layoutX="474.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/contact.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="481.0" layoutY="240.0" prefHeight="41.0" prefWidth="126.0" text="Contact Us">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Separator layoutX="607.0" layoutY="259.0" prefHeight="4.0" prefWidth="269.0" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="566.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/gmail_logo_96px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="566.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/facebook_96px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="567.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/call_96px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="566.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/web_96px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="566.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/marker_96px.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="567.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/whatsapp_96px.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="611.0" layoutY="281.0" text="243/A,">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="611.0" layoutY="332.0" text="Galle,">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="607.0" layoutY="306.0" text=" Mapalagama,">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="364.0" text="yasirudahanayaka19@gmail.com">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="402.0" prefHeight="27.0" prefWidth="126.0" text="091 - 3917630">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="612.0" layoutY="439.0" prefHeight="27.0" prefWidth="126.0" text="076 - 8383493">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="605.0" layoutY="517.0" text="www.sightengineering.com" />
+      <Hyperlink layoutX="602.0" layoutY="479.0" text="www.facebook.com/Sight-Engineering" />
    </children>
 </AnchorPane>

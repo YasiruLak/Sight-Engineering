@@ -57,11 +57,6 @@ public class LandingPgController{
 
     }
 
-    public void cancelOnAction(ActionEvent actionEvent) {
-        txtUserName.clear();
-        txtPassword.clear();
-    }
-
     public void exitOnAction(ActionEvent actionEvent){
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();

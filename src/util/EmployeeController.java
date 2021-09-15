@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class EmployeeController{
 
+    int size = 0;
 
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         Connection connection = DbConnection.getInstance().getConnection();
@@ -98,4 +99,14 @@ public class EmployeeController{
         }
         return employees;
     }
+
+//    public int employeeCount() throws SQLException, ClassNotFoundException {
+//        PreparedStatement statement = DbConnection.getInstance().getConnection().
+//                prepareStatement("SELECT COUNT (empId) FROM employee");
+//        ResultSet resultSet = statement.executeQuery();
+//        if(resultSet.next()){
+//            return resultSet.getInt(1);
+//        }
+//        return 0;
+//    }
 }

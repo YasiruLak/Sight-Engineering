@@ -15,27 +15,11 @@
 
 <AnchorPane fx:id="supplierViewContext" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SupplierViewController">
    <children>
-      <Label alignment="CENTER" layoutX="17.0" layoutY="9.0" prefHeight="40.0" prefWidth="1080.0" style="-fx-background-color: rgb(61, 61, 61); -fx-background-radius: 30;" text="Suppliers" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="17.0" layoutY="9.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Suppliers" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="876.0" layoutY="232.0" onAction="#goToAddSupplierOnAction" prefHeight="45.0" prefWidth="200.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Supplier" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#001eff" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
       <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="297.0" prefHeight="349.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colSupId" prefWidth="127.0" text="Supplier Id" />
@@ -45,7 +29,7 @@
             <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
          </columns>
       </TableView>
-      <Pane layoutX="517.0" layoutY="78.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="703.0" layoutY="76.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -62,6 +46,22 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="131.0" onAction="#goToAddSupplierOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Supplier &gt;&gt;" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </Pane>
       <ImageView fitHeight="220.0" fitWidth="390.0" layoutX="27.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">

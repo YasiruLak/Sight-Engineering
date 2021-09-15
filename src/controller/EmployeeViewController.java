@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,6 +16,7 @@ import view.tm.EmployeeTm;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class EmployeeViewController {
@@ -29,6 +31,7 @@ public class EmployeeViewController {
     public TableColumn colEmpProvince;
     public TableColumn colEmpContact;
     public TableColumn colEmpSalary;
+    public Label lblEmployee;
 
     public void initialize(){
 
@@ -45,6 +48,7 @@ public class EmployeeViewController {
             colEmpSalary.setCellValueFactory(new PropertyValueFactory<>("dailySalary"));
 
             employeeToTable(new EmployeeController().getAllEmployee());
+            setCount();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,5 +69,9 @@ public class EmployeeViewController {
         Parent load = FXMLLoader.load(resource);
         employeeContext.getChildren().clear();
         employeeContext.getChildren().add(load);
+    }
+
+    public void setCount() throws SQLException, ClassNotFoundException {
+//        lblEmployee.setText(String.valueOf(new EmployeeController().employeeCount()));
     }
 }
