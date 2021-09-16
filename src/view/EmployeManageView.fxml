@@ -21,12 +21,12 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbEmpType" layoutX="720.0" layoutY="100.0" prefHeight="42.0" prefWidth="180.0" promptText="Employee Type">
+      <ComboBox fx:id="cmbEmpType" layoutX="720.0" layoutY="93.0" prefHeight="42.0" prefWidth="180.0" promptText="Employee Type">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <TableView fx:id="tblEmployee" layoutX="17.0" layoutY="380.0" prefHeight="260.0" prefWidth="1079.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblEmployee" layoutX="17.0" layoutY="353.0" prefHeight="297.0" prefWidth="1079.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colEmpId" prefWidth="76.0" text="Employee Id" />
             <TableColumn fx:id="colEmpName" prefWidth="129.00003051757812" text="Name" />
@@ -39,48 +39,48 @@
             <TableColumn fx:id="colEmpSalary" prefWidth="115.0" text="Salary" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbEmpProvince" layoutX="593.0" layoutY="180.0" prefHeight="42.0" prefWidth="217.0" promptText="Province">
+      <ComboBox fx:id="cmbEmpProvince" layoutX="593.0" layoutY="158.0" prefHeight="42.0" prefWidth="217.0" promptText="Province">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <AnchorPane layoutX="32.0" layoutY="96.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="32.0" layoutY="89.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpId" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="206.0" promptText="E00-001" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Emp Id" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="282.0" layoutY="100.0" prefHeight="42.0" prefWidth="345.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="282.0" layoutY="93.0" prefHeight="42.0" prefWidth="345.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpName" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="396.0" promptText="Yasiru Dahanayaka" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Employee Name" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="914.0" layoutY="100.0" prefHeight="42.0" prefWidth="155.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="914.0" layoutY="93.0" prefHeight="42.0" prefWidth="155.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpAge" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="121.0" promptText="23" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Age" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="32.0" layoutY="180.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="32.0" layoutY="158.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpAddress" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="244.0" promptText="398/2," styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Address" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="322.0" layoutY="180.0" prefHeight="42.0" prefWidth="223.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="322.0" layoutY="158.0" prefHeight="42.0" prefWidth="223.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpCity" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" promptText="Galle" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="City" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="825.0" layoutY="180.0" prefHeight="42.0" prefWidth="217.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="825.0" layoutY="158.0" prefHeight="42.0" prefWidth="217.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpMobile" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" promptText="076 - 8383493" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Mobile" />
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="940.0" layoutY="308.0" onAction="#saveEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="939.0" layoutY="273.0" onAction="#saveEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -96,7 +96,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="796.0" layoutY="308.0" onAction="#updateEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="795.0" layoutY="273.0" onAction="#updateEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -112,7 +112,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="653.0" layoutY="308.0" onAction="#deleteEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="652.0" layoutY="273.0" onAction="#deleteEmpOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -128,7 +128,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="511.0" layoutY="308.0" onAction="#cancelDetailOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="273.0" onAction="#cancelDetailOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -144,18 +144,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="151.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="32.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="184.0" layoutY="307.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="65.0" layoutY="307.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpSearch" layoutX="23.0" layoutY="8.0" onAction="#empSearchOnAction" prefHeight="28.0" prefWidth="242.0" promptText="E00-001" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="32.0" layoutY="242.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="32.0" layoutY="224.0" prefHeight="42.0" prefWidth="237.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
             <TextField fx:id="txtEmpDailySalary" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="244.0" promptText="1000.00" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="salary" />

@@ -30,14 +30,14 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="23.0" layoutY="335.0" prefHeight="301.0" prefWidth="496.0" stylesheets="@../style/Style.css">
+      <TableView layoutX="10.0" layoutY="335.0" prefHeight="301.0" prefWidth="529.0" stylesheets="@../style/Style.css">
         <columns>
           <TableColumn prefWidth="67.0" text="Attend Id" />
           <TableColumn prefWidth="71.0" text="Emp Id" />
             <TableColumn prefWidth="113.0" text="Name" />
             <TableColumn prefWidth="87.0" text="Catogry" />
-            <TableColumn prefWidth="93.0" text="Date" />
-            <TableColumn prefWidth="63.0" text="Time" />
+            <TableColumn prefWidth="100.0" text="Date" />
+            <TableColumn prefWidth="89.0" text="Time" />
         </columns>
       </TableView>
       <JFXTextField focusColor="BLACK" layoutX="271.0" layoutY="68.0" prefHeight="35.0" prefWidth="172.0" promptText="Employee Id" unFocusColor="BLACK">
@@ -140,15 +140,15 @@
          </cursor>
       </JFXTextField>
       <ComboBox layoutX="568.0" layoutY="189.0" prefHeight="35.0" prefWidth="164.0" promptText="Status" />
-      <TableView layoutX="575.0" layoutY="335.0" prefHeight="301.0" prefWidth="496.0" stylesheets="@../style/Style.css">
+      <TableView layoutX="554.0" layoutY="335.0" prefHeight="301.0" prefWidth="546.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn prefWidth="62.0" text="Attend Id" />
-            <TableColumn prefWidth="56.0" text="Emp Id" />
-            <TableColumn prefWidth="54.0" text="Item Id" />
-            <TableColumn prefWidth="66.0" text="Quntity" />
-            <TableColumn prefWidth="86.0" text="Give Time" />
-            <TableColumn prefWidth="86.0" text="Return Time" />
-            <TableColumn prefWidth="84.0" text="Status" />
+            <TableColumn prefWidth="70.0" text="Attend Id" />
+            <TableColumn prefWidth="63.0" text="Emp Id" />
+            <TableColumn prefWidth="72.0" text="Item Id" />
+            <TableColumn prefWidth="62.0" text="Quntity" />
+            <TableColumn prefWidth="91.0" text="Give Time" />
+            <TableColumn prefWidth="91.0" text="Return Time" />
+            <TableColumn prefWidth="96.0" text="Status" />
          </columns>
       </TableView>
       <JFXButton buttonType="RAISED" layoutX="966.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">

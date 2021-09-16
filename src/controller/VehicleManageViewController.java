@@ -50,22 +50,22 @@ public class VehicleManageViewController {
     }
 
     private void vehicleToTable(ArrayList<Vehicle> allVehicle){
-        ObservableList<VehicleTm> obList = FXCollections.observableArrayList();
+        ObservableList<VehicleTm> vehicleList = FXCollections.observableArrayList();
         allVehicle.forEach(e ->{
-            obList.add(
+            vehicleList.add(
                     new VehicleTm(e.getVehicleNo(), e.getDescription(), e.getType()));
         });
-        tblVehicle.setItems(obList);
+        tblVehicle.setItems(vehicleList);
     }
 
     public void saveVehicleOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Vehicle v1 = new Vehicle(
+        Vehicle vehicle = new Vehicle(
                 txtVehicleNo.getText(), txtDescription.getText(), cmbType.getValue()
         );
-            if (controller.saveVehicle(v1)) {
+            if (controller.saveVehicle(vehicle)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successes");
                 clear();
-                vehicleToTable(new VehicleController().getAllVehicle());
+                vehicleToTable(controller.getAllVehicle());
             } else {
                 new Alert(Alert.AlertType.ERROR, "Try Again");
             }
@@ -73,11 +73,11 @@ public class VehicleManageViewController {
 
     public void searchVehicleOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String vehicleNo = txtSearchVehicleNo.getText();
-        Vehicle v1 = controller.getVehicle(vehicleNo);
-        if(v1 == null){
+        Vehicle vehicle = controller.getVehicle(vehicleNo);
+        if(vehicle == null){
             new Alert(Alert.AlertType.WARNING,"Empty Result Set").show();
         }else {
-            setData(v1);
+            setData(vehicle);
         }
     }
 
@@ -88,13 +88,13 @@ public class VehicleManageViewController {
     }
 
     public void updateCustomerOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Vehicle v1 = new Vehicle(
+        Vehicle vehicle = new Vehicle(
                 txtVehicleNo.getText(),
                 txtDescription.getText(),
                 cmbType.getValue()
         );
 
-        if(controller.updateVehicle(v1)){
+        if(controller.updateVehicle(vehicle)){
             new Alert(Alert.AlertType.INFORMATION,"Updated").show();
             clear();
             vehicleToTable(controller.getAllVehicle());

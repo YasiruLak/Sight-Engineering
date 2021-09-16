@@ -48,10 +48,10 @@ public class OrderManageViewController {
     public TableColumn colDelete;
     public TableView tblStock;
     public TableColumn colTotal;
-    public JFXTextField txtUnitPrice;
-    public JFXTextField txtQty;
     public TableColumn colDescription;
     public TableColumn colUnitPrice;
+    public TextField txtQty;
+    public TextField txtUnitPrice;
     private int hour;
 
     int stockSelectRowForRemove = -1;
@@ -213,8 +213,8 @@ public class OrderManageViewController {
 
         tblStock.setItems(stockList);
 
-        txtUnitPrice.clear();
-        txtQty.clear();
+        itemClear();
+
         cmbSupplierId.setDisable(true);
         txtSupName.setDisable(true);
         txtSupAddress.setDisable(true);
@@ -233,8 +233,6 @@ public class OrderManageViewController {
         }
         return -1;
     }
-
-
 
     public void saveOrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
@@ -274,6 +272,7 @@ public class OrderManageViewController {
     }
 
     public void clear(){
+
         cmbSupplierId.getSelectionModel().clearSelection();
         txtSupName.clear();
         txtSupAddress.clear();
@@ -303,7 +302,10 @@ public class OrderManageViewController {
         } else {
             stockList.remove(stockSelectRowForRemove);
             calculateCost();
+            enable();
+            clear();
             tblStock.refresh();
+
         }
     }
 
@@ -314,4 +316,14 @@ public class OrderManageViewController {
         txtSupContact.setDisable(false);
         txtSupEmail.setDisable(false);
     }
+
+     public void itemClear() {
+         cmbItemCode.getSelectionModel().clearSelection();
+         txtItmName.clear();
+         txtItmDescription.clear();
+         txtItmSize.clear();
+         txtQtyOnHand.clear();
+         txtUnitPrice.clear();
+         txtQty.clear();
+     }
 }

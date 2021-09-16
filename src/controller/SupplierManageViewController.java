@@ -5,9 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Employee;
 import model.Supplier;
-import util.EmployeeController;
 import util.SupplierController;
 import view.tm.SupplierTm;
 

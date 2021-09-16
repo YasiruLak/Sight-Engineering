@@ -72,6 +72,6 @@ public class EmployeeViewController {
     }
 
     public void setCount() throws SQLException, ClassNotFoundException {
-//        lblEmployee.setText(String.valueOf(new EmployeeController().employeeCount()));
+        lblEmployee.setText(String.valueOf(new EmployeeController().employeeCount()));
     }
 }

@@ -19,7 +19,7 @@
       </Label>
       <AnchorPane layoutX="11.0" layoutY="71.0" prefHeight="670.0" prefWidth="214.0" styleClass="liner-navigate" stylesheets="@../style/Style.css">
          <children>
-            <JFXButton alignment="CENTER" layoutY="43.0" onAction="#goToVehicleOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         VEHICLE" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="43.0" onAction="#goToVehicleOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                     VEHICLE" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -35,7 +35,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="42.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_Shuttle_bus_64.png" />
                </image>
@@ -43,7 +43,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="99.0" onAction="#goToSupplierManage" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         SUPPLIERS" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="99.0" onAction="#goToSupplierManage" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                  SUPPLIERS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -59,7 +59,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_customer_64.png" />
                </image>
@@ -67,7 +67,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="323.0" onAction="#loadPaymentOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         PAYMENT" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="323.0" onAction="#loadPaymentOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                    PAYMENT" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -83,7 +83,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_payment_history_64.png" />
                </image>
@@ -91,7 +91,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="379.0" onAction="#goToReportOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         REPORT" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="379.0" onAction="#goToReportOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                       REPORT" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -107,7 +107,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_report_file_64.png" />
                </image>
@@ -115,7 +115,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="155.0" onAction="#goToEmployeeOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         EMPLOYEES" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="155.0" onAction="#goToEmployeeOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                EMPLOYEES" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -131,7 +131,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="40.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_workers_64.png" />
                </image>
@@ -139,7 +139,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="267.0" onAction="#goToItemManageOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         ITEM" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="267.0" onAction="#goToItemManageOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                             ITEM" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -155,7 +155,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_trolley_64.png" />
                </image>
@@ -163,7 +163,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="211.0" onAction="#goToOrderManageOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         ORDER" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="211.0" onAction="#goToOrderManageOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                          ORDER" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -179,7 +179,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="41.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_book_64.png" />
                </image>
@@ -187,7 +187,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutY="435.0" onAction="#goToAttendanceOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="         ATTEND" textFill="WHITE">
+            <JFXButton alignment="CENTER" layoutY="435.0" onAction="#goToAttendanceOnAction" prefHeight="56.0" prefWidth="214.0" styleClass="button-manager" stylesheets="@../style/Style.css" text="                       ATTEND" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -203,7 +203,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="19.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="44.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icons8_graph_report_64.png" />
                </image>
@@ -211,7 +211,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <JFXButton fx:id="btnLogOut" buttonType="RAISED" layoutY="614.0" onAction="#logOutOnAction" prefHeight="52.0" prefWidth="214.0" styleClass="button-logout" stylesheets="@../style/Style.css" text="LOG OUT" textFill="WHITE">
+            <JFXButton fx:id="btnLogOut" buttonType="RAISED" layoutY="618.0" onAction="#logOutOnAction" prefHeight="52.0" prefWidth="214.0" styleClass="button-logout" stylesheets="@../style/Style.css" text="LOG OUT" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -237,7 +237,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutY="554.0" onAction="#goToHelpOnAction" prefHeight="49.0" prefWidth="214.0" styleClass="button-help" stylesheets="@../style/Style.css" text="      Help" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutY="557.0" onAction="#goToHelpOnAction" prefHeight="49.0" prefWidth="214.0" styleClass="button-help" stylesheets="@../style/Style.css" text="      Help" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>
@@ -250,7 +250,7 @@
                   </LinearGradient>
                </ripplerFill>
             </JFXButton>
-            <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="48.0" layoutY="561.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="48.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/help_60px.png" />
                </image>

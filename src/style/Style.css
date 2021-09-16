@@ -5,16 +5,16 @@
 }
 .button-login:hover{
     -fx-cursor: hand;
-    -fx-background-color:  #0984e3;
+    -fx-background-color: #0984e3;
 }
 .button-cancel{
-    -fx-background-color:  #cfd0d1;
+    -fx-background-color: #cfd0d1;
     -fx-background-radius: 40px;
     -fx-text-fill: #000000;
 }
 .button-cancel:hover{
     -fx-cursor: hand;
-    -fx-background-color:  #646769;
+    -fx-background-color: #646769;
 }
 .button-exit{
     -fx-background-color: #ffffff;
@@ -23,17 +23,17 @@
 }
 .button-exit:hover{
     -fx-cursor: hand;
-    -fx-background-color:  #9c9c9c;
+    -fx-background-color: #ff5959;
 }
 .button-admin:hover{
     -fx-cursor: hand;
-    -fx-background-color:#0984e3;
-    -fx-background-radius :  30 0 0 30;
+    -fx-background-color: #0984e3;
+    -fx-background-radius : 30 0 0 30;
 }
 .button-manager:hover{
     -fx-cursor: hand;
-    -fx-background-color:#0984e3;
-    -fx-background-radius :  30 0 0 30;
+    -fx-background-color: #0984e3;
+    -fx-background-radius : 30 0 0 30;
 }
 .button-logout:hover{
     -fx-cursor: hand;
@@ -148,7 +148,7 @@
 }
 .liner-title {
     -fx-background-radius: 30px;
-    -fx-background-color:  #016170;
+    -fx-background-color: linear-gradient(to left, #00b2cf, #003e47);
 }
 .liner-navigate {
     -fx-background-color: linear-gradient(to bottom, #003e47, #00b2cf);

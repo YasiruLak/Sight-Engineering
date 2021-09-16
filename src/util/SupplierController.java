@@ -49,7 +49,6 @@ public class SupplierController {
                     resultSet.getString(3),
                     resultSet.getString(4),
                     resultSet.getString(5)
-
             ));
         }
         return suppliers;
@@ -67,7 +66,6 @@ public class SupplierController {
                     resultSet.getString(3),
                     resultSet.getString(4),
                     resultSet.getString(5)
-
             );
         } else {
             return null;

@@ -42,8 +42,6 @@ public class OrderController {
 
         PreparedStatement statement = connection.prepareStatement("INSERT INTO `order` VALUES (?,?,?,?,?)");
 
-
-
         statement.setObject(1,order.getOrderId());
         statement.setObject(2,order.getSupplierId());
         statement.setObject(3,order.getDate());
@@ -124,9 +122,26 @@ public class OrderController {
                     resultSet.getString(3),
                     resultSet.getString(4),
                     resultSet.getDouble(5)
-
             ));
         }
         return orders;
+    }
+
+    public Order getOrder(String orderId) throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT * FROM `order` WHERE orderId=?");
+        statement.setObject(1, orderId);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()){
+            return new Order(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getDouble(5)
+            );
+        }else{
+            return null;
+        }
     }
 }

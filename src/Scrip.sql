@@ -129,13 +129,17 @@ DESCRIBE `item detail`;
 DROP TABLE IF EXISTS payment;
 CREATE TABLE IF NOT EXISTS payment(
     paymentId VARCHAR(15),
-    oId VARCHAR(15),
-    eId VARCHAR (15),
-    date DATE,
+    orderId VARCHAR(15),
+    supplierId VARCHAR (15),
+    orderDate DATE,
+    paymentDate DATE,
+    paymentTime VARCHAR (15),
     amount DOUBLE,
+    payMethod VARCHAR (15),
+    invoiceNo VARCHAR (25),
     CONSTRAINT PRIMARY KEY (paymentId),
-    CONSTRAINT FOREIGN KEY (oId) REFERENCES `order`(orderId) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FOREIGN KEY (eId) REFERENCES employee (empId) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT FOREIGN KEY (orderId) REFERENCES `order`(orderId) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (supplierId) REFERENCES supplier (id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 SHOW TABLES;
 DESCRIBE payment;

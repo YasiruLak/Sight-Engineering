@@ -51,7 +51,6 @@ public class EmployeeController{
         }
     }
 
-
     public boolean updateEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(
                 "UPDATE employee SET name=?, type =?, age=?, address=?, city=?, province=?, contact=?, dailySalary=? WHERE empId=? "
@@ -100,13 +99,14 @@ public class EmployeeController{
         return employees;
     }
 
-//    public int employeeCount() throws SQLException, ClassNotFoundException {
-//        PreparedStatement statement = DbConnection.getInstance().getConnection().
-//                prepareStatement("SELECT COUNT (empId) FROM employee");
-//        ResultSet resultSet = statement.executeQuery();
-//        if(resultSet.next()){
-//            return resultSet.getInt(1);
-//        }
-//        return 0;
-//    }
+    public int employeeCount() throws SQLException, ClassNotFoundException {
+        int numberRow = 0;
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT COUNT (*) FROM employee");
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            numberRow = resultSet.getInt("count(*)");
+        }
+        return numberRow;
+    }
 }

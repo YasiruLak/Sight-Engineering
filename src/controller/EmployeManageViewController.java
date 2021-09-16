@@ -145,9 +145,9 @@ public class EmployeManageViewController {
         } else{
             new Alert(Alert.AlertType.ERROR, "Try Again").show();
             cancelDetail();
+        }
     }
 
-}
     public void cancelDetailOnAction(ActionEvent actionEvent) {
         cancelDetail();
 
@@ -175,6 +175,7 @@ public class EmployeManageViewController {
         txtEmpDailySalary.setText(employee.getDailySalary());
 
     }
+
     public void cancelDetail(){
         txtEmpId.clear();
         txtEmpName.clear();

@@ -21,7 +21,6 @@ public class VehicleController{
         return stm.executeUpdate() > 0;
     }
 
-
     public Vehicle getVehicle(String vehicleNo) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
                 ("SELECT * FROM Vehicle WHERE vehicleNo=?");
@@ -38,16 +37,14 @@ public class VehicleController{
         }
     }
 
-
-    public boolean updateVehicle(Vehicle v) throws SQLException, ClassNotFoundException {
+    public boolean updateVehicle(Vehicle vehicle) throws SQLException, ClassNotFoundException {
         PreparedStatement stm = DbConnection.getInstance().getConnection().prepareStatement(
                 "UPDATE Vehicle SET description=?, type=? WHERE VehicleNo=?");
-        stm.setObject(1,v.getDescription());
-        stm.setObject(2,v.getType());
-        stm.setObject(3,v.getVehicleNo());
+        stm.setObject(1,vehicle.getDescription());
+        stm.setObject(2,vehicle.getType());
+        stm.setObject(3,vehicle.getVehicleNo());
         return stm.executeUpdate()>0;
     }
-
 
     public boolean deleteVehicle(String vehicleNo) throws SQLException, ClassNotFoundException {
         if(DbConnection.getInstance().getConnection().prepareStatement
@@ -57,7 +54,6 @@ public class VehicleController{
             return false;
         }
     }
-
 
     public ArrayList<Vehicle> getAllVehicle() throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
@@ -73,6 +69,4 @@ public class VehicleController{
         }
         return vehicles;
     }
-
-
 }
