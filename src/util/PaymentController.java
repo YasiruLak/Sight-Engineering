@@ -1,9 +1,7 @@
 package util;
 
 import db.DbConnection;
-import model.Order;
 import model.Payment;
-import model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

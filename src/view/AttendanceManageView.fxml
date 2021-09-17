@@ -3,11 +3,11 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -20,27 +20,26 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="70.0" text="Attend ID :" textFill="#0019cf">
+      <Label layoutX="48.0" layoutY="14.0" text="Attend ID :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="txtTtl" layoutX="144.0" layoutY="70.0" prefHeight="27.0" prefWidth="111.0" text="A-0010" textFill="#0019cf">
+      <Label fx:id="lblAttendId" layoutX="160.0" layoutY="14.0" prefHeight="30.0" prefWidth="76.0" text="A-0010" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="10.0" layoutY="335.0" prefHeight="301.0" prefWidth="529.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblItemView" layoutX="18.0" layoutY="195.0" prefHeight="452.0" prefWidth="528.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn prefWidth="73.0" text="Attend Id" />
-          <TableColumn prefWidth="64.99996948242188" text="Emp Id" />
-            <TableColumn prefWidth="113.0" text="Name" />
-            <TableColumn prefWidth="87.0" text="Catogry" />
-            <TableColumn prefWidth="100.0" text="Date" />
-            <TableColumn prefWidth="89.0" text="Time" />
+          <TableColumn fx:id="colItemId" prefWidth="77.0" text="Item Id" />
+            <TableColumn fx:id="colItemName" prefWidth="129.0" text="Name" />
+            <TableColumn fx:id="colSize" prefWidth="101.0" text="Size" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="117.0" text="Stock Qty" />
+            <TableColumn fx:id="colAction" prefWidth="103.0" text="Action" />
         </columns>
       </TableView>
-      <JFXTextField focusColor="BLACK" layoutX="271.0" layoutY="68.0" prefHeight="35.0" prefWidth="172.0" promptText="Employee Id" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtEmpId" focusColor="BLACK" layoutX="28.0" layoutY="77.0" onAction="#searchEmployeeOnAction" prefHeight="35.0" prefWidth="139.0" promptText="Employee Id" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />
          </font>
@@ -48,7 +47,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXTextField focusColor="BLACK" layoutX="27.0" layoutY="148.0" prefHeight="35.0" prefWidth="229.0" promptText="Name" unFocusColor="BLACK">
+      <JFXTextField fx:id="txtEmpName" focusColor="BLACK" layoutX="182.0" layoutY="77.0" prefHeight="35.0" prefWidth="209.0" promptText="Employee Name" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />
          </font>
@@ -56,8 +55,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <ComboBox layoutX="289.0" layoutY="151.0" prefHeight="35.0" prefWidth="172.0" promptText="Job Catogry" />
-      <JFXButton buttonType="RAISED" layoutX="426.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="989.0" layoutY="218.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Add" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -73,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="318.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="881.0" layoutY="218.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -89,24 +87,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="209.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="RED" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <Separator layoutX="546.0" layoutY="70.0" orientation="VERTICAL" prefHeight="582.0" prefWidth="1.0" />
-      <JFXTextField focusColor="BLACK" layoutX="568.0" layoutY="72.0" prefHeight="35.0" prefWidth="164.0" promptText="Attend Id" unFocusColor="BLACK">
+      <JFXButton buttonType="RAISED" layoutX="769.0" layoutY="218.0" onAction="#cancelOnAction" prefHeight="35.0" prefWidth="100.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE" />
+      <JFXTextField fx:id="txtEmpType" focusColor="BLACK" layoutX="413.0" layoutY="77.0" prefHeight="35.0" prefWidth="163.0" promptText="Job Type" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />
          </font>
@@ -114,7 +96,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXTextField focusColor="BLACK" layoutX="763.0" layoutY="72.0" prefHeight="35.0" prefWidth="164.0" promptText="Employee Id" unFocusColor="BLACK">
+      <JFXTextField focusColor="BLACK" layoutX="65.0" layoutY="152.0" prefHeight="35.0" prefWidth="209.0" promptText="Search Here" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />
          </font>
@@ -122,93 +104,34 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="98.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE" />
-      <JFXTextField focusColor="BLACK" layoutX="568.0" layoutY="130.0" prefHeight="35.0" prefWidth="164.0" promptText="Item Id" unFocusColor="BLACK">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </JFXTextField>
-      <JFXTextField focusColor="BLACK" layoutX="763.0" layoutY="130.0" prefHeight="35.0" prefWidth="164.0" promptText="Quntity" unFocusColor="BLACK">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </JFXTextField>
-      <ComboBox layoutX="568.0" layoutY="189.0" prefHeight="35.0" prefWidth="164.0" promptText="Status" />
-      <TableView layoutX="554.0" layoutY="335.0" prefHeight="301.0" prefWidth="546.0" stylesheets="@../style/Style.css">
+      <TableView layoutX="563.0" layoutY="270.0" prefHeight="377.0" prefWidth="528.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn prefWidth="70.0" text="Attend Id" />
-            <TableColumn prefWidth="63.0" text="Emp Id" />
-            <TableColumn prefWidth="72.0" text="Item Id" />
-            <TableColumn prefWidth="62.0" text="Quntity" />
-            <TableColumn prefWidth="91.0" text="Give Time" />
-            <TableColumn prefWidth="91.0" text="Return Time" />
-            <TableColumn prefWidth="96.0" text="Status" />
+            <TableColumn prefWidth="109.0" text="Item Id" />
+            <TableColumn prefWidth="179.0" text="Name" />
+            <TableColumn prefWidth="128.0" text="Quntity" />
+            <TableColumn prefWidth="117.0" text="Action" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="986.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#0700ff" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
+      <JFXTextField fx:id="txtEmpAge" focusColor="BLACK" layoutX="594.0" layoutY="77.0" prefHeight="35.0" prefWidth="139.0" promptText="Age" unFocusColor="BLACK">
          <font>
-            <Font name="Times New Roman Bold" size="17.0" />
+            <Font size="14.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="TEXT" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="875.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#00ff0d" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
+      </JFXTextField>
+      <JFXTextField fx:id="txtEmpContact" focusColor="BLACK" layoutX="752.0" layoutY="77.0" prefHeight="35.0" prefWidth="177.0" promptText="Contact" unFocusColor="BLACK">
          <font>
-            <Font name="Times New Roman Bold" size="17.0" />
+            <Font size="14.0" />
          </font>
          <cursor>
-            <Cursor fx:constant="HAND" />
+            <Cursor fx:constant="TEXT" />
          </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="763.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="RED" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="652.0" layoutY="285.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE" />
-      <Label fx:id="txtDate" layoutX="920.0" layoutY="10.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtTime" layoutX="728.0" layoutY="12.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
+      </JFXTextField>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="29.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8_search_64.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

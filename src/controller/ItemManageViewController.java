@@ -117,7 +117,6 @@ public class ItemManageViewController {
         }else{
             setData(item);
         }
-
     }
 
     public void clear(){
@@ -135,7 +134,5 @@ public class ItemManageViewController {
         txtItmDescription.setText(item.getDescription());
         cmbSize.setValue(item.getSize());
         txtItmQtyOnHand.setText(item.getQtyOnHand());
-
-
     }
 }

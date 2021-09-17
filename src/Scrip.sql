@@ -102,13 +102,14 @@ CREATE TABLE IF NOT EXISTS attendence(
     date DATE ,
     inTime TIME,
     outTime TIME,
+    status VARCHAR(15),
     CONSTRAINT PRIMARY KEY (attendId, eId),
     CONSTRAINT FOREIGN KEY (eId) REFERENCES employee(empId) ON DELETE CASCADE ON UPDATE CASCADE
     );
 SHOW TABLES ;
 DESCRIBE attendence;
 
-DROP TABLE IF EXISTS `item detail`;
+DROP TABLE IF EXISTS `material detail`;
 CREATE TABLE IF NOT EXISTS `item detail`(
     iId VARCHAR(15),
     eId VARCHAR(15),
@@ -116,15 +117,14 @@ CREATE TABLE IF NOT EXISTS `item detail`(
     qty VARCHAR(15),
     status VARCHAR(15),
     date DATE ,
-    giveTime TIME,
-    returnTime TIME,
+    Time TIME,
     CONSTRAINT PRIMARY KEY (aId, eId, iId),
     CONSTRAINT FOREIGN KEY (eId) REFERENCES employee(empId) ON DELETE CASCADE ON UPDATE CASCADE ,
     CONSTRAINT FOREIGN KEY (aId) REFERENCES attendence(attendId) ON DELETE CASCADE ON UPDATE CASCADE ,
     CONSTRAINT FOREIGN KEY (iId) REFERENCES item(itemCode) ON DELETE CASCADE ON UPDATE CASCADE
     );
 SHOW TABLES;
-DESCRIBE `item detail`;
+DESCRIBE `material detail`;
 
 DROP TABLE IF EXISTS payment;
 CREATE TABLE IF NOT EXISTS payment(

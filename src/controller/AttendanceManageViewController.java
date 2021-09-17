@@ -1,45 +1,125 @@
 package controller;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.scene.control.Label;
-import javafx.util.Duration;
+import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import model.Employee;
+import model.Item;
+import util.EmployeeController;
+import util.ItemController;
+import view.tm.ItemViewTm;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.Date;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class AttendanceManageViewController {
-    public Label txtTtl;
-    public Label txtDate;
-    public Label txtTime;
-    public int hour;
+
+    public TableView<ItemViewTm>tblItemView;
+    public TableColumn colItemId;
+    public TableColumn colItemName;
+    public TableColumn colQtyOnHand;
+    public TableColumn colAction;
+    public TableColumn colSize;
+    public Label lblAttendId;
+    public JFXTextField txtEmpId;
+    public JFXTextField txtEmpName;
+    public JFXTextField txtEmpType;
+    public JFXTextField txtEmpAge;
+    public JFXTextField txtEmpContact;
 
     public void initialize(){
-        loadDateAndTime();
-    }
-    public void loadDateAndTime(){
-        Date date = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        txtDate.setText(f.format(date));
+        colItemId.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("quantityOnHand"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("button"));
 
-        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e->{
-            LocalTime currentTime = LocalTime.now();
-            String state = null;
-            hour = currentTime.getHour();
-            if (hour < 12) {
-                state = "AM";
-            } else {
-                state = "PM";
-            }
-            txtTime.setText(
-                    currentTime.getHour()+ ": "+currentTime.getMinute()+ ": "+state
-            );
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        time.setCycleCount(Animation.INDEFINITE);
-        time.play();
+        tblItemView.getColumns().setAll(colItemId,colItemName,colSize,colQtyOnHand,colAction);
+
+        try {
+            loadTableData(new ItemController().getAllItem());
+        } catch ( SQLException e ) {
+            e.printStackTrace();
+        } catch ( ClassNotFoundException e ) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadTableData(List<Item> items){
+        ObservableList<ItemViewTm> list = FXCollections.observableArrayList();
+        for (Item item : items) {
+            list.add(new ItemViewTm(
+                    item.getId(),
+                    item.getName(),
+                    item.getSize(),
+                    item.getQtyOnHand(),
+                    new Button("Update")
+            ));
+        }
+        tblItemView.getItems().setAll(list);
+        updateBtnAction();
+    }
+    private void updateBtnAction(){
+        for (ItemViewTm item : tblItemView.getItems()) {
+            item.getButton().setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        showUpdateForm(item);
+                    } catch ( IOException e ) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
+    private void showUpdateForm(ItemViewTm item) throws IOException {
+        FXMLLoader load = new FXMLLoader(getClass().getResource("../view/QuantityAddPopUp.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load.load()));
+        QuantityAddPopUpController controller = load.getController();
+        controller.init(new Item(
+                item.getItemCode(),
+                item.getItemName(),
+                "",
+                item.getSize(),
+                item.getQuantityOnHand()
+        ));
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    public void searchEmployeeOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        String employeeId = txtEmpId.getText();
+        Employee employee = new EmployeeController().getEmployee(employeeId);
+        if (employee==null){
+            new Alert(Alert.AlertType.ERROR,"Empty Result Set").show();
+        }else{
+            setData(employee);
+        }
+    }
+
+    void setData(Employee employee) {
+        txtEmpName.setText(employee.getName());
+        txtEmpAge.setText(employee.getAge());
+        txtEmpType.setText(employee.getType());
+        txtEmpContact.setText(employee.getContact());
+    }
+
+    public void cancelOnAction(ActionEvent actionEvent) {
+        txtEmpId.clear();
+        txtEmpType.clear();
+        txtEmpContact.clear();
+        txtEmpAge.clear();
+        txtEmpName.clear();
     }
 }
