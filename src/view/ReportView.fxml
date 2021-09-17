@@ -23,25 +23,13 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="33.0" layoutY="71.0" prefHeight="42.0" prefWidth="244.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="33.0" layoutY="71.0" prefHeight="42.0" prefWidth="232.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="257.0" promptText="Payment Report" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" promptText="Payment Report" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Report Name" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="344.0" layoutY="71.0" prefHeight="42.0" prefWidth="217.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="From" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="614.0" layoutY="71.0" prefHeight="42.0" prefWidth="217.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="To" />
-         </children>
-      </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="948.0" layoutY="595.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Print" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="945.0" layoutY="467.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Print" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -57,7 +45,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="794.0" layoutY="595.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Email" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="879.0" layoutY="601.0" prefHeight="40.0" prefWidth="196.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Email" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -73,7 +61,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <BarChart fx:id="tblChart" layoutX="33.0" layoutY="140.0" prefHeight="250.0" prefWidth="674.0" title="ATTENDENCE REPORT">
+      <BarChart fx:id="tblChart" layoutX="26.0" layoutY="132.0" prefHeight="250.0" prefWidth="674.0" title="ATTENDENCE REPORT">
          <xAxis>
             <CategoryAxis label="DATE" prefHeight="18.0" prefWidth="596.0" side="BOTTOM" />
          </xAxis>
@@ -81,13 +69,13 @@
             <NumberAxis label="Emplyee" lowerBound="10.0" side="LEFT" upperBound="50.0" />
          </yAxis>
       </BarChart>
-      <JFXDatePicker layoutX="873.0" layoutY="156.0" prefHeight="42.0" prefWidth="202.0" />
-      <Label layoutX="727.0" layoutY="167.0" prefHeight="31.0" prefWidth="130.0" text="Select Date :">
+      <JFXDatePicker layoutX="481.0" layoutY="59.0" prefHeight="42.0" prefWidth="202.0" />
+      <Label layoutX="335.0" layoutY="70.0" prefHeight="31.0" prefWidth="130.0" text="Select Date :">
          <font>
             <Font name="ACaslonPro-Semibold" size="24.0" />
          </font>
       </Label>
-      <Pane layoutX="736.0" layoutY="223.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="736.0" layoutY="71.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -106,7 +94,7 @@
             </Label>
          </children>
       </Pane>
-      <BarChart fx:id="tblChart1" layoutX="33.0" layoutY="396.0" prefHeight="250.0" prefWidth="674.0" title="GRN REPORT">
+      <BarChart fx:id="tblChart1" layoutX="26.0" layoutY="382.0" prefHeight="250.0" prefWidth="674.0" title="GRN REPORT">
          <xAxis>
             <CategoryAxis label="DATE" prefHeight="18.0" prefWidth="596.0" side="BOTTOM" />
          </xAxis>
@@ -114,7 +102,7 @@
             <NumberAxis label="ITEM" lowerBound="10.0" side="LEFT" upperBound="50.0" />
          </yAxis>
       </BarChart>
-      <Pane layoutX="736.0" layoutY="425.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="736.0" layoutY="314.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -133,5 +121,21 @@
             </Label>
          </children>
       </Pane>
+      <JFXButton buttonType="RAISED" layoutX="945.0" layoutY="225.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Print" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0f00b2" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

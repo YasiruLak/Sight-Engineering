@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,6 +27,7 @@ public class SupplierViewController {
     public TableColumn colSupAddress;
     public TableColumn colSupMobile;
     public TableColumn colSupEmail;
+    public Label lblSupCount;
 
     private SupplierController controller = new SupplierController();
 
@@ -39,6 +41,7 @@ public class SupplierViewController {
 
         try {
             supplierToTable(new SupplierController().getAllSupplier());
+            setCount();
         } catch ( SQLException e ) {
             e.printStackTrace();
         } catch ( ClassNotFoundException e ) {
@@ -60,5 +63,9 @@ public class SupplierViewController {
         Parent load = FXMLLoader.load(resource);
         supplierViewContext.getChildren().clear();
         supplierViewContext.getChildren().add(load);
+    }
+
+    public void setCount() throws SQLException, ClassNotFoundException {
+        lblSupCount.setText(String.valueOf(new SupplierController().supplierCount()));
     }
 }

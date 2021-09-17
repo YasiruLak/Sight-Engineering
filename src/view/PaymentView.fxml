@@ -20,17 +20,6 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <TableView layoutX="27.0" layoutY="301.0" prefHeight="349.0" prefWidth="1057.0" stylesheets="@../style/Style.css">
-         <columns>
-            <TableColumn prefWidth="128.0" text="Payment Id" />
-            <TableColumn prefWidth="135.0" text="Order Id" />
-            <TableColumn prefWidth="126.0" text="Supplier Id" />
-            <TableColumn prefWidth="175.0" text="Order Date" />
-            <TableColumn prefWidth="180.0" text="Payment Date" />
-            <TableColumn prefWidth="137.0" text="Payment Time" />
-            <TableColumn prefWidth="179.0" text="Amount" />
-         </columns>
-      </TableView>
       <ImageView fitHeight="237.0" fitWidth="326.0" layoutX="59.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/payment.png" />
@@ -43,7 +32,7 @@
                   <Image url="@../assets/payment_history_96px.png" />
                </image>
             </ImageView>
-            <Label layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0" text="100">
+            <Label fx:id="lblPaymentCount" layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0">
                <font>
                   <Font size="36.0" />
                </font>
@@ -53,7 +42,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="131.0" onAction="#goToManagePaymentOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Manage Payment" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="131.0" onAction="#goToManagePaymentOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Manage Payment &gt;&gt;" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -71,5 +60,18 @@
             </JFXButton>
          </children>
       </Pane>
+      <TableView fx:id="tblPayment" layoutX="21.0" layoutY="290.0" prefHeight="360.0" prefWidth="1069.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colPaymentId" prefWidth="97.0" text="Payment Id" />
+            <TableColumn fx:id="colOrderId" prefWidth="100.0" text="Order Id" />
+            <TableColumn fx:id="colSupplierId" prefWidth="105.0" text="Supplier Id" />
+            <TableColumn fx:id="colOrderDate" prefWidth="120.0" text="Order Date" />
+            <TableColumn fx:id="colDate" prefWidth="120.0" text="Payment Date" />
+            <TableColumn fx:id="colTime" prefWidth="121.0" text="Payment Time" />
+            <TableColumn fx:id="colAmount" prefWidth="146.0" text="Amount" />
+            <TableColumn fx:id="colPayMethod" prefWidth="112.0" text="Pay Method" />
+            <TableColumn fx:id="colInvoiceNo" prefWidth="147.0" text="Invoice No" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

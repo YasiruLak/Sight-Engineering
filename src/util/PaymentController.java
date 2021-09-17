@@ -89,20 +89,14 @@ public class PaymentController {
         }
     }
 
-    public boolean updatePayment(Payment payment) throws SQLException, ClassNotFoundException {
-        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement(
-                "UPDATE payment SET orderId=?, supplierId=?, orderDate=?, paymentDate=?, paymentTime=?,  amount=?,  payMethod=?,  invoiceNo=? WHERE paymentId=? "
-        );
-        statement.setObject(1,payment.getOrderId());
-        statement.setObject(2,payment.getSupplierId());
-        statement.setObject(3,payment.getOrderDate());
-        statement.setObject(4,payment.getDate());
-        statement.setObject(5,payment.getTime());
-        statement.setObject(6,payment.getAmount());
-        statement.setObject(7,payment.getPayMethod());
-        statement.setObject(8,payment.getInvoiceNo());
-        statement.setObject(9,payment.getPaymentId());
-
-        return statement.executeUpdate()>0;
+    public int paymentCount() throws SQLException, ClassNotFoundException {
+        int numberRow = 0;
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT COUNT(*) FROM payment");
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            numberRow = resultSet.getInt("count(*)");
+        }
+        return numberRow;
     }
 }

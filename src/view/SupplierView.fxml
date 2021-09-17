@@ -36,7 +36,7 @@
                   <Image url="@../assets/supplier_96px.png" />
                </image>
             </ImageView>
-            <Label layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0" text="100">
+            <Label fx:id="lblSupCount" layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0" text="100">
                <font>
                   <Font size="36.0" />
                </font>

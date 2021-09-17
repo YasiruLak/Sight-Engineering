@@ -69,4 +69,15 @@ public class VehicleController{
         }
         return vehicles;
     }
+
+    public int vehicleCount() throws SQLException, ClassNotFoundException {
+        int numberRow = 0;
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT COUNT(*) FROM vehicle");
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            numberRow = resultSet.getInt("count(*)");
+        }
+        return numberRow;
+    }
 }

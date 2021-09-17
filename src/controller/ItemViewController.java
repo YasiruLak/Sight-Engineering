@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,6 +27,7 @@ public class ItemViewController {
     public TableColumn colItmDescription;
     public TableColumn colItmSize;
     public TableColumn colItmQtyOnHand;
+    public Label lblItemCount;
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
@@ -36,6 +38,7 @@ public class ItemViewController {
         colItmQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
 
         itemToTable(new ItemController().getAllItem());
+        setCount();
     }
     private void itemToTable(ArrayList<Item> allItem){
         ObservableList<ItemTm> itemList = FXCollections.observableArrayList();
@@ -52,5 +55,9 @@ public class ItemViewController {
         Parent load = FXMLLoader.load(resource);
         itemStockContext.getChildren().clear();
         itemStockContext.getChildren().add(load);
+    }
+
+    public void setCount() throws SQLException, ClassNotFoundException {
+        lblItemCount.setText(String.valueOf(new ItemController().itemCount()));
     }
 }

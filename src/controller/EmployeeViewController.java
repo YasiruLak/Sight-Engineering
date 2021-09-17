@@ -54,6 +54,7 @@ public class EmployeeViewController {
             e.printStackTrace();
         }
     }
+
     public void employeeToTable(ArrayList<Employee> allEmployee){
         ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
         allEmployee.forEach(e -> {

@@ -102,7 +102,7 @@ public class EmployeeController{
     public int employeeCount() throws SQLException, ClassNotFoundException {
         int numberRow = 0;
         PreparedStatement statement = DbConnection.getInstance().getConnection().
-                prepareStatement("SELECT COUNT (*) FROM employee");
+                prepareStatement("SELECT COUNT(*) FROM employee");
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()){
             numberRow = resultSet.getInt("count(*)");

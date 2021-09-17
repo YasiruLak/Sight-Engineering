@@ -89,4 +89,15 @@ public class ItemController {
         }
         return items;
     }
+
+    public int itemCount() throws SQLException, ClassNotFoundException {
+        int numberRow = 0;
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT COUNT(*) FROM item");
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            numberRow = resultSet.getInt("count(*)");
+        }
+        return numberRow;
+    }
 }

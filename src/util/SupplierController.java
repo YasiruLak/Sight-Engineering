@@ -93,4 +93,15 @@ public class SupplierController {
             return false;
         }
     }
+
+    public int supplierCount() throws SQLException, ClassNotFoundException {
+        int rowCount = 0;
+        PreparedStatement statement = DbConnection.getInstance().getConnection().
+                prepareStatement("SELECT COUNT(*) FROM supplier");
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            rowCount = resultSet.getInt("count(*)");
+        }
+        return rowCount;
+    }
 }

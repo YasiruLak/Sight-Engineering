@@ -10,9 +10,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="linear-grad" stylesheets="@../style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminMainViewController">
+<AnchorPane prefHeight="745.0" prefWidth="1340.0" styleClass="linear-grad" stylesheets="@../style/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminMainViewController">
    <children>
-      <AnchorPane layoutX="14.0" layoutY="83.0" prefHeight="670.0" prefWidth="214.0" styleClass="liner-navigate" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="6.0" layoutY="67.0" prefHeight="670.0" prefWidth="214.0" styleClass="liner-navigate" stylesheets="@../style/Style.css">
          <children>
             <JFXButton layoutY="30.0" onAction="#goToVehicleView" prefHeight="56.0" prefWidth="214.0" styleClass="button-admin" stylesheets="@../style/Style.css" text="                  VEHICLE" textFill="WHITE">
                <ripplerFill>
@@ -276,12 +276,12 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="56.0" prefWidth="1347.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="ADMINISTRATIONS MANAGEMENT" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="56.0" prefWidth="1331.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="ADMINISTRATIONS MANAGEMENT" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="32.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="adminContext" layoutX="239.0" layoutY="83.0" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #Ffffff;">
+      <AnchorPane fx:id="adminContext" layoutX="226.0" layoutY="67.0" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #Ffffff;">
          <children>
             <ImageView fitHeight="627.0" fitWidth="1048.0" layoutX="192.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
