@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -30,13 +31,12 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="tblItemView" layoutX="18.0" layoutY="195.0" prefHeight="452.0" prefWidth="528.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblItemView" layoutX="18.0" layoutY="270.0" prefHeight="377.0" prefWidth="455.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn fx:id="colItemId" prefWidth="77.0" text="Item Id" />
-            <TableColumn fx:id="colItemName" prefWidth="129.0" text="Name" />
-            <TableColumn fx:id="colSize" prefWidth="101.0" text="Size" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="117.0" text="Stock Qty" />
-            <TableColumn fx:id="colAction" prefWidth="103.0" text="Action" />
+          <TableColumn fx:id="colItemId" prefWidth="84.0" text="Item Id" />
+            <TableColumn fx:id="colItemName" prefWidth="140.0" text="Name" />
+            <TableColumn fx:id="colSize" prefWidth="123.0" text="Size" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="106.0" text="Stock Qty" />
         </columns>
       </TableView>
       <JFXTextField fx:id="txtEmpId" focusColor="BLACK" layoutX="28.0" layoutY="77.0" onAction="#searchEmployeeOnAction" prefHeight="35.0" prefWidth="139.0" promptText="Employee Id" unFocusColor="BLACK">
@@ -96,7 +96,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <JFXTextField focusColor="BLACK" layoutX="65.0" layoutY="152.0" prefHeight="35.0" prefWidth="209.0" promptText="Search Here" unFocusColor="BLACK">
+      <JFXTextField focusColor="BLACK" layoutX="58.0" layoutY="233.0" prefHeight="35.0" prefWidth="209.0" promptText="Search Here" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />
          </font>
@@ -104,12 +104,14 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <TableView layoutX="563.0" layoutY="270.0" prefHeight="377.0" prefWidth="528.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblItemView2" layoutX="486.0" layoutY="270.0" prefHeight="309.0" prefWidth="605.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn prefWidth="109.0" text="Item Id" />
-            <TableColumn prefWidth="179.0" text="Name" />
-            <TableColumn prefWidth="128.0" text="Quntity" />
-            <TableColumn prefWidth="117.0" text="Action" />
+            <TableColumn fx:id="colItemId2" prefWidth="83.0" text="Id" />
+            <TableColumn fx:id="colItemName2" prefWidth="96.0" text="Name" />
+            <TableColumn fx:id="colSize2" prefWidth="88.0" text="Size" />
+            <TableColumn fx:id="colQuantity2" prefWidth="107.0" text="Quantity" />
+            <TableColumn fx:id="colAction2" prefWidth="108.0" text="Action" />
+            <TableColumn fx:id="colReceiveQty2" prefWidth="122.0" text="Action" />
          </columns>
       </TableView>
       <JFXTextField fx:id="txtEmpAge" focusColor="BLACK" layoutX="594.0" layoutY="77.0" prefHeight="35.0" prefWidth="139.0" promptText="Age" unFocusColor="BLACK">
@@ -128,10 +130,56 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </JFXTextField>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="29.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="22.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
+      <AnchorPane fx:id="popUp" layoutX="357.0" layoutY="182.0" prefHeight="191.0" prefWidth="324.0" style="-fx-background-color: #bddeff;" visible="false">
+         <children>
+            <Button fx:id="btnAdd" layoutX="214.0" layoutY="131.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #524fff;" text="Done" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <JFXButton layoutX="252.0" layoutY="21.0" onAction="#closeOnAction" style="-fx-background-color: #b3b3b3;" text="Close" textFill="WHITE" />
+            <JFXTextField fx:id="txtUpdateQuantity" layoutX="45.0" layoutY="66.0" prefHeight="40.0" prefWidth="197.0" promptText="Enter Quintity">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="txtAttendDate" focusColor="BLACK" layoutX="28.0" layoutY="144.0" prefHeight="35.0" prefWidth="139.0" promptText="Attend Date " unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAttendTime" focusColor="BLACK" layoutX="185.0" layoutY="144.0" prefHeight="35.0" prefWidth="139.0" promptText="Attend Time" unFocusColor="BLACK">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="981.0" layoutY="603.0" prefHeight="35.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Done" textFill="WHITE">
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="#0700ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+         <font>
+            <Font name="Times New Roman Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

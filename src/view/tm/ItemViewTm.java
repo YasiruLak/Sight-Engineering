@@ -1,25 +1,20 @@
 package view.tm;
 
-
-import javafx.scene.control.Button;
-
 public class ItemViewTm {
 
     private String itemCode;
     private String itemName;
     private String size;
     private String  quantityOnHand;
-    private Button button;
 
     public ItemViewTm() {
     }
 
-    public ItemViewTm(String itemCode, String itemName, String size, String quantityOnHand, Button button) {
+    public ItemViewTm(String itemCode, String itemName, String size, String quantityOnHand) {
         this.itemCode = itemCode;
         this.itemName = itemName;
         this.size = size;
         this.quantityOnHand = quantityOnHand;
-        this.button = button;
     }
 
     public String getItemCode() {
@@ -54,14 +49,6 @@ public class ItemViewTm {
         this.quantityOnHand = quantityOnHand;
     }
 
-    public Button getButton() {
-        return button;
-    }
-
-    public void setButton(Button button) {
-        this.button = button;
-    }
-
     @Override
     public String toString() {
         return "ItemViewTm{" +
@@ -69,7 +56,6 @@ public class ItemViewTm {
                 ", itemName='" + itemName + '\'' +
                 ", size='" + size + '\'' +
                 ", quantityOnHand='" + quantityOnHand + '\'' +
-                ", button=" + button +
                 '}';
     }
 }
