@@ -1,14 +1,14 @@
 package model;
 
-public class ItemDetails {
+public class OrderDetail {
     private String itemCode;
     private double unitPrice;
-    int qtyForBuy;
+    private int qtyForBuy;
 
-    public ItemDetails() {
+    public OrderDetail() {
     }
 
-    public ItemDetails(String itemCode, double unitPrice, int qtyForBuy) {
+    public OrderDetail(String itemCode, double unitPrice, int qtyForBuy) {
         this.itemCode = itemCode;
         this.unitPrice = unitPrice;
         this.qtyForBuy = qtyForBuy;
@@ -40,7 +40,7 @@ public class ItemDetails {
 
     @Override
     public String toString() {
-        return "ItemDetails{" +
+        return "OrderDetail{" +
                 "itemCode='" + itemCode + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", qtyForBuy=" + qtyForBuy +

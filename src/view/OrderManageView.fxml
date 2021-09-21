@@ -21,16 +21,6 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="931.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtTime" layoutX="739.0" layoutY="11.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
       <JFXTextField fx:id="txtItmName" focusColor="BLACK" layoutX="195.0" layoutY="167.0" prefHeight="35.0" prefWidth="188.0" promptText="Name" unFocusColor="BLACK">
          <font>
             <Font size="14.0" />

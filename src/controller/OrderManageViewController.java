@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import model.Item;
-import model.ItemDetails;
+import model.OrderDetail;
 import model.Order;
 import model.Supplier;
 import util.ItemController;
@@ -19,16 +19,16 @@ import util.OrderController;
 import util.SupplierController;
 import view.tm.StockTm;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OrderManageViewController {
-    public Label txtDate;
-    public Label txtTime;
     public ComboBox<String> cmbItemCode;
     public ComboBox<String> cmbSupplierId;
     public Label lblOrderId;
@@ -43,16 +43,13 @@ public class OrderManageViewController {
     public JFXTextField txtQtyOnHand;
     public TableColumn colItmCode;
     public TableColumn colItmName;
-    public TableColumn colQty;
-    public TableColumn colUpdate;
-    public TableColumn colDelete;
+    public TableColumn colQty;;
     public TableView tblStock;
     public TableColumn colTotal;
     public TableColumn colDescription;
     public TableColumn colUnitPrice;
     public TextField txtQty;
     public TextField txtUnitPrice;
-    private int hour;
 
     int stockSelectRowForRemove = -1;
 
@@ -65,8 +62,6 @@ public class OrderManageViewController {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-
-        loadDateAndTime();
 
         try {
             setOrderId();
@@ -116,7 +111,7 @@ public class OrderManageViewController {
             txtItmName.setText(item.getName());
             txtItmDescription.setText(item.getDescription());
             txtItmSize.setText(item.getSize());
-            txtQtyOnHand.setText(item.getQtyOnHand());
+            txtQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
         }
     }
 
@@ -143,29 +138,6 @@ public class OrderManageViewController {
 
     }
 
-    public void loadDateAndTime(){
-        Date date = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        txtDate.setText(f.format(date));
-
-        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e->{
-            LocalTime currentTime = LocalTime.now();
-            String state = null;
-            hour = currentTime.getHour();
-            if (hour < 12) {
-                state = "AM";
-            } else {
-                state = "PM";
-            }
-            txtTime.setText(
-                    currentTime.getHour()+ ": "+currentTime.getMinute()+ ": "+state
-            );
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        time.setCycleCount(Animation.INDEFINITE);
-        time.play();
-    }
 
     public void cancelOnAction(ActionEvent actionEvent) {
             clear();
@@ -236,7 +208,7 @@ public class OrderManageViewController {
 
     public void saveOrderOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
 
-        ArrayList<ItemDetails> items = new ArrayList<>();
+        ArrayList<OrderDetail> items = new ArrayList<>();
 
         double total = 0;
 
@@ -244,7 +216,7 @@ public class OrderManageViewController {
         ){
             total+=stockTm.getTotal();
           items.add(
-                  new ItemDetails(
+                  new OrderDetail(
                           stockTm.getItemCode(),
                           stockTm.getUnitPrice(),
                           stockTm.getQty()
@@ -255,8 +227,8 @@ public class OrderManageViewController {
         Order order = new Order(
                 lblOrderId.getText(),
                 cmbSupplierId.getValue(),
-                txtDate.getText(),
-                txtTime.getText(),
+                Date.valueOf(LocalDate.now()),
+                Time.valueOf(LocalTime.now()),
                 total,
                 items
         );

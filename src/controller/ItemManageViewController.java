@@ -59,7 +59,7 @@ public class ItemManageViewController {
     public void saveItemOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Item item = new Item(
                 txtItmCode.getText(), txtItmName.getText(), txtItmDescription.getText(), cmbSize.getValue().toString(),
-                txtItmQtyOnHand.getText()
+                Integer.parseInt(txtItmQtyOnHand.getText())
         );
         if(controller.saveItem(item)){
             new Alert(Alert.AlertType.CONFIRMATION, "Saved Successes").show();
@@ -74,7 +74,7 @@ public class ItemManageViewController {
     public void updateItemOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Item item = new Item(
                 txtItmCode.getText(), txtItmName.getText(), txtItmDescription.getText(), cmbSize.getValue().toString(),
-                txtItmQtyOnHand.getText()
+                Integer.parseInt(txtItmQtyOnHand.getText())
         );
         if (controller.updateItem(item)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Updated").show();
@@ -133,6 +133,6 @@ public class ItemManageViewController {
         txtItmName.setText(item.getName());
         txtItmDescription.setText(item.getDescription());
         cmbSize.setValue(item.getSize());
-        txtItmQtyOnHand.setText(item.getQtyOnHand());
+        txtItmQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
     }
 }

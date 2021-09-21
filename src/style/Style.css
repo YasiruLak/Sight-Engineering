@@ -68,7 +68,7 @@
     -fx-background-color: #2ed573;
 }
 .button-delete{
-    -fx-background-color: #ff3f34;
+    -fx-background-color: #535c68;
     -fx-text-fill: #ffffff;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -92,7 +92,7 @@
     -fx-background-color:  #ffffff;
 }
 .button-cancelOne{
-    -fx-background-color:  #7f8c8d;
+    -fx-background-color:  #95afc0;
     -fx-text-fill: #ffffff;
     -fx-font-size: 16px;
     -fx-font-weight: bold;

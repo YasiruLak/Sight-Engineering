@@ -34,16 +34,6 @@
             <TableColumn fx:id="colInvoiceNo" prefWidth="147.0" text="Invoice No" />
          </columns>
       </TableView>
-      <Label fx:id="txtDate" layoutX="175.0" layoutY="8.0" prefHeight="41.0" prefWidth="146.0" text="2021-08-09" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtTime" layoutX="922.0" layoutY="12.0" prefHeight="35.0" prefWidth="130.0" text="12:35 AM" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="29.0" layoutY="56.0" prefHeight="41.0" prefWidth="130.0" text="Payment Id" textFill="#84a9ff">
          <font>
             <Font name="System Bold" size="24.0" />

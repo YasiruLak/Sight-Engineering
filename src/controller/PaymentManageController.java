@@ -1,32 +1,24 @@
 package controller;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Duration;
-
 import model.Order;
 import model.Payment;
-
 import util.OrderController;
 import util.PaymentController;
-
 import view.tm.PaymentTm;
 
+import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PaymentManageController {
-    public Label txtDate;
-    public Label txtTime;
     public TableView<PaymentTm>tblPayment;
     public TableColumn colPaymentId;
     public TableColumn colOrderId;
@@ -60,7 +52,6 @@ public class PaymentManageController {
         colPayMethod.setCellValueFactory(new PropertyValueFactory<>("payMethod"));
         colInvoiceNo.setCellValueFactory(new PropertyValueFactory<>("invoiceNo"));
 
-        loadDateAndTime();
 
         try {
             setPaymentId();
@@ -79,30 +70,6 @@ public class PaymentManageController {
         });
     }
 
-    public void loadDateAndTime(){
-        Date date = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        txtDate.setText(f.format(date));
-
-        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e->{
-            LocalTime currentTime = LocalTime.now();
-            String state = null;
-            int hour = currentTime.getHour();
-            if (hour < 12) {
-                state = "AM";
-            } else {
-                state = "PM";
-            }
-            txtTime.setText(
-                    currentTime.getHour()+ ": "+currentTime.getMinute()+ ": "+state
-            );
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        time.setCycleCount(Animation.INDEFINITE);
-        time.play();
-    }
-
     private void paymentToTable(ArrayList<Payment> allPayment){
         ObservableList<PaymentTm> paymentList = FXCollections.observableArrayList();
         allPayment.forEach(e ->{
@@ -119,8 +86,8 @@ public class PaymentManageController {
 
     public void payPaymentOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         Payment payment = new Payment(
-                lblPaymentId.getText(), txtOrderId.getText(), txtSupplierId.getText(), txtOrderDate.getText(),
-                txtDate.getText(), txtTime.getText(), Double.parseDouble(txtAmount.getText()),
+                lblPaymentId.getText(), txtOrderId.getText(), txtSupplierId.getText(), java.sql.Date.valueOf(txtOrderDate.getText()),
+                Date.valueOf(LocalDate.now()), Time.valueOf(LocalTime.now()), Double.parseDouble(txtAmount.getText()),
                 cmbMethod.getValue().toString(), txtInvoiceNo.getText()
         );
         if (controller.savePayment(payment)) {
@@ -150,7 +117,7 @@ public class PaymentManageController {
     void setOrderData(Order order){
         txtOrderId.setText(order.getOrderId());
         txtSupplierId.setText(order.getSupplierId());
-        txtOrderDate.setText(order.getDate());
+        txtOrderDate.setText(String.valueOf(order.getDate()));
         txtAmount.setText(String.valueOf(order.getCost()));
     }
 
@@ -180,7 +147,7 @@ public class PaymentManageController {
         lblPaymentId.setText(payment.getPaymentId());
         txtOrderId.setText(payment.getOrderId());
         txtSupplierId.setText(payment.getSupplierId());
-        txtOrderDate.setText(payment.getOrderDate());
+        txtOrderDate.setText(String.valueOf(payment.getOrderDate()));
         txtAmount.setText(String.valueOf(payment.getAmount()));
         cmbMethod.setValue(payment.getPayMethod());
         txtInvoiceNo.setText(payment.getInvoiceNo());

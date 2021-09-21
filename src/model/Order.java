@@ -1,19 +1,19 @@
 package model;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class Order {
     private String orderId;
     private String supplierId;
-    private String date;
-    private String time;
+    private Date date;
+    private Time time;
     private double cost;
-    private ArrayList<ItemDetails> items;
+    private ArrayList<OrderDetail> items;
 
-    public Order() {
-    }
 
-    public Order(String orderId, String supplierId, String date, String time, double cost) {
+    public Order(String orderId, String supplierId, Date date, Time time, double cost) {
         this.orderId = orderId;
         this.supplierId = supplierId;
         this.date = date;
@@ -21,7 +21,7 @@ public class Order {
         this.cost = cost;
     }
 
-    public Order(String orderId, String supplierId, String date, String time, double cost, ArrayList<ItemDetails> items) {
+    public Order(String orderId, String supplierId, Date date, Time time, double cost, ArrayList<OrderDetail> items) {
         this.orderId = orderId;
         this.supplierId = supplierId;
         this.date = date;
@@ -46,19 +46,19 @@ public class Order {
         this.supplierId = supplierId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -70,11 +70,11 @@ public class Order {
         this.cost = cost;
     }
 
-    public ArrayList<ItemDetails> getItems() {
+    public ArrayList<OrderDetail> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<ItemDetails> items) {
+    public void setItems(ArrayList<OrderDetail> items) {
         this.items = items;
     }
 
@@ -83,8 +83,8 @@ public class Order {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
                 ", supplierId='" + supplierId + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", date=" + date +
+                ", time=" + time +
                 ", cost=" + cost +
                 ", items=" + items +
                 '}';

@@ -1,12 +1,15 @@
 package model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class Payment {
     private String paymentId;
     private String orderId;
     private String supplierId;
-    private String orderDate;
-    private String date;
-    private String time;
+    private Date orderDate;
+    private Date date;
+    private Time time;
     private double amount;
     private String payMethod;
     private String invoiceNo;
@@ -14,8 +17,8 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(String paymentId, String orderId, String supplierId, String orderDate,
-                   String date, String time, double amount, String payMethod, String invoiceNo) {
+    public Payment(String paymentId, String orderId, String supplierId, Date orderDate,
+                   Date date, Time time, double amount, String payMethod, String invoiceNo) {
         this.paymentId = paymentId;
         this.orderId = orderId;
         this.supplierId = supplierId;
@@ -51,27 +54,27 @@ public class Payment {
         this.supplierId = supplierId;
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -105,9 +108,9 @@ public class Payment {
                 "paymentId='" + paymentId + '\'' +
                 ", orderId='" + orderId + '\'' +
                 ", supplierId='" + supplierId + '\'' +
-                ", orderDate='" + orderDate + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", orderDate=" + orderDate +
+                ", date=" + date +
+                ", time=" + time +
                 ", amount=" + amount +
                 ", payMethod='" + payMethod + '\'' +
                 ", invoiceNo='" + invoiceNo + '\'' +

@@ -46,7 +46,7 @@ public class ItemController {
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(5)
+                    resultSet.getInt(5)
             );
         }else{
             return null;
@@ -84,7 +84,7 @@ public class ItemController {
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(5)
+                    resultSet.getInt(5)
             ));
         }
         return items;

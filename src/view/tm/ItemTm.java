@@ -5,12 +5,12 @@ public class ItemTm {
     private String name;
     private String description;
     private String size;
-    private String qtyOnHand;
+    private int qtyOnHand;
 
     public ItemTm() {
     }
 
-    public ItemTm(String id, String name, String description, String size, String qtyOnHand) {
+    public ItemTm(String id, String name, String description, String size, int qtyOnHand) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,11 +50,11 @@ public class ItemTm {
         this.size = size;
     }
 
-    public String getQtyOnHand() {
+    public int getQtyOnHand() {
         return qtyOnHand;
     }
 
-    public void setQtyOnHand(String qtyOnHand) {
+    public void setQtyOnHand(int qtyOnHand) {
         this.qtyOnHand = qtyOnHand;
     }
 
@@ -65,7 +65,7 @@ public class ItemTm {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", size='" + size + '\'' +
-                ", qtyOnHand='" + qtyOnHand + '\'' +
+                ", qtyOnHand=" + qtyOnHand +
                 '}';
     }
 }

@@ -11,11 +11,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Order;
-import model.Supplier;
 import util.OrderController;
 import view.tm.OrderTm;
-import view.tm.SupplierTm;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -30,6 +27,10 @@ public class OrderViewController {
     public TableColumn colTime;
     public TableColumn colTotal;
     public Label lblOrderCount;
+    public TableView tblOrderView2;
+    public TableColumn colOrderItemCode;
+    public TableColumn colOrderItemQty;
+    public TableColumn colOrderPrice;
 
     public void initialize(){
 
@@ -47,6 +48,14 @@ public class OrderViewController {
         } catch ( ClassNotFoundException e ) {
             e.printStackTrace();
         }
+
+        tblOrder.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            loadOrderViewTable(newValue);
+        });
+    }
+
+    private void loadOrderViewTable(Object newValue) {
+
     }
 
     public void orderToTable(ArrayList<Order> allOrder){

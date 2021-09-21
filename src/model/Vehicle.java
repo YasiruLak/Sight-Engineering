@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.control.SingleSelectionModel;
 
 public class Vehicle {
     private String vehicleNo;

@@ -1,17 +1,20 @@
 package view.tm;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class OrderTm {
 
     private String orderId;
     private String supplierId;
-    private String date;
-    private String time;
+    private Date date;
+    private Time time;
     private double cost;
 
     public OrderTm() {
     }
 
-    public OrderTm(String orderId, String supplierId, String date, String time, double cost) {
+    public OrderTm(String orderId, String supplierId, Date date, Time time, double cost) {
         this.orderId = orderId;
         this.supplierId = supplierId;
         this.date = date;
@@ -35,19 +38,19 @@ public class OrderTm {
         this.supplierId = supplierId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -64,8 +67,8 @@ public class OrderTm {
         return "OrderTm{" +
                 "orderId='" + orderId + '\'' +
                 ", supplierId='" + supplierId + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+                ", date=" + date +
+                ", time=" + time +
                 ", cost=" + cost +
                 '}';
     }

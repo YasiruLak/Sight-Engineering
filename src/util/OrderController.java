@@ -1,9 +1,8 @@
 package util;
 
 import db.DbConnection;
-import model.ItemDetails;
+import model.OrderDetail;
 import model.Order;
-import model.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,8 +13,9 @@ import java.util.ArrayList;
 public class OrderController {
 
     public String getOrderId() throws SQLException, ClassNotFoundException {
+
         ResultSet resultSet = DbConnection.getInstance().getConnection().
-                prepareStatement("SELECT * FROM `order` ORDER BY orderId DESC LIMIT 1").executeQuery();
+                prepareStatement("SELECT * FROM orders ORDER BY orderId DESC LIMIT 1").executeQuery();
         if ( resultSet.next() ){
             int tempId = Integer.parseInt(resultSet.getString(1).split("-")[1]);
             tempId=tempId+1;
@@ -40,14 +40,12 @@ public class OrderController {
         connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO `order` VALUES (?,?,?,?,?)");
-
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO orders VALUES (?,?,?,?,?)");
         statement.setObject(1,order.getOrderId());
         statement.setObject(2,order.getSupplierId());
         statement.setObject(3,order.getDate());
         statement.setObject(4,order.getTime());
         statement.setObject(5,order.getCost());
-
             if (statement.executeUpdate() > 0){
                 if (saveOrderDetail(order.getOrderId(), order.getItems())){
                     connection.commit();
@@ -60,7 +58,6 @@ public class OrderController {
                 connection.rollback();
                 return false;
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -79,18 +76,18 @@ public class OrderController {
         return false;
     }
 
-    private boolean saveOrderDetail(String orderId, ArrayList<ItemDetails> items) throws SQLException, ClassNotFoundException {
-        for (ItemDetails itemDetails: items
+    private boolean saveOrderDetail(String orderId, ArrayList<OrderDetail> items) throws SQLException, ClassNotFoundException {
+        for ( OrderDetail orderDetail : items
         ){
             PreparedStatement statement = DbConnection.getInstance().getConnection().
-                    prepareStatement("INSERT INTO `order detail` VALUES(?,?,?,?)");
-            statement.setObject(1,itemDetails.getItemCode());
+                    prepareStatement("INSERT INTO order_detail VALUES(?,?,?,?)");
+            statement.setObject(1, orderDetail.getItemCode());
             statement.setObject(2,orderId);
-            statement.setObject(3,itemDetails.getQtyForBuy());
-            statement.setObject(4,itemDetails.getUnitPrice());
+            statement.setObject(3, orderDetail.getQtyForBuy());
+            statement.setObject(4, orderDetail.getUnitPrice());
 
             if(statement.executeUpdate()>0){
-                if(updateQty(itemDetails.getItemCode(), itemDetails.getQtyForBuy())){
+                if(updateQty(orderDetail.getItemCode(), orderDetail.getQtyForBuy())){
 
                 }else{
                     return false;
@@ -111,16 +108,17 @@ public class OrderController {
     }
 
     public ArrayList<Order> getAllOrder() throws SQLException, ClassNotFoundException {
+
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
-                ("SELECT * FROM `order`");
+                ("SELECT * FROM orders");
         ResultSet resultSet = statement.executeQuery();
         ArrayList<Order> orders = new ArrayList<>();
         while (resultSet.next()){
             orders.add(new Order(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
+                    resultSet.getDate(3),
+                    resultSet.getTime(4),
                     resultSet.getDouble(5)
             ));
         }
@@ -129,15 +127,15 @@ public class OrderController {
 
     public Order getOrder(String orderId) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().
-                prepareStatement("SELECT * FROM `order` WHERE orderId=?");
+                prepareStatement("SELECT * FROM orders WHERE orderId=?");
         statement.setObject(1, orderId);
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next()){
             return new Order(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
+                    resultSet.getDate(3),
+                    resultSet.getTime(4),
                     resultSet.getDouble(5)
             );
         }else{
@@ -148,7 +146,7 @@ public class OrderController {
     public int orderCount() throws SQLException, ClassNotFoundException {
         int numberRow = 0;
         PreparedStatement statement = DbConnection.getInstance().getConnection().
-                prepareStatement("SELECT COUNT(*) FROM `order`");
+                prepareStatement("SELECT COUNT(*) FROM orders");
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()){
             numberRow = resultSet.getInt("count(*)");

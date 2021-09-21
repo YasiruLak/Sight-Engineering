@@ -24,7 +24,7 @@ public class LandingPgController{
         String user = txtUserName.getText();
         String password = txtPassword.getText();
 
-        if (user.equals("A")) {
+        if (user.equals("a")) {
 
             Stage logstage = (Stage) btnLogIn.getScene().getWindow();
             logstage.close();
@@ -37,7 +37,7 @@ public class LandingPgController{
             stage.setScene(scene);
             stage.show();
 
-        } else if (user.equals("M")) {
+        } else if (user.equals("m")) {
 
             Stage logstage = (Stage) btnLogIn.getScene().getWindow();
             logstage.close();

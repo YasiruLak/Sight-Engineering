@@ -7,19 +7,17 @@ public class ItemDetailTM {
     private String id;
     private String name;
     private String size;
-    private String  quantity;
-    private Button action;
-    private String receiveQty;
+    private int quantity;
+    private int receiveQty;
 
     public ItemDetailTM() {
     }
 
-    public ItemDetailTM(String id, String name, String size, String quantity, Button action, String receiveQty) {
+    public ItemDetailTM(String id, String name, String size, int quantity, int receiveQty) {
         this.id = id;
         this.name = name;
         this.size = size;
         this.quantity = quantity;
-        this.action = action;
         this.receiveQty = receiveQty;
     }
 
@@ -47,27 +45,19 @@ public class ItemDetailTM {
         this.size = size;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public Button getAction() {
-        return action;
-    }
-
-    public void setAction(Button action) {
-        this.action = action;
-    }
-
-    public String getReceiveQty() {
+    public int getReceiveQty() {
         return receiveQty;
     }
 
-    public void setReceiveQty(String receiveQty) {
+    public void setReceiveQty(int receiveQty) {
         this.receiveQty = receiveQty;
     }
 
@@ -77,9 +67,8 @@ public class ItemDetailTM {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", size='" + size + '\'' +
-                ", quantity='" + quantity + '\'' +
-                ", action=" + action +
-                ", receiveQty='" + receiveQty + '\'' +
+                ", quantity=" + quantity +
+                ", receiveQty=" + receiveQty +
                 '}';
     }
 }

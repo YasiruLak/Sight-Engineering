@@ -1,30 +1,29 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import enums.AttendType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import model.Attendance;
-import model.Employee;
-import model.Item;
-import model.Material;
+import model.*;
 import util.AttendanceController;
 import util.EmployeeController;
 import util.ItemController;
-import util.MaterialController;
-import view.tm.EmployeeTm;
+import util.ItemDetailController;
 import view.tm.ItemDetailTM;
 import view.tm.ItemViewTm;
+import view.tm.StockTm;
 
-import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceManageViewController {
@@ -49,9 +48,14 @@ public class AttendanceManageViewController {
     public Button btnAdd;
     public TextField txtUpdateQuantity;
     public AnchorPane popUp;
+    public TextField txtSearchName;
+    public TableColumn colReceive2;
+    public AnchorPane popUp1;
+    public JFXButton btnAdd2;
+    public TextField txtGaveQty;
+    public TextField txtReceiveQty;
+    public JFXTextField txtAttendData;
     public JFXTextField txtAttendTime;
-    public JFXTextField txtAttendDate;
-    public TableColumn colReceiveQty2;
 
     private ItemDetailTM item;
 
@@ -66,14 +70,19 @@ public class AttendanceManageViewController {
             colItemName2.setCellValueFactory(new PropertyValueFactory<>("name"));
             colSize2.setCellValueFactory(new PropertyValueFactory<>("size"));
             colQuantity2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-            colAction2.setCellValueFactory(new PropertyValueFactory<>("action"));
+            colReceive2.setCellValueFactory(new PropertyValueFactory<>("receiveQty"));
 
             tblItemView.getColumns().setAll(colItemId, colItemName, colSize, colQtyOnHand);
-            tblItemView2.getColumns().setAll(colItemId2, colItemName2, colSize2, colQuantity2, colAction2);
+            tblItemView2.getColumns().setAll(colItemId2, colItemName2, colSize2, colQuantity2, colReceive2);
 
             tblItemView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 loadPopUp(newValue);
             });
+
+            tblItemView2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                loadPopUp1(newValue);
+            });
+
 
             loadTableData(new ItemController().getAllItem());
         } catch ( SQLException e ) {
@@ -90,7 +99,7 @@ public class AttendanceManageViewController {
                     item.getId(),
                     item.getName(),
                     item.getSize(),
-                    item.getQtyOnHand()
+                    String.valueOf(item.getQtyOnHand())
             ));
         }
         tblItemView.getItems().setAll(list);
@@ -100,22 +109,30 @@ public class AttendanceManageViewController {
     public void searchEmployeeOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String employeeId = txtEmpId.getText();
         Employee employee = new EmployeeController().getEmployee(employeeId);
-        if ( employee == null ) {
-            new Alert(Alert.AlertType.ERROR, "Empty Result Set").show();
-        } else {
-
+        if ( employee != null ) {
             Attendance attendance = new AttendanceController().getAttendance(employeeId);
-            if(attendance.getAttendId() != null ) {
-                Material material = new MaterialController().getMaterial(attendance.getAttendId());
-                if(material.getaId() !=null){
+            if ( attendance != null ) {
+                txtAttendTime.setText(String.valueOf(attendance.getAttendTime()));
+                txtAttendData.setText(String.valueOf(attendance.getAttendDate()));
+                ObservableList<ItemDetailTM> itemDetails = FXCollections.observableArrayList();
+                List<ItemDetail> itemDetailList = new ItemDetailController().getItemDetail(attendance.getAttendId());
+                if ( !itemDetailList.isEmpty() ) {
+                    for(ItemDetail itemDetail : itemDetailList){
+                        Item item = new ItemController().getItem(itemDetail.getItemCode());
 
+                        itemDetails.add(new ItemDetailTM(
+                                item.getId(),
+                                item.getName(),
+                                item.getSize(),
+                                itemDetail.getQty(),
+                                0
+                        ));
+                    }
+                    tblItemView2.setItems(itemDetails);
                 }
-            }else{
-
-                }
-
             }
             setData(employee);
+        }
 
     }
 
@@ -140,26 +157,37 @@ public class AttendanceManageViewController {
                 itemViewTm.getItemCode(),
                 itemViewTm.getItemName(),
                 itemViewTm.getSize(),
-                itemViewTm.getQuantityOnHand(),
-                new Button("Action"),
-                ""
+                Integer.parseInt(itemViewTm.getQuantityOnHand()),
+                0
+        );
+    }
+
+    public void loadPopUp1(ItemDetailTM itemDetailTM) {
+        popUp1.setVisible(true);
+        item = new ItemDetailTM(
+                itemDetailTM.getId(),
+                itemDetailTM.getName(),
+                itemDetailTM.getSize(),
+                itemDetailTM.getQuantity(),
+                itemDetailTM.getReceiveQty()
         );
     }
 
     ObservableList<ItemDetailTM> list = FXCollections.observableArrayList();
+
     public void onAdd(ActionEvent actionEvent) {
         boolean updated = false;
-        item.setQuantity(txtUpdateQuantity.getText());
-        for(ItemDetailTM detail : list){
-            if ( detail.getId().equals(item.getId()) ){
-                int v = Integer.parseInt(txtUpdateQuantity.getText()) + Integer.parseInt(detail.getQuantity());
-                detail.setQuantity(v+"");
+        item.setQuantity(Integer.parseInt(txtUpdateQuantity.getText()));
+        for ( ItemDetailTM detail : list ) {
+            if ( detail.getId().equals(item.getId()) ) {
+                int v = Integer.parseInt(txtUpdateQuantity.getText())+(detail.getQuantity());
+                detail.setQuantity(v+0);
                 tblItemView2.getItems().setAll(list);
                 popUp.setVisible(false);
                 updated = true;
             }
         }
-        if ( !updated ){
+        if ( !updated ) {
             list.add(item);
             tblItemView2.getItems().setAll(list);
 
@@ -170,5 +198,36 @@ public class AttendanceManageViewController {
 
     public void closeOnAction(ActionEvent actionEvent) {
         popUp.setVisible(false);
+    }
+
+    public void closeAction(ActionEvent actionEvent) {
+        popUp1.setVisible(false);
+    }
+
+    public void txtSearchNameOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void removeOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void onAdd2(ActionEvent actionEvent) {
+    }
+
+    public void saveAttendanceOnAction(ActionEvent actionEvent) {
+        List<ItemDetailTM> items1 = tblItemView2.getItems();
+        Attendance attendance = new Attendance(
+                lblAttendId.getText(),
+                txtEmpId.getText(),
+                Date.valueOf(LocalDate.now()),
+                Time.valueOf(LocalTime.now()),
+                null,
+                null,
+                AttendType.ATTEND.toString()
+
+
+        );
+
     }
 }
