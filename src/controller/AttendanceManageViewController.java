@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import enums.AttendType;
+import enums.ItemStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,20 +11,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.*;
-import util.AttendanceController;
-import util.EmployeeController;
-import util.ItemController;
-import util.ItemDetailController;
+import util.*;
 import view.tm.ItemDetailTM;
 import view.tm.ItemViewTm;
-import view.tm.StockTm;
-
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceManageViewController {
@@ -42,7 +37,6 @@ public class AttendanceManageViewController {
     public JFXTextField txtEmpContact;
     public TableColumn colItemId2;
     public TableColumn colItemName2;
-    public TableColumn colAction2;
     public TableColumn colSize2;
     public TableColumn colQuantity2;
     public Button btnAdd;
@@ -52,12 +46,12 @@ public class AttendanceManageViewController {
     public TableColumn colReceive2;
     public AnchorPane popUp1;
     public JFXButton btnAdd2;
-    public TextField txtGaveQty;
     public TextField txtReceiveQty;
     public JFXTextField txtAttendData;
     public JFXTextField txtAttendTime;
 
     private ItemDetailTM item;
+    private ItemDetail itemDetail;
 
     public void initialize() {
         try {
@@ -80,16 +74,23 @@ public class AttendanceManageViewController {
             });
 
             tblItemView2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                loadPopUp1(newValue);
+                loadPopUpGetProduct(newValue);
             });
 
 
             loadTableData(new ItemController().getAllItem());
+            setAttendId();
         } catch ( SQLException e ) {
             e.printStackTrace();
         } catch ( ClassNotFoundException e ) {
             e.printStackTrace();
         }
+        popUp1.setVisible(false);
+    }
+
+    private void setAttendId() throws SQLException, ClassNotFoundException {
+        String attendanceId = new AttendanceController().getAttendanceId();
+        lblAttendId.setText(attendanceId);
     }
 
     private void loadTableData(List<Item> items) {
@@ -103,10 +104,10 @@ public class AttendanceManageViewController {
             ));
         }
         tblItemView.getItems().setAll(list);
-
     }
 
     public void searchEmployeeOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+
         String employeeId = txtEmpId.getText();
         Employee employee = new EmployeeController().getEmployee(employeeId);
         if ( employee != null ) {
@@ -149,6 +150,9 @@ public class AttendanceManageViewController {
         txtEmpContact.clear();
         txtEmpAge.clear();
         txtEmpName.clear();
+        txtAttendTime.clear();
+        txtAttendData.clear();
+        tblItemView2.refresh();
     }
 
     public void loadPopUp(ItemViewTm itemViewTm) {
@@ -162,15 +166,13 @@ public class AttendanceManageViewController {
         );
     }
 
-    public void loadPopUp1(ItemDetailTM itemDetailTM) {
+    public void loadPopUpGetProduct(ItemDetailTM itemDetailTM) {
         popUp1.setVisible(true);
-        item = new ItemDetailTM(
-                itemDetailTM.getId(),
-                itemDetailTM.getName(),
-                itemDetailTM.getSize(),
-                itemDetailTM.getQuantity(),
-                itemDetailTM.getReceiveQty()
-        );
+
+        this.itemDetail = new ItemDetail();
+        this.itemDetail.setItemCode(itemDetailTM.getId());
+        this.itemDetail.setQty(itemDetailTM.getQuantity());
+        this.itemDetail.setAttendId(lblAttendId.getText());
     }
 
     ObservableList<ItemDetailTM> list = FXCollections.observableArrayList();
@@ -190,10 +192,23 @@ public class AttendanceManageViewController {
         if ( !updated ) {
             list.add(item);
             tblItemView2.getItems().setAll(list);
-
             popUp.setVisible(false);
         }
         txtUpdateQuantity.setText("1");
+    }
+
+    public void saveAttendanceOnAction(ActionEvent actionEvent) {
+        List<ItemDetailTM> items1 = tblItemView2.getItems();
+        Attendance attendance = new Attendance(
+                lblAttendId.getText(),
+                txtEmpId.getText(),
+                Date.valueOf(LocalDate.now()),
+                Time.valueOf(LocalTime.now()),
+                null,
+                null,
+                AttendType.ATTEND.toString()
+
+        );
     }
 
     public void closeOnAction(ActionEvent actionEvent) {
@@ -212,22 +227,22 @@ public class AttendanceManageViewController {
 
     }
 
-    public void onAdd2(ActionEvent actionEvent) {
-    }
+    public void saveData(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        int receiveQty = Integer.parseInt(txtReceiveQty.getText());
+        if ( receiveQty > this.itemDetail.getQty() ){
+            new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+            return;
+        }
+        this.itemDetail.setReceiveQty(receiveQty);
+        this.itemDetail.setStatus(ItemStatus.RECEIVED.toString());
+        this.itemDetail.setQty(this.itemDetail.getQty() - receiveQty);
 
-    public void saveAttendanceOnAction(ActionEvent actionEvent) {
-        List<ItemDetailTM> items1 = tblItemView2.getItems();
-        Attendance attendance = new Attendance(
-                lblAttendId.getText(),
-                txtEmpId.getText(),
-                Date.valueOf(LocalDate.now()),
-                Time.valueOf(LocalTime.now()),
-                null,
-                null,
-                AttendType.ATTEND.toString()
-
-
-        );
-
+        boolean b = new ItemDetailController().updateItemDetail(itemDetail);
+            if ( b ){
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Try Again..").show();
+            }
+        popUp1.setVisible(false);
     }
 }

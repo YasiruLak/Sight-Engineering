@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class EmployeeController{
 
-    int size = 0;
-
     public boolean saveEmployee(Employee employee) throws SQLException, ClassNotFoundException {
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement("INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?)");

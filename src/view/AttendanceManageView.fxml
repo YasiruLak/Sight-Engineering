@@ -74,11 +74,11 @@
       </JFXTextField>
       <TableView fx:id="tblItemView2" editable="true" layoutX="477.0" layoutY="270.0" prefHeight="309.0" prefWidth="614.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn fx:id="colItemId2" prefWidth="100.0" text="Item Code" />
-            <TableColumn fx:id="colItemName2" prefWidth="178.0" text="Name" />
-            <TableColumn fx:id="colSize2" prefWidth="115.0" text="Size" />
-            <TableColumn fx:id="colQuantity2" prefWidth="112.0" text="Quantity" />
-            <TableColumn fx:id="colReceive2" prefWidth="108.0" text="Receive" />
+            <TableColumn fx:id="colItemId2" prefWidth="99.0" text="Item Code" />
+            <TableColumn fx:id="colItemName2" prefWidth="158.0" text="Name" />
+            <TableColumn fx:id="colSize2" prefWidth="128.0" text="Size" />
+            <TableColumn fx:id="colQuantity2" prefWidth="119.0" text="Quantity" />
+            <TableColumn fx:id="colReceive2" prefWidth="109.0" text="Receive" />
          </columns>
       </TableView>
       <JFXTextField fx:id="txtAttendData" focusColor="BLACK" layoutX="28.0" layoutY="149.0" prefHeight="35.0" prefWidth="177.0" promptText="Attend Date" unFocusColor="BLACK">
@@ -174,10 +174,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <AnchorPane fx:id="popUp1" layoutX="517.0" layoutY="51.0" prefHeight="215.0" prefWidth="362.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 30;" visible="false">
+      <AnchorPane fx:id="popUp1" layoutX="517.0" layoutY="51.0" prefHeight="215.0" prefWidth="362.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 30;">
          <children>
             <JFXButton buttonType="RAISED" layoutX="285.0" layoutY="5.0" onAction="#closeAction" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #b2bec3;" text="Close" textFill="WHITE" />
-            <JFXButton fx:id="btnAdd2" layoutX="254.0" layoutY="164.0" onAction="#onAdd2" prefHeight="37.0" prefWidth="76.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Done" />
+            <JFXButton fx:id="btnAdd2" layoutX="254.0" layoutY="164.0" onAction="#saveData" prefHeight="37.0" prefWidth="76.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Done" />
             <TextField fx:id="txtReceiveQty" layoutX="194.0" layoutY="88.0" prefHeight="40.0" prefWidth="132.0">
                <font>
                   <Font size="18.0" />
