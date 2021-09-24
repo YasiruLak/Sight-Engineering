@@ -3,8 +3,6 @@ package util;
 import db.DbConnection;
 import enums.AttendType;
 import model.Attendance;
-import model.ItemDetail;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,11 +17,11 @@ public class AttendanceController {
         if ( resultSet.next() ){
             int tempId = Integer.parseInt(resultSet.getString(1).split("-")[1]);
             tempId=tempId+1;
-            if(tempId<9){
+            if(tempId<=9){
                 return "A-000"+tempId;
-            }else if(tempId<999){
+            }else if(tempId<=99){
                 return "A-00"+tempId;
-            }else if(tempId<99){
+            }else if(tempId<=999){
                 return "A-0"+tempId;
             }else{
                 return "A-" + tempId;
@@ -53,15 +51,33 @@ public class AttendanceController {
         }
     }
 
-    public boolean saveItemDetail(ItemDetail itemDetail) throws SQLException, ClassNotFoundException {
-        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement("INSER INTO item_detail VALUES(?,?,?,?,?)");
-        statement.setObject(1,itemDetail.getItemCode());
-        statement.setObject(2,itemDetail.getAttendId());
-        statement.setObject(3,itemDetail.getQty());
-        statement.setObject(4,itemDetail.getStatus());
-        statement.setObject(5,itemDetail.getReceiveQty());
-        return  statement.executeUpdate()>0;
+    public boolean saveAttendance(Attendance attendance) throws SQLException, ClassNotFoundException {
+
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
+                ("INSERT INTO attendance VALUES (?,?,?,?,?,?,?)");
+        statement.setObject(1, attendance.getAttendId());
+        statement.setObject(2, attendance.geteId());
+        statement.setObject(3, attendance.getAttendDate());
+        statement.setObject(4, attendance.getAttendTime());
+        statement.setObject(5, attendance.getReturnDate());
+        statement.setObject(6, attendance.getReturnTime());
+        statement.setObject(7, attendance.getStatus());
+        return statement.executeUpdate()>0;
+    }
+
+    public boolean updateAttendance(Attendance attendance) throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
+                ("UPDATE attendance SET eId=?, inDate=?, inTime=?, outDate=?, outTime=?, status=? WHERE attendId=?");
+        statement.setObject(1, attendance.geteId());
+        statement.setObject(2, attendance.getAttendDate());
+        statement.setObject(3, attendance.getAttendTime());
+        statement.setObject(4, attendance.getReturnDate());
+        statement.setObject(5, attendance.getReturnTime());
+        statement.setObject(6, attendance.getStatus());
+        statement.setObject(7, attendance.getAttendId());
+        return statement.executeUpdate()>0;
 
     }
+
 
 }
