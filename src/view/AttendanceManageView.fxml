@@ -174,7 +174,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <AnchorPane fx:id="popUp1" layoutX="517.0" layoutY="51.0" prefHeight="215.0" prefWidth="362.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 30;">
+      <AnchorPane fx:id="popUp1" layoutX="517.0" layoutY="51.0" prefHeight="215.0" prefWidth="362.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 30;" visible="false">
          <children>
             <JFXButton buttonType="RAISED" layoutX="285.0" layoutY="5.0" onAction="#closeAction" prefHeight="27.0" prefWidth="46.0" style="-fx-background-color: #b2bec3;" text="Close" textFill="WHITE" />
             <JFXButton fx:id="btnAdd2" layoutX="254.0" layoutY="164.0" onAction="#saveData" prefHeight="37.0" prefWidth="76.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Done" />

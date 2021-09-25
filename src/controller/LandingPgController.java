@@ -26,8 +26,8 @@ public class LandingPgController{
 
         if (user.equals("a")) {
 
-            Stage logstage = (Stage) btnLogIn.getScene().getWindow();
-            logstage.close();
+            Stage logStage = (Stage) btnLogIn.getScene().getWindow();
+            logStage.close();
 
             URL resource = this.getClass().getResource("../view/AdminMainView.fxml");
             Parent load = FXMLLoader.load(resource);
@@ -39,8 +39,8 @@ public class LandingPgController{
 
         } else if (user.equals("m")) {
 
-            Stage logstage = (Stage) btnLogIn.getScene().getWindow();
-            logstage.close();
+            Stage logStage = (Stage) btnLogIn.getScene().getWindow();
+            logStage.close();
 
             URL resource = this.getClass().getResource("../view/ManagerMainView.fxml");
             Parent load = FXMLLoader.load(resource);
@@ -63,7 +63,7 @@ public class LandingPgController{
 
 //        try {
 //            Thread.sleep(5);
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            Alert = new Alert(Alert.AlertType.INFORMATION);
 //            alert.setTitle("| SIGHT Engineering | ");
 //            alert.setHeaderText(null);
 //            alert.setContentText("Good Bye Sir...!");

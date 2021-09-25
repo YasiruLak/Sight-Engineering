@@ -1,15 +1,11 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Duration;
 import model.Item;
 import model.OrderDetail;
 import model.Order;
@@ -22,7 +18,6 @@ import view.tm.StockTm;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -218,8 +213,8 @@ public class OrderManageViewController {
           items.add(
                   new OrderDetail(
                           stockTm.getItemCode(),
-                          stockTm.getUnitPrice(),
-                          stockTm.getQty()
+                          stockTm.getQty(),
+                          stockTm.getUnitPrice()
                   )
           );
         }
@@ -237,6 +232,8 @@ public class OrderManageViewController {
             setOrderId();
             clear();
             enable();
+            tblStock.getItems().clear();
+            txtTtl.setText("");
         }else{
             new Alert(Alert.AlertType.ERROR , "Try Again").show();
         }

@@ -1,12 +1,15 @@
 package controller;
 
+import enums.LoginRole;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import model.Login;
 import model.Manager;
+import util.LoginController;
 import util.ManagerController;
 import view.tm.ManagerTm;
 
@@ -33,6 +36,8 @@ public class AddManagerViewController {
     public TextField txtMngEmail;
     public ComboBox cmbManagerNic;
     public AnchorPane managerContext;
+    public TextField txtMngUserName;
+    public PasswordField txtMngPassword;
 
     private ManagerController controller = new ManagerController();
 
@@ -97,7 +102,14 @@ public class AddManagerViewController {
                 txtMngMobile.getText(),
                 txtMngEmail.getText()
         );
+        Login login = new Login(
+                txtMngNic.getText(),
+                txtMngUserName.getText(),
+                txtMngPassword.getText(),
+                LoginRole.MANAGER.toString()
+        );
         if(controller.saveManager(manager)){
+            if(new LoginController().saveManagerLogin(login))
             new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
             clearDetail();
             managerToTable(controller.getAllManager());
@@ -159,7 +171,6 @@ public class AddManagerViewController {
         }
     }
 
-
     public void cancelManagerOnAction(ActionEvent actionEvent) {
         clearDetail();
     }
@@ -172,6 +183,8 @@ public class AddManagerViewController {
         txtMngEmail.clear();
         txtMngMobile.clear();
         cmbManagerNic.getSelectionModel().clearSelection();
+        txtMngPassword.clear();
+        txtMngUserName.clear();
     }
 
 }

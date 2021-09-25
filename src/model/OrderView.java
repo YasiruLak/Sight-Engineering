@@ -1,9 +1,9 @@
-package view.tm;
+package model;
 
 import java.sql.Date;
 import java.sql.Time;
 
-public class OrderTm {
+public class OrderView {
 
     private String supplierId;
     private String supplierName;
@@ -12,10 +12,10 @@ public class OrderTm {
     private Time time;
     private double totalCost;
 
-    public OrderTm() {
+    public OrderView() {
     }
 
-    public OrderTm(String supplierId, String supplierName, String orderId, Date date, Time time, double totalCost) {
+    public OrderView(String supplierId, String supplierName, String orderId, Date date, Time time, double totalCost) {
         this.supplierId = supplierId;
         this.supplierName = supplierName;
         this.orderId = orderId;
@@ -74,7 +74,7 @@ public class OrderTm {
 
     @Override
     public String toString() {
-        return "OrderTm{" +
+        return "OrderView{" +
                 "supplierId='" + supplierId + '\'' +
                 ", supplierName='" + supplierName + '\'' +
                 ", orderId='" + orderId + '\'' +

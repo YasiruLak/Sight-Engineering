@@ -3,6 +3,17 @@ CREATE DATABASE IF NOT EXISTS sight_engineering;
 SHOW DATABASES ;
 USE sight_engineering;
 
+DROP TABLE IF EXISTS login;
+CREATE TABLE IF NOT EXISTS login(
+    nic VARCHAR(15) NOT NULL,
+    userName VARCHAR(25) NOT NULL,
+    password VARCHAR (25) NOT NULL,
+    role VARCHAR(10) NOT NULL,
+    CONSTRAINT PRIMARY KEY (nic)
+    );
+SHOW TABLES ;
+DESCRIBE login;
+
 DROP TABLE IF EXISTS supplier;
 CREATE TABLE IF NOT EXISTS supplier(
     id VARCHAR(15),
@@ -111,6 +122,7 @@ DESCRIBE attendance;
 DROP TABLE IF EXISTS item_detail;
 CREATE TABLE IF NOT EXISTS item_detail(
     iId VARCHAR(15),
+    name VARCHAR (15),
     aId VARCHAR(15),
     qty INT(15),
     status VARCHAR(15),

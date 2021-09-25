@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="594.0" prefWidth="503.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderDetailViewController">
+   <children>
+      <TableView fx:id="tblOrderDetail" layoutX="43.0" layoutY="65.0" prefHeight="464.0" prefWidth="417.0" stylesheets="@../style/Style.css">
+         <columns>
+            <TableColumn fx:id="colItemCode" prefWidth="114.0" text="ItemCode" />
+            <TableColumn fx:id="colQty" prefWidth="147.0" text="Quantity" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="155.0" text="Unit Price" />
+         </columns>
+      </TableView>
+      <Label layoutX="25.0" layoutY="22.0" text="Order Id :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderId" layoutX="115.0" layoutY="18.0" text="O-001" textFill="#2da4ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="222.0" layoutY="553.0" text="Total Cost :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotalCost" layoutX="323.0" layoutY="553.0" prefHeight="27.0" prefWidth="137.0" text="300000" textFill="#005c9e">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

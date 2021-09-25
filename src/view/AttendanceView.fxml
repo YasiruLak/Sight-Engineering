@@ -1,51 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 25;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AttendanceViewController">
+<AnchorPane fx:id="attendanceContext" prefHeight="670.0" prefWidth="1110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 25;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AttendanceViewController">
    <children>
       <Label alignment="CENTER" layoutX="19.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Attendence View" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <Label layoutX="35.0" layoutY="62.0" prefHeight="41.0" prefWidth="257.0" text="Employee Attendence">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Separator layoutX="298.0" layoutY="79.0" prefHeight="8.0" prefWidth="778.0" />
-      <Label layoutX="20.0" layoutY="348.0" prefHeight="41.0" prefWidth="141.0" text="GRN Details">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Separator layoutX="163.0" layoutY="365.0" prefHeight="8.0" prefWidth="898.0" />
-      <TableView layoutX="35.0" layoutY="103.0" prefHeight="242.0" prefWidth="1037.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblAttendance" layoutX="28.0" layoutY="73.0" prefHeight="564.0" prefWidth="636.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn prefWidth="123.0" text="Attend Id" />
-            <TableColumn prefWidth="129.0" text="Emp Id" />
-            <TableColumn prefWidth="306.0" text="Name" />
-            <TableColumn prefWidth="150.0" text="Catogry" />
-            <TableColumn prefWidth="177.0" text="Date" />
-            <TableColumn prefWidth="151.0" text="Time" />
+            <TableColumn fx:id="colAttendId" prefWidth="101.99996948242188" text="Attendance Id" />
+            <TableColumn fx:id="colEmpId" prefWidth="97.0" text="Employe Id" />
+            <TableColumn fx:id="colEmpName" prefWidth="181.0" text="Employee Name" />
+            <TableColumn fx:id="colEmpType" prefWidth="131.0" text="Employee Type" />
+            <TableColumn fx:id="colAttendTime" prefWidth="124.0" text="Attend Time" />
          </columns>
       </TableView>
-      <TableView layoutX="35.0" layoutY="390.0" prefHeight="255.0" prefWidth="1037.0" stylesheets="@../style/Style.css">
-         <columns>
-            <TableColumn prefWidth="128.0" text="Attend Id" />
-            <TableColumn prefWidth="137.0" text="Emp Id" />
-            <TableColumn prefWidth="148.0" text="Item Id" />
-            <TableColumn prefWidth="167.0" text="Quntity" />
-            <TableColumn prefWidth="170.0" text="Give Time" />
-            <TableColumn prefWidth="144.0" text="Return Time" />
-            <TableColumn prefWidth="142.0" text="Status" />
-         </columns>
-      </TableView>
+      <Pane layoutX="740.0" layoutY="73.0" prefHeight="55.0" prefWidth="290.0" style="-fx-background-radius: 2; -fx-border-color: black; -fx-border-radius: 25;">
+         <children>
+            <Label fx:id="lblDate" layoutX="118.0" layoutY="10.0" prefHeight="36.0" prefWidth="155.0" text="2021 - 12 - 24">
+               <font>
+                  <Font name="ACaslonPro-Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="10.0" prefHeight="35.0" prefWidth="91.0" text="Today :">
+               <font>
+                  <Font name="ACaslonPro-Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="260.0" fitWidth="474.0" layoutX="676.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/Attendance_View.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="715.0" layoutY="160.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/attendance_96px.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblAttendanceCount" layoutX="182.0" layoutY="66.0" prefHeight="40.0" prefWidth="65.0" text="100">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="16.0" prefHeight="47.0" prefWidth="206.0" text="Today Attendance">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="133.0" onAction="#goToGrnManageOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To GRN Manage &gt;&gt;" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -2,11 +2,13 @@ package util;
 
 import db.DbConnection;
 import enums.AttendType;
-import model.Attendance;
+import model.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class AttendanceController {
 
@@ -79,5 +81,42 @@ public class AttendanceController {
 
     }
 
+    public ArrayList<AttendanceView> getAllAttendance() throws SQLException, ClassNotFoundException {
+        ArrayList<AttendanceView> list = new ArrayList();
+        ResultSet resultSet = DbConnection.getInstance().getConnection().
+                prepareStatement
+                        ("SELECT a.attendId, e.empId, e.name, e.type, a.inTime FROM employee e JOIN attendance a ON a.eId=e.empId")
+                .executeQuery();
+
+        while (resultSet.next()) {
+            list.add(
+                    new AttendanceView(resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getTime(5)
+                    )
+            );
+        }
+        return list;
+    }
+
+    public ArrayList<ItemDetailView> getAllItemDetail(String attendanceId) throws SQLException, ClassNotFoundException {
+        ArrayList<ItemDetailView> details = new ArrayList<>();
+        ResultSet resultSet = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT iId, name, qty FROM item_detail WHERE aId='"
+                        + attendanceId + "'").executeQuery();
+        while (resultSet.next()) {
+            details.add(
+                    new ItemDetailView(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getInt(3)
+
+                    )
+            );
+        }
+        return details;
+    }
 
 }

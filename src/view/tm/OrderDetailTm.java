@@ -1,17 +1,18 @@
-package model;
+package view.tm;
 
-public class OrderDetail {
+public class OrderDetailTm {
+
     private String itemCode;
-    private int qtyForBuy;
     private double unitPrice;
+    private int qty;
 
-    public OrderDetail() {
+    public OrderDetailTm() {
     }
 
-    public OrderDetail(String itemCode, int qtyForBuy, double unitPrice) {
+    public OrderDetailTm(String itemCode, double unitPrice, int qty) {
         this.itemCode = itemCode;
-        this.qtyForBuy = qtyForBuy;
         this.unitPrice = unitPrice;
+        this.qty = qty;
     }
 
     public String getItemCode() {
@@ -22,14 +23,6 @@ public class OrderDetail {
         this.itemCode = itemCode;
     }
 
-    public int getQtyForBuy() {
-        return qtyForBuy;
-    }
-
-    public void setQtyForBuy(int qtyForBuy) {
-        this.qtyForBuy = qtyForBuy;
-    }
-
     public double getUnitPrice() {
         return unitPrice;
     }
@@ -38,12 +31,20 @@ public class OrderDetail {
         this.unitPrice = unitPrice;
     }
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
     @Override
     public String toString() {
-        return "OrderDetail{" +
+        return "OrderDetailTm{" +
                 "itemCode='" + itemCode + '\'' +
-                ", qtyForBuy=" + qtyForBuy +
                 ", unitPrice=" + unitPrice +
+                ", qty=" + qty +
                 '}';
     }
 }

@@ -20,16 +20,17 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <TableView fx:id="tblOrder" layoutX="30.0" layoutY="59.0" prefHeight="256.0" prefWidth="643.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblOrder" layoutX="23.0" layoutY="77.0" prefHeight="557.0" prefWidth="719.0" stylesheets="@../style/Style.css">
          <columns>
-            <TableColumn fx:id="colOrderId" prefWidth="110.0" text="Order Id" />
-            <TableColumn fx:id="colSupplierId" prefWidth="115.0" text="Supplier Id" />
-            <TableColumn fx:id="colDate" prefWidth="149.0" text="Date" />
-            <TableColumn fx:id="colTime" prefWidth="129.0" text="Time" />
-            <TableColumn fx:id="colTotal" prefWidth="139.0" text="Total" />
+            <TableColumn fx:id="colSupId" prefWidth="96.0" text="Supplier Id" />
+            <TableColumn fx:id="colSupName" prefWidth="145.0" text="Supplier Name" />
+            <TableColumn fx:id="colOrderId" prefWidth="103.0" text="Order Id" />
+            <TableColumn fx:id="colOrderDate" prefWidth="134.0" text="Order Date" />
+            <TableColumn fx:id="colOrderTime" prefWidth="122.0" text="Order Time" />
+            <TableColumn fx:id="colTotalCost" prefWidth="118.0" text="Total Cost" />
          </columns>
       </TableView>
-      <Pane layoutX="702.0" layoutY="80.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="753.0" layoutY="77.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -64,12 +65,10 @@
             </JFXButton>
          </children>
       </Pane>
-      <TableView fx:id="tblOrderView2" layoutX="30.0" layoutY="342.0" prefHeight="256.0" prefWidth="377.0" stylesheets="@../style/Style.css">
-         <columns>
-            <TableColumn fx:id="colOrderItemCode" prefWidth="116.0" text="ItemCode" />
-            <TableColumn fx:id="colOrderItemQty" prefWidth="132.0" text="Quantity" />
-            <TableColumn fx:id="colOrderPrice" prefWidth="128.0" text="Price" />
-         </columns>
-      </TableView>
+      <ImageView fitHeight="294.0" fitWidth="340.0" layoutX="756.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/report2.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

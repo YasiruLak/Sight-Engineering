@@ -3,6 +3,7 @@ package util;
 import db.DbConnection;
 import model.OrderDetail;
 import model.Order;
+import model.OrderView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -107,24 +108,6 @@ public class OrderController {
 
     }
 
-    public ArrayList<Order> getAllOrder() throws SQLException, ClassNotFoundException {
-
-        PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
-                ("SELECT * FROM orders");
-        ResultSet resultSet = statement.executeQuery();
-        ArrayList<Order> orders = new ArrayList<>();
-        while (resultSet.next()){
-            orders.add(new Order(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getDate(3),
-                    resultSet.getTime(4),
-                    resultSet.getDouble(5)
-            ));
-        }
-        return orders;
-    }
-
     public Order getOrder(String orderId) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().
                 prepareStatement("SELECT * FROM orders WHERE orderId=?");
@@ -152,5 +135,42 @@ public class OrderController {
             numberRow = resultSet.getInt("count(*)");
         }
         return numberRow;
+    }
+
+    public ArrayList<OrderView> getAllOrders() throws SQLException, ClassNotFoundException {
+        ArrayList<OrderView> list = new ArrayList();
+        ResultSet resultSet = DbConnection.getInstance().getConnection().
+                prepareStatement
+                        ("SELECT s.id, s.name, o.orderId, o.orderDate, o.time, o.cost FROM supplier s JOIN orders o ON o.sid=s.id")
+                .executeQuery();
+        while (resultSet.next()) {
+            list.add(
+                    new OrderView(resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getDate(4),
+                            resultSet.getTime(5),
+                            resultSet.getDouble(6)
+                            )
+            );
+        }
+        return list;
+    }
+
+    public ArrayList<OrderDetail> getAllOrderDetails(String orderId) throws SQLException, ClassNotFoundException {
+        ArrayList<OrderDetail> details = new ArrayList<>();
+        ResultSet resultSet = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT iCode, qty, price FROM order_detail WHERE oId='"
+                        + orderId + "'").executeQuery();
+        while (resultSet.next()) {
+            details.add(
+                    new OrderDetail(
+                            resultSet.getString(1),
+                            resultSet.getInt(2),
+                            resultSet.getDouble(3)
+                    )
+            );
+        }
+        return details;
     }
 }

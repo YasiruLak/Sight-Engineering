@@ -2,9 +2,7 @@ package util;
 
 import db.DbConnection;
 import enums.ItemStatus;
-import model.Employee;
 import model.ItemDetail;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,9 +22,10 @@ public class ItemDetailController {
             ItemDetail itemDetail = new ItemDetail(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getInt(3),
-                    resultSet.getString(4),
-                    resultSet.getInt(5)
+                    resultSet.getString(3),
+                    resultSet.getInt(4),
+                    resultSet.getString(5),
+                    resultSet.getInt(6)
             );
             itemDetailList.add(itemDetail);
         }
@@ -35,24 +34,26 @@ public class ItemDetailController {
 
     public boolean saveItemDetail(ItemDetail itemDetail) throws SQLException, ClassNotFoundException {
         Connection connection = DbConnection.getInstance().getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO item_detail VALUES (?,?,?,?,?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO item_detail VALUES (?,?,?,?,?,?)");
         statement.setObject(1,itemDetail.getItemCode());
-        statement.setObject(2,itemDetail.getAttendId());
-        statement.setObject(3,itemDetail.getQty());
-        statement.setObject(4,itemDetail.getStatus());
-        statement.setObject(5,itemDetail.getReceiveQty());
+        statement.setObject(2,itemDetail.getItemName());
+        statement.setObject(3,itemDetail.getAttendId());
+        statement.setObject(4,itemDetail.getQty());
+        statement.setObject(5,itemDetail.getStatus());
+        statement.setObject(6,itemDetail.getReceiveQty());
 
         return statement.executeUpdate()>0;
     }
 
     public boolean updateItemDetail(ItemDetail itemDetail) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection().prepareStatement
-                ("UPDATE item_detail SET qty=?, status=?, receiveQty=? WHERE iId=? AND aId=?");
-        statement.setObject(1, itemDetail.getQty());
-        statement.setObject(2, itemDetail.getStatus());
-        statement.setObject(3, itemDetail.getReceiveQty());
-        statement.setObject(4, itemDetail.getItemCode());
-        statement.setObject(5, itemDetail.getAttendId());
+                ("UPDATE item_detail SET name=?, qty=?, status=?, receiveQty=? WHERE iId=? AND aId=?");
+        statement.setObject(1, itemDetail.getItemName());
+        statement.setObject(2, itemDetail.getQty());
+        statement.setObject(3, itemDetail.getStatus());
+        statement.setObject(4, itemDetail.getReceiveQty());
+        statement.setObject(5, itemDetail.getItemCode());
+        statement.setObject(6, itemDetail.getAttendId());
         return statement.executeUpdate()>0;
     }
 }

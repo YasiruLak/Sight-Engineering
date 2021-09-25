@@ -54,6 +54,8 @@ public class AttendanceManageViewController {
     private ItemDetailTM item;
     private ItemDetail itemDetail;
 
+    int cartSelectedRowForRemove = -1;
+
     private ItemController controller = new ItemController();
 
     public void initialize() {
@@ -80,6 +82,10 @@ public class AttendanceManageViewController {
 
             tblItemView2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 loadPopUpGetProduct(newValue);
+            });
+
+            tblItemView2.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+                cartSelectedRowForRemove =(int) newValue;
             });
 
             setAttendId();
@@ -126,6 +132,8 @@ public class AttendanceManageViewController {
 
             } else {
                 setAttendId();
+                txtAttendTime.clear();
+                txtAttendData.clear();
             }
             setData(employee);
         }
@@ -136,6 +144,7 @@ public class AttendanceManageViewController {
         txtEmpAge.setText(employee.getAge());
         txtEmpType.setText(employee.getType());
         txtEmpContact.setText(employee.getContact());
+
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
@@ -183,7 +192,7 @@ public class AttendanceManageViewController {
             tblItemView2.getItems().setAll(list);
             popUp.setVisible(false);
         }
-        txtUpdateQuantity.setText("1");
+        txtUpdateQuantity.setText("");
     }
 
     public void saveAttendanceOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -204,6 +213,7 @@ public class AttendanceManageViewController {
             for ( ItemDetailTM itemDetailTM : items1 ) {
                 ItemDetail itemDetail = new ItemDetail();
                 itemDetail.setItemCode(itemDetailTM.getId());
+                itemDetail.setItemName(itemDetailTM.getName());
                 itemDetail.setAttendId(lblAttendId.getText());
                 itemDetail.setQty(itemDetailTM.getQuantity());
                 itemDetail.setStatus(ItemStatus.PENDING.toString());
@@ -224,6 +234,7 @@ public class AttendanceManageViewController {
             setAttendId();
             tblItemView2.getItems().clear();
             loadTableData(controller.getAllItem());
+            popUp.setVisible(false);
 
         }else {
             if ( tblItemView2.getItems().isEmpty() ){
@@ -240,14 +251,11 @@ public class AttendanceManageViewController {
                 new AttendanceController().updateAttendance(attendance);
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
                 tblItemView2.getItems().clear();
+                popUp.setVisible(false);
             }else{
                 new Alert(Alert.AlertType.WARNING, "Settle Material Detail").show();
             }
-
         }
-
-
-
     }
 
     public void closeOnAction(ActionEvent actionEvent) {
@@ -263,6 +271,13 @@ public class AttendanceManageViewController {
     }
 
     public void removeOnAction(ActionEvent actionEvent) {
+        if (cartSelectedRowForRemove==-1){
+            new Alert(Alert.AlertType.WARNING, "Please Select a row").show();
+        }else{
+            list.remove(cartSelectedRowForRemove);
+            tblItemView2.refresh();
+
+        }
 
     }
 
@@ -295,7 +310,6 @@ public class AttendanceManageViewController {
         txtEmpName.clear();
         txtAttendTime.clear();
         txtAttendData.clear();
-        tblItemView2.refresh();
     }
 
     private void loadPending(String attendanceId) throws SQLException, ClassNotFoundException {
