@@ -79,7 +79,7 @@
     -fx-background-color: #ff5c5c;
 }
 .button-goto{
-    -fx-background-color: linear-gradient(to left,  #7da4ff, #001d61);
+    -fx-background-color: #0063a1;
     -fx-background-radius: 30px;
     -fx-text-fill: #ffffff;
 }
@@ -154,6 +154,6 @@
     -fx-background-color: linear-gradient(to left, #00b2cf, #003e47);
 }
 .liner-navigate {
-    -fx-background-color: linear-gradient(to bottom, #003e47, #00b2cf);
+    -fx-background-color: linear-gradient(to bottom, #003e47, #0097b0);
     -fx-background-radius: 30px;
 }

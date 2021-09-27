@@ -74,7 +74,7 @@ public class LandingPgController{
     }
 
     public void passwordOnAction(ActionEvent actionEvent) {
-
+        btnLogIn.requestLayout();
 
     }
 

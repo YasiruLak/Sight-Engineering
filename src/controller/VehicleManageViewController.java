@@ -1,17 +1,23 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Vehicle;
+import util.ValidationUtil;
 import util.VehicleController;
 import view.tm.VehicleTm;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class VehicleManageViewController {
     public ComboBox<String> cmbType;
@@ -22,10 +28,25 @@ public class VehicleManageViewController {
     public TextField txtVehicleNo;
     public TextField txtDescription;
     public TextField txtSearchVehicleNo;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnCancel;
 
     private VehicleController controller = new VehicleController();
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern codePattern = Pattern.compile("^[A-Z0-9]{2,3}[-][0-9]{4}$");
+    Pattern descPattern = Pattern.compile("^[A-z ]{3,50}$");
+
     public void initialize(){
+
+        btnSave.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+        //cancelBtn();
+
+        storeValidations();
 
         try {
 
@@ -49,6 +70,11 @@ public class VehicleManageViewController {
         });
     }
 
+    private void storeValidations() {
+        map.put(txtVehicleNo, codePattern);
+        map.put(txtDescription, descPattern);
+    }
+
     private void vehicleToTable(ArrayList<Vehicle> allVehicle){
         ObservableList<VehicleTm> vehicleList = FXCollections.observableArrayList();
         allVehicle.forEach(e ->{
@@ -66,6 +92,7 @@ public class VehicleManageViewController {
                 new Alert(Alert.AlertType.CONFIRMATION, "Saved Successes");
                 clear();
                 vehicleToTable(controller.getAllVehicle());
+                btnSave.setDisable(true);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Try Again");
             }
@@ -78,6 +105,8 @@ public class VehicleManageViewController {
             new Alert(Alert.AlertType.WARNING,"Empty Result Set").show();
         }else {
             setData(vehicle);
+            btnUpdate.setDisable(false);
+            btnDelete.setDisable(false);
         }
     }
 
@@ -98,6 +127,8 @@ public class VehicleManageViewController {
             new Alert(Alert.AlertType.INFORMATION,"Updated").show();
             clear();
             vehicleToTable(controller.getAllVehicle());
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
 
         }else{
             new Alert(Alert.AlertType.ERROR,"Try Again").show();
@@ -115,7 +146,10 @@ public class VehicleManageViewController {
             if(controller.deleteVehicle(txtVehicleNo.getText())){
                 new Alert(Alert.AlertType.INFORMATION,"Deleted").show();
                 clear();
+                btnDelete.setDisable(true);
+                btnUpdate.setDisable(true);
                 vehicleToTable(controller.getAllVehicle());
+
                 }
             }else {
                 new Alert(Alert.AlertType.ERROR,"Try Again").show();
@@ -135,4 +169,24 @@ public class VehicleManageViewController {
 
     }
 
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
+    }
+
+//    private void cancelBtn(){
+//        if(txtVehicleNo.getText().isEmpty()){
+//            btnCancel.setDisable(true);
+//        }else{
+//            btnCancel.setDisable(false);
+//        }
+//    }
 }

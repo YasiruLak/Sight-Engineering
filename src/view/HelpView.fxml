@@ -14,11 +14,11 @@
    <children>
       <TableView layoutX="14.0" layoutY="63.0" prefHeight="523.0" prefWidth="450.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn prefWidth="220.0" text="Text Field Name" />
-          <TableColumn prefWidth="228.0" text="Text Type" />
+          <TableColumn prefWidth="193.0" text="Text Field Name" />
+          <TableColumn prefWidth="255.0" text="Text Type" />
         </columns>
       </TableView>
-      <Label layoutX="105.0" layoutY="21.0" prefHeight="35.0" prefWidth="319.0" text="Text Field Validation Like This">
+      <Label layoutX="22.0" layoutY="21.0" prefHeight="35.0" prefWidth="319.0" text="Text Field Validation Like This">
          <font>
             <Font name="AGaramondPro-Bold" size="24.0" />
          </font>
@@ -96,5 +96,10 @@
       </Label>
       <Hyperlink layoutX="605.0" layoutY="517.0" text="www.sightengineering.com" />
       <Hyperlink layoutX="602.0" layoutY="479.0" text="www.facebook.com/Sight-Engineering" />
+      <ImageView fitHeight="41.0" fitWidth="52.0" layoutX="407.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/ic_usr.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

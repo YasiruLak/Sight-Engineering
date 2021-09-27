@@ -20,7 +20,7 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="931.0" layoutY="265.0" onAction="#saveSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="961.0" layoutY="273.0" onAction="#saveSupplierOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -36,7 +36,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="789.0" layoutY="265.0" onAction="#updateSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="846.0" layoutY="272.0" onAction="#updateSupplierOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -52,7 +52,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="650.0" layoutY="265.0" onAction="#deleteSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="736.0" layoutY="272.0" onAction="#deleteSupplierOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -77,7 +77,7 @@
             <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="508.0" layoutY="265.0" onAction="#cancelSupplierOnAction" prefHeight="40.0" prefWidth="130.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="623.0" layoutY="272.0" onAction="#cancelSupplierOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -95,44 +95,39 @@
       </JFXButton>
       <AnchorPane layoutX="43.0" layoutY="88.0" prefHeight="42.0" prefWidth="192.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSupId" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="176.0" promptText="S00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtSupId" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="176.0" promptText="S00-001" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Id" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="269.0" layoutY="88.0" prefHeight="42.0" prefWidth="335.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSupName" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="305.0" promptText="Yasiru Dahanayaka" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtSupName" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="305.0" promptText="Yasiru Dahanayaka" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Name" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="43.0" layoutY="174.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSupMobile" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="262.0" promptText="076 - 8383493" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtSupMobile" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="262.0" promptText="076 - 8383493" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Mobile" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="625.0" layoutY="88.0" prefHeight="42.0" prefWidth="442.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSupAddress" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="414.0" promptText="398/2, Galle Road, Udugama" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtSupAddress" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="414.0" promptText="398/2, Galle Road, Udugama" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Address" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="360.0" layoutY="174.0" prefHeight="42.0" prefWidth="363.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSupEmail" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="335.0" promptText="yasirudahanayaka19@gmail.com" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtSupEmail" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="335.0" promptText="yasirudahanayaka19@gmail.com" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Email" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="43.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="36.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="85.0" layoutY="281.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtSupSearch" layoutX="23.0" layoutY="8.0" onAction="#supplierSearchOnAction" prefHeight="28.0" prefWidth="262.0" promptText="E00-001" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
-         </children>
-      </AnchorPane>
+      <TextField fx:id="txtSupSearch" layoutX="73.0" layoutY="295.0" onAction="#supplierSearchOnAction" prefHeight="30.0" prefWidth="262.0" promptText="S00-001" stylesheets="@../style/Style.css" />
    </children>
 </AnchorPane>

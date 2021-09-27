@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,124 +17,219 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="1110.0" style="-fx-background-radius: 25; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportViewController">
    <children>
-      <Label alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Income Report" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="15.0" layoutY="8.0" prefHeight="40.0" prefWidth="1080.0" styleClass="liner-title" stylesheets="@../style/Style.css" text="Reports" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="33.0" layoutY="71.0" prefHeight="42.0" prefWidth="232.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="217.0" promptText="Payment Report" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Report Name" />
-         </children>
-      </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="945.0" layoutY="467.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Print" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#0f00b2" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="879.0" layoutY="601.0" prefHeight="40.0" prefWidth="196.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Email" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#0f00b2" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <BarChart fx:id="tblChart" layoutX="26.0" layoutY="132.0" prefHeight="250.0" prefWidth="674.0" title="ATTENDENCE REPORT">
+      <BarChart fx:id="attendanceLineChart" layoutX="22.0" layoutY="355.0" prefHeight="286.0" prefWidth="614.0" title="ATTENDENCE REPORT">
          <xAxis>
             <CategoryAxis label="DATE" prefHeight="18.0" prefWidth="596.0" side="BOTTOM" />
          </xAxis>
          <yAxis>
-            <NumberAxis label="Emplyee" lowerBound="10.0" side="LEFT" upperBound="50.0" />
+            <NumberAxis label="Employee" lowerBound="10.0" side="LEFT" upperBound="50.0" />
          </yAxis>
       </BarChart>
-      <JFXDatePicker layoutX="481.0" layoutY="59.0" prefHeight="42.0" prefWidth="202.0" />
-      <Label layoutX="335.0" layoutY="70.0" prefHeight="31.0" prefWidth="130.0" text="Select Date :">
-         <font>
-            <Font name="ACaslonPro-Semibold" size="24.0" />
-         </font>
-      </Label>
-      <Pane layoutX="736.0" layoutY="71.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <PieChart fx:id="pieChart" layoutX="647.0" layoutY="201.0" prefHeight="440.0" prefWidth="440.0" />
+      <Pane layoutX="22.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/worker_96px.png" />
                </image>
             </ImageView>
-            <Label layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0" text="100">
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="EMPLOYEE" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
                <font>
-                  <Font size="36.0" />
+                  <Font name="Times New Roman Bold" size="17.0" />
                </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="14.0" prefHeight="47.0" prefWidth="130.0" text="Attendence">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </Pane>
-      <BarChart fx:id="tblChart1" layoutX="26.0" layoutY="382.0" prefHeight="250.0" prefWidth="674.0" title="GRN REPORT">
-         <xAxis>
-            <CategoryAxis label="DATE" prefHeight="18.0" prefWidth="596.0" side="BOTTOM" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis label="ITEM" lowerBound="10.0" side="LEFT" upperBound="50.0" />
-         </yAxis>
-      </BarChart>
-      <Pane layoutX="736.0" layoutY="314.0" prefHeight="136.0" prefWidth="339.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="230.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/supplier_96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="SUPPLIERS" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="438.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/leadership96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="MANAGERS" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="647.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/Shuttlebus_96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="VEHICLE" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="858.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/saw_96px.png" />
                </image>
             </ImageView>
-            <Label layoutX="189.0" layoutY="68.0" prefHeight="53.0" prefWidth="65.0" text="250">
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ITEMS" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
                <font>
-                  <Font size="36.0" />
+                  <Font name="Times New Roman Bold" size="17.0" />
                </font>
-            </Label>
-            <Label layoutX="189.0" layoutY="14.0" prefHeight="47.0" prefWidth="65.0" text="Items">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
          </children>
       </Pane>
-      <JFXButton buttonType="RAISED" layoutX="945.0" layoutY="225.0" prefHeight="40.0" prefWidth="130.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Print" textFill="WHITE">
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="WHITE" />
-                  <Stop color="#0f00b2" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-         <font>
-            <Font name="Times New Roman Bold" size="17.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
+      <Pane layoutX="22.0" layoutY="207.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/payment_history_96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="PAYMENTS" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="230.0" layoutY="207.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/order_history_96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ORDERS" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="438.0" layoutY="207.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/attendance_96px.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ATTENDANCE" textFill="WHITE">
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#001eff" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+               <font>
+                  <Font name="Times New Roman Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

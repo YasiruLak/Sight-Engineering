@@ -21,7 +21,7 @@
             <Font name="Times New Roman Bold" size="30.0" />
          </font>
       </Label>
-      <TableView fx:id="tblVehicle" layoutX="34.0" layoutY="187.0" prefHeight="452.0" prefWidth="706.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblVehicle" layoutX="34.0" layoutY="230.0" prefHeight="409.0" prefWidth="706.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colVehicleNo" prefWidth="190.0" text="Vehicle No" />
             <TableColumn fx:id="colDescription" prefWidth="300.0" text="Description" />
@@ -33,24 +33,24 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <AnchorPane layoutX="24.0" layoutY="104.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <AnchorPane layoutX="34.0" layoutY="104.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtVehicleNo" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="242.0" promptText="V00-001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtVehicleNo" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="242.0" promptText="BDA - 4777" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Vehicle No" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="345.0" layoutY="104.0" prefHeight="42.0" prefWidth="445.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtDescription" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="409.0" promptText="Manufacture By" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtDescription" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="409.0" promptText="Manufacture By Japan" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Description" />
          </children>
       </AnchorPane>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="750.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="37.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="976.0" layoutY="599.0" onAction="#saveVehicleOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="976.0" layoutY="599.0" onAction="#saveVehicleOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -66,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="987.0" layoutY="295.0" onAction="#updateCustomerOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="987.0" layoutY="295.0" onAction="#updateCustomerOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-update" stylesheets="@../style/Style.css" text="Update" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -82,7 +82,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="867.0" layoutY="295.0" onAction="#deleteVehicleOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="867.0" layoutY="295.0" onAction="#deleteVehicleOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-delete" stylesheets="@../style/Style.css" text="Delete" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -98,7 +98,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="750.0" layoutY="295.0" onAction="#clearOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="750.0" layoutY="295.0" onAction="#clearOnAction" prefHeight="40.0" prefWidth="109.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -114,16 +114,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <AnchorPane layoutX="791.0" layoutY="201.0" prefHeight="42.0" prefWidth="288.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtSearchVehicleNo" layoutX="23.0" layoutY="8.0" onAction="#searchVehicleOnAction" prefHeight="28.0" prefWidth="242.0" promptText="V00-001" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
-         </children>
-      </AnchorPane>
       <ImageView fitHeight="188.0" fitWidth="317.0" layoutX="765.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/vehicle.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtSearchVehicleNo" layoutX="77.0" layoutY="198.0" onAction="#searchVehicleOnAction" prefHeight="30.0" prefWidth="242.0" promptText="BDA - 4777" />
    </children>
 </AnchorPane>

@@ -1,17 +1,23 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Supplier;
 import util.SupplierController;
+import util.ValidationUtil;
 import view.tm.SupplierTm;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class SupplierManageViewController {
     public TableView<SupplierTm>tblSupplier;
@@ -26,10 +32,27 @@ public class SupplierManageViewController {
     public TextField txtSupAddress;
     public TextField txtSupEmail;
     public TextField txtSupSearch;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnCancel;
 
     private SupplierController controller = new SupplierController();
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern idPattern = Pattern.compile("^(S00-)[0-9]{3,4}$");
+    Pattern namePattern = Pattern.compile("^[A-z ]{3,30}$");
+    Pattern addressPattern = Pattern.compile("^[A-z0-9/ ]{6,30}$");
+    Pattern mobilePattern = Pattern.compile("^[0-9]{3}[-]?[0-9]{7}$");
+    Pattern emailPattern = Pattern.compile("^[a-z0-9]{3,}[@](gmail)[.][a-z]{3,}$");
+
     public void initialize(){
+
+        btnSave.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+
+        storeValidation();
 
         colSupId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colSupName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -44,6 +67,15 @@ public class SupplierManageViewController {
         }
 
     }
+
+    private void storeValidation(){
+        map.put(txtSupId, idPattern);
+        map.put(txtSupName, namePattern);
+        map.put(txtSupAddress, addressPattern);
+        map.put(txtSupMobile, mobilePattern);
+        map.put(txtSupEmail, emailPattern);
+    }
+
     public void supplierToTable(ArrayList<Supplier> allSupplier){
         ObservableList<SupplierTm> supplierList = FXCollections.observableArrayList();
         allSupplier.forEach(e -> {
@@ -65,6 +97,7 @@ public class SupplierManageViewController {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
             cancelDetail();
             supplierToTable(controller.getAllSupplier());
+            btnSave.setDisable(true);
         }else{
             new Alert(Alert.AlertType.WARNING, "Try Again..").show();
         }
@@ -82,6 +115,8 @@ public class SupplierManageViewController {
             new Alert(Alert.AlertType.INFORMATION, "Updated").show();
             cancelDetail();
             supplierToTable(controller.getAllSupplier());
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
         }else{
             new Alert(Alert.AlertType.ERROR, "Try Again").show();
         }
@@ -100,6 +135,8 @@ public class SupplierManageViewController {
                 new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
                 cancelDetail();
                 supplierToTable(controller.getAllSupplier());
+                btnUpdate.setDisable(true);
+                btnDelete.setDisable(true);
             } else {
                 System.out.println("done");
             }
@@ -120,6 +157,8 @@ public class SupplierManageViewController {
             new Alert(Alert.AlertType.ERROR,"Empty Result Set").show();
         }else{
             setData(supplier);
+            btnUpdate.setDisable(false);
+            btnDelete.setDisable(false);
         }
     }
 
@@ -138,5 +177,18 @@ public class SupplierManageViewController {
         txtSupAddress.setText(supplier.getAddress());
         txtSupMobile.setText(supplier.getMobil());
         txtSupEmail.setText(supplier.getEmail());
+    }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
     }
 }
