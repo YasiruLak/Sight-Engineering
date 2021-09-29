@@ -16,11 +16,11 @@ DESCRIBE login;
 
 DROP TABLE IF EXISTS supplier;
 CREATE TABLE IF NOT EXISTS supplier(
-    id VARCHAR(15),
+    id VARCHAR(15) NOT NULL,
     name VARCHAR(45) NOT NULL DEFAULT 'Unknown',
-    address TEXT,
-    mobile VARCHAR(15),
-    email VARCHAR(45),
+    address TEXT NOT NULL,
+    mobile VARCHAR(15) NOT NULL,
+    email VARCHAR(45) NOT NULL,
     CONSTRAINT PRIMARY KEY (id)
     );
 SHOW TABLES ;
@@ -28,9 +28,9 @@ DESCRIBE supplier;
 
 DROP TABLE IF EXISTS Vehicle;
 CREATE TABLE IF NOT EXISTS Vehicle(
-    VehicleNo VARCHAR(20),
-    description TEXT,
-    type VARCHAR(15),
+    VehicleNo VARCHAR(20) NOT NULL,
+    description TEXT NOT NULL,
+    type VARCHAR(15) NOT NULL DEFAULT 'Unknown',
     CONSTRAINT PRIMARY KEY (VehicleNo)
     );
 SHOW TABLES ;
@@ -38,13 +38,13 @@ DESCRIBE Vehicle;
 
 DROP TABLE IF EXISTS manager;
 CREATE TABLE IF NOT EXISTS manager(
-    nic VARCHAR(15),
-    name VARCHAR(45) NOT NULL,
-    status VARCHAR(10),
-    age VARCHAR (10),
-    address TEXT,
-    mobile VARCHAR(15),
-    email VARCHAR(45),
+    nic VARCHAR(15) NOT NULL,
+    name VARCHAR(45) NOT NULL DEFAULT 'Unknown',
+    status VARCHAR(10) NOT NULL DEFAULT 'Unknown',
+    age VARCHAR (10) NOT NULL,
+    address TEXT NOT NULL,
+    mobile VARCHAR(15) NOT NULL,
+    email VARCHAR(45) NOT NULL,
     CONSTRAINT PRIMARY KEY (nic)
     );
 SHOW TABLES ;
@@ -52,15 +52,15 @@ DESCRIBE manager;
 
 DROP TABLE IF EXISTS employee;
 CREATE TABLE IF NOT EXISTS employee(
-    empId VARCHAR(15),
-    name VARCHAR(45) NOT NULL,
-    type VARCHAR(25),
-    age VARCHAR(10),
-    address VARCHAR (35),
-    city VARCHAR (15),
-    province VARCHAR (15),
-    contact VARCHAR(15),
-    dailySalary DOUBLE DEFAULT 0.00,
+    empId VARCHAR(15) NOT NULL,
+    name VARCHAR(45) NOT NULL DEFAULT 'Unknown',
+    type VARCHAR(25) NOT NULL DEFAULT 'Unknown',
+    age VARCHAR(10) NOT NULL DEFAULT 'Unknown',
+    address VARCHAR (35) NOT NULL DEFAULT 'Unknown',
+    city VARCHAR (15) NOT NULL DEFAULT 'Unknown',
+    province VARCHAR (15) NOT NULL DEFAULT 'Unknown',
+    contact VARCHAR(15) NOT NULL DEFAULT 'Unknown',
+    dailySalary DOUBLE (8,2) DEFAULT 0.00,
     CONSTRAINT PRIMARY KEY (empId)
     );
 SHOW TABLES ;
@@ -68,11 +68,11 @@ DESCRIBE employee;
 
 DROP TABLE IF EXISTS item;
 CREATE TABLE IF NOT EXISTS item(
-    itemCode VARCHAR(15),
-    name VARCHAR(20),
-    description TEXT,
-    size VARCHAR(15),
-    qtyOnHand INT (20) DEFAULT 0,
+    itemCode VARCHAR(15) NOT NULL,
+    name VARCHAR(20) NOT NULL DEFAULT 'Unknown',
+    description TEXT NOT NULL,
+    size VARCHAR(15) NOT NULL DEFAULT 'Medium',
+    qtyOnHand INT (20) NOT NULL DEFAULT 0,
     CONSTRAINT PRIMARY KEY (itemCode)
     );
 SHOW TABLES ;
@@ -80,11 +80,11 @@ DESCRIBE item;
 
 DROP TABLE IF EXISTS orders;
 CREATE TABLE IF NOT EXISTS orders(
-    orderId VARCHAR(15),
-    sid VARCHAR(15),
-    orderDate DATE,
-    time TIME,
-    cost DOUBLE,
+    orderId VARCHAR(15) NOT NULL,
+    sid VARCHAR(15) NOT NULL,
+    orderDate DATE NOT NULL,
+    time TIME NOT NULL,
+    cost DOUBLE (15,2) NOT NULL,
     CONSTRAINT PRIMARY KEY (orderId),
     CONSTRAINT FOREIGN KEY (sid) REFERENCES supplier(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
@@ -93,10 +93,10 @@ DESCRIBE orders;
 
 DROP TABLE IF EXISTS order_detail;
 CREATE TABLE IF NOT EXISTS order_detail(
-    iCode VARCHAR(15),
-    oId VARCHAR(15),
-    qty INT,
-    price DOUBLE,
+    iCode VARCHAR(15) NOT NULL,
+    oId VARCHAR(15) NOT NULL,
+    qty INT NOT NULL DEFAULT 0,
+    price DOUBLE (12,2) NOT NULL,
     CONSTRAINT PRIMARY KEY (iCode, oId),
     CONSTRAINT FOREIGN KEY (iCode) REFERENCES item(itemCode) ON DELETE CASCADE ON UPDATE CASCADE ,
     CONSTRAINT FOREIGN KEY (oId) REFERENCES orders(orderId) ON DELETE CASCADE ON UPDATE CASCADE
@@ -106,13 +106,13 @@ DESCRIBE order_detail;
 
 DROP TABLE IF EXISTS attendance;
 CREATE TABLE IF NOT EXISTS attendance(
-    attendId VARCHAR(15),
-    eId VARCHAR(15),
+    attendId VARCHAR(15) NOT NULL,
+    eId VARCHAR(15) NOT NULL,
     inDate DATE,
     inTime TIME,
     outDate DATE,
     outTime TIME,
-    status VARCHAR(15),
+    status VARCHAR(15) NOT NULL,
     CONSTRAINT PRIMARY KEY (attendId),
     CONSTRAINT FOREIGN KEY (eId) REFERENCES employee(empId) ON DELETE CASCADE ON UPDATE CASCADE
     );
@@ -121,12 +121,12 @@ DESCRIBE attendance;
 
 DROP TABLE IF EXISTS item_detail;
 CREATE TABLE IF NOT EXISTS item_detail(
-    iId VARCHAR(15),
-    name VARCHAR (15),
-    aId VARCHAR(15),
-    qty INT(15),
-    status VARCHAR(15),
-    receiveQty INT(15),
+    iId VARCHAR(15) NOT NULL,
+    name VARCHAR (15) NULL DEFAULT 'Unknown',
+    aId VARCHAR(15) NOT NULL,
+    qty INT(15) NOT NULL DEFAULT 1,
+    status VARCHAR(15) NOT NULL,
+    receiveQty INT(15) NOT NULL DEFAULT 1,
     CONSTRAINT PRIMARY KEY (aId, iId),
     CONSTRAINT FOREIGN KEY (aId) REFERENCES attendance(attendId) ON DELETE CASCADE ON UPDATE CASCADE ,
     CONSTRAINT FOREIGN KEY (iId) REFERENCES item(itemCode) ON DELETE CASCADE ON UPDATE CASCADE
@@ -136,15 +136,15 @@ DESCRIBE item_detail;
 
 DROP TABLE IF EXISTS payment;
 CREATE TABLE IF NOT EXISTS payment(
-    paymentId VARCHAR(15),
-    orderId VARCHAR(15),
-    supplierId VARCHAR (15),
-    orderDate DATE,
-    paymentDate DATE,
-    paymentTime VARCHAR (15),
-    amount DOUBLE,
-    payMethod VARCHAR (15),
-    invoiceNo VARCHAR (25),
+    paymentId VARCHAR(15) NOT NULL,
+    orderId VARCHAR(15) NOT NULL,
+    supplierId VARCHAR (15) NOT NULL,
+    orderDate DATE NOT NULL,
+    paymentDate DATE NOT NULL,
+    paymentTime VARCHAR (15) NOT NULL,
+    amount DOUBLE (15,2) NOT NULL,
+    payMethod VARCHAR (15) NOT NULL,
+    invoiceNo VARCHAR (25) NOT NULL,
     CONSTRAINT PRIMARY KEY (paymentId),
     CONSTRAINT FOREIGN KEY (orderId) REFERENCES orders(orderId) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FOREIGN KEY (supplierId) REFERENCES supplier (id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -158,3 +158,7 @@ DESCRIBE payment;
 "SELECT * FROM manager WHERE nic=?"
 "UPDATE manager SET name=?, status=?, age=?, address=?, mobile=?, email=? WHERE nic=? "
 "DELETE FROM manager WHERE nic=" +"'"+managerNic+"'"
+
+SELECT iCode,sum(qty) AS qty FROM order_detail GROUP BY iCode ORDER BY qty DESC;
+
+

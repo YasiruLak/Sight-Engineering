@@ -23,10 +23,10 @@
       <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="297.0" prefHeight="349.0" prefWidth="1060.0" stylesheets="@../style/Style.css">
          <columns>
             <TableColumn fx:id="colSupId" prefWidth="127.0" text="Supplier Id" />
-            <TableColumn fx:id="colSupName" prefWidth="224.0" text="Name" />
-            <TableColumn fx:id="colSupAddress" prefWidth="174.0" text="Address" />
-            <TableColumn fx:id="colSupMobile" prefWidth="293.0" text="Mobile" />
-            <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
+            <TableColumn fx:id="colSupName" prefWidth="218.0" text="Name" />
+            <TableColumn fx:id="colSupAddress" prefWidth="259.0" text="Address" />
+            <TableColumn fx:id="colSupMobile" prefWidth="189.0" text="Mobile" />
+            <TableColumn fx:id="colSupEmail" prefWidth="266.0" text="Email" />
          </columns>
       </TableView>
       <Pane layoutX="703.0" layoutY="76.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">

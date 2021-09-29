@@ -51,7 +51,7 @@ public class AttendanceManageViewController {
     public JFXTextField txtAttendData;
     public JFXTextField txtAttendTime;
 
-    private ItemDetailTM item;
+    private ItemDetailTM item = new ItemDetailTM();
     private ItemDetail itemDetail;
 
     int cartSelectedRowForRemove = -1;
@@ -119,7 +119,7 @@ public class AttendanceManageViewController {
     }
 
     public void searchEmployeeOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-
+        tblItemView2.refresh();
         String employeeId = txtEmpId.getText();
         Employee employee = new EmployeeController().getEmployee(employeeId);
         if ( employee != null ) {
@@ -152,14 +152,16 @@ public class AttendanceManageViewController {
     }
 
     public void loadPopUp(ItemViewTm itemViewTm) {
-        popUp.setVisible(true);
-        item = new ItemDetailTM(
-                itemViewTm.getItemCode(),
-                itemViewTm.getItemName(),
-                itemViewTm.getSize(),
-                Integer.parseInt(itemViewTm.getQuantityOnHand()),
-                0
-        );
+        if ( itemViewTm != null ) {
+            popUp.setVisible(true);
+            item = new ItemDetailTM(
+                    itemViewTm.getItemCode(),
+                    itemViewTm.getItemName(),
+                    itemViewTm.getSize(),
+                    Integer.parseInt(itemViewTm.getQuantityOnHand()),
+                    0
+            );
+        }
     }
 
     public void loadPopUpGetProduct(ItemDetailTM itemDetailTM) {
@@ -168,13 +170,13 @@ public class AttendanceManageViewController {
 
             this.itemDetail = new ItemDetail();
             this.itemDetail.setItemCode(itemDetailTM.getId());
+            this.itemDetail.setItemName(itemDetailTM.getName());
             this.itemDetail.setQty(itemDetailTM.getQuantity());
             this.itemDetail.setAttendId(lblAttendId.getText());
         }
     }
 
     ObservableList<ItemDetailTM> list = FXCollections.observableArrayList();
-
     public void onAdd(ActionEvent actionEvent) {
         boolean updated = false;
         item.setQuantity(Integer.parseInt(txtUpdateQuantity.getText()));
@@ -267,7 +269,26 @@ public class AttendanceManageViewController {
     }
 
     public void txtSearchNameOnAction(ActionEvent actionEvent) {
+        searchItem(txtSearchName.getText());
 
+    }
+
+    public void searchItem(String value){
+        ObservableList<ItemViewTm> obList = FXCollections.observableArrayList();
+        try {
+            List<Item> itemList = ItemController.searchItem(value);
+
+            itemList.forEach(e->{
+                obList.add(
+                        new ItemViewTm(e.getId(),e.getName(),e.getSize(),String.valueOf(e.getQtyOnHand())));
+            });
+
+            tblItemView.getItems().setAll(obList);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeOnAction(ActionEvent actionEvent) {
@@ -278,7 +299,6 @@ public class AttendanceManageViewController {
             tblItemView2.refresh();
 
         }
-
     }
 
     public void saveData(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -333,5 +353,4 @@ public class AttendanceManageViewController {
         }
 
     }
-
 }

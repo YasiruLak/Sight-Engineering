@@ -10,9 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Login;
+import util.LoginController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Base64;
 
 public class LandingPgController{
     public JFXPasswordField txtPassword;
@@ -20,65 +24,57 @@ public class LandingPgController{
     public JFXButton btnLogIn;
     public JFXButton btnExit;
 
-    public void logInOnAction(ActionEvent actionEvent) throws IOException {
-        String user = txtUserName.getText();
-        String password = txtPassword.getText();
+    public void logInOnAction(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
+        String userName = txtUserName.getText();
+        String password = new String(Base64.getEncoder().encode(txtPassword.getText().getBytes()));
 
-        if (user.equals("a")) {
+        Login login = new LoginController().getUser(userName, password);
+        if ( login != null ) {
+            if (login.getRole().equals("MANAGER")) {
 
-            Stage logStage = (Stage) btnLogIn.getScene().getWindow();
-            logStage.close();
+                Stage logStage = (Stage) btnLogIn.getScene().getWindow();
+                logStage.close();
 
-            URL resource = this.getClass().getResource("../view/AdminMainView.fxml");
-            Parent load = FXMLLoader.load(resource);
-            Scene scene = new Scene(load);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setScene(scene);
-            stage.show();
+                URL resource = this.getClass().getResource("../view/ManagerMainView.fxml");
+                Parent load = FXMLLoader.load(resource);
+                Scene scene = new Scene(load);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(scene);
+                stage.show();
 
-        } else if (user.equals("m")) {
+            } else if (login.getRole().equals("ADMIN")) {
 
-            Stage logStage = (Stage) btnLogIn.getScene().getWindow();
-            logStage.close();
+                Stage logStage = (Stage) btnLogIn.getScene().getWindow();
+                logStage.close();
 
-            URL resource = this.getClass().getResource("../view/ManagerMainView.fxml");
-            Parent load = FXMLLoader.load(resource);
-            Scene scene = new Scene(load);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            new Alert(Alert.AlertType.WARNING, "Invalid User Name Or Password ! ").show();
-            txtUserName.clear();
-            txtPassword.clear();
+                URL resource = this.getClass().getResource("../view/AdminMainView.fxml");
+                Parent load = FXMLLoader.load(resource);
+                Scene scene = new Scene(load);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.setScene(scene);
+                stage.show();
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Invalid User Name Or Password ! ").show();
+                txtUserName.clear();
+                txtPassword.clear();
+
+            }
         }
-
-    }
-
-    public void exitOnAction(ActionEvent actionEvent){
-        Stage stage = (Stage) btnExit.getScene().getWindow();
-        stage.close();
-
-//        try {
-//            Thread.sleep(5);
-//            Alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("| SIGHT Engineering | ");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Good Bye Sir...!");
-//            alert.showAndWait();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
     public void passwordOnAction(ActionEvent actionEvent) {
         btnLogIn.requestLayout();
-
     }
 
     public void userNameOnAction(ActionEvent actionEvent) {
         txtPassword.requestFocus();
+    }
+
+    public void exitOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) btnExit.getScene().getWindow();
+        stage.close();
     }
 }

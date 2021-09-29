@@ -1,16 +1,22 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Employee;
 import util.EmployeeController;
+import util.ValidationUtil;
 import view.tm.EmployeeTm;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 public class EmployeManageViewController {
     public ComboBox cmbEmpType;
@@ -33,10 +39,29 @@ public class EmployeManageViewController {
     public TextField txtEmpMobile;
     public TextField txtEmpSearch;
     public TextField txtEmpDailySalary;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
+    public JFXButton btnDelete;
+    public JFXButton btnCancel;
 
     private EmployeeController controller = new EmployeeController();
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern idPattern = Pattern.compile("^(E00-)[0-9]{3,4}$");
+    Pattern namePattern = Pattern.compile("^[A-z ]{3,30}$");
+    Pattern agePattern = Pattern.compile("^[0-9]{2}$");
+    Pattern addressPattern = Pattern.compile("^[A-z0-9, ]{6,30}$");
+    Pattern cityPattern = Pattern.compile("^[A-z]{3,20}$");
+    Pattern mobilePattern = Pattern.compile("^[0-9]{3}[-]?[0-9]{7}$");
+    Pattern salaryPattern = Pattern.compile("^[0-9]{3,6}[.][0]$");
+
     public void initialize(){
+
+        btnSave.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+
+        storeValidation();
 
         try {
 
@@ -51,6 +76,7 @@ public class EmployeManageViewController {
             colEmpSalary.setCellValueFactory(new PropertyValueFactory<>("dailySalary"));
 
             employeeToTable(controller.getAllEmployee());
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,6 +95,16 @@ public class EmployeManageViewController {
         cmbEmpProvince.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
         });
+    }
+
+    private void storeValidation(){
+        map.put(txtEmpId, idPattern);
+        map.put(txtEmpName, namePattern);
+        map.put(txtEmpAge, agePattern);
+        map.put(txtEmpAddress, addressPattern);
+        map.put(txtEmpCity, cityPattern);
+        map.put(txtEmpMobile, mobilePattern);
+        map.put(txtEmpDailySalary, salaryPattern);
     }
 
     public void employeeToTable(ArrayList<Employee> allEmployee) {
@@ -95,10 +131,9 @@ public class EmployeManageViewController {
         );
         if (controller.saveEmployee(employee)) {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
-
             cancelDetail();
-
             employeeToTable(controller.getAllEmployee());
+            btnSave.setDisable(true);
 
         } else {
             new Alert(Alert.AlertType.WARNING, "Try Again..").show();
@@ -122,6 +157,8 @@ public class EmployeManageViewController {
             new Alert(Alert.AlertType.INFORMATION, "Updated").show();
             cancelDetail();
             employeeToTable(controller.getAllEmployee());
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again").show();
         }
@@ -139,6 +176,8 @@ public class EmployeManageViewController {
                 new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
                 cancelDetail();
                 employeeToTable(controller.getAllEmployee());
+                btnUpdate.setDisable(true);
+                btnDelete.setDisable(true);
             }else{
                 System.out.println("done");
             }
@@ -155,11 +194,13 @@ public class EmployeManageViewController {
 
     public void empSearchOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         String employeeId =txtEmpSearch.getText();
-        Employee employee = new EmployeeController().getEmployee(employeeId);
+        Employee employee = controller.getEmployee(employeeId);
         if (employee==null){
             new Alert(Alert.AlertType.ERROR,"Empty Result Set").show();
         }else{
             setData(employee);
+            btnUpdate.setDisable(false);
+            btnDelete.setDisable(false);
         }
     }
 
@@ -187,5 +228,18 @@ public class EmployeManageViewController {
         txtEmpMobile.clear();
         txtEmpDailySalary.clear();
         txtEmpSearch.clear();
+    }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
     }
 }

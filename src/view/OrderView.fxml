@@ -65,10 +65,11 @@
             </JFXButton>
          </children>
       </Pane>
-      <ImageView fitHeight="294.0" fitWidth="340.0" layoutX="756.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="281.0" fitWidth="338.0" layoutX="756.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/report2.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnSupWiseOrder" buttonType="RAISED" layoutX="852.0" layoutY="580.0" onAction="#supplierWiseOrderChart" prefHeight="40.0" prefWidth="221.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Supplier Wise Order" />
    </children>
 </AnchorPane>

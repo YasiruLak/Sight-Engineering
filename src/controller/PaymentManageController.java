@@ -1,22 +1,27 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Order;
 import model.Payment;
 import util.OrderController;
 import util.PaymentController;
+import util.ValidationUtil;
 import view.tm.PaymentTm;
-
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class PaymentManageController {
     public TableView<PaymentTm>tblPayment;
@@ -37,10 +42,20 @@ public class PaymentManageController {
     public TableColumn colPayMethod;
     public TableColumn colInvoiceNo;
     public TextField txtSearch;
+    public JFXButton btnSave;
+    public JFXButton btnCancel;
 
     private PaymentController controller = new PaymentController();
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern oIdPattern = Pattern.compile("^(O-)[0-9]{3,4}$");
+    Pattern invoicePattern = Pattern.compile("^[0-9]{3,14}$");
+
     public void initialize(){
+
+        btnSave.setDisable(true);
+
+        storeValidation();
 
         colPaymentId.setCellValueFactory(new PropertyValueFactory<>("paymentId"));
         colOrderId.setCellValueFactory(new PropertyValueFactory<>("orderId"));
@@ -70,6 +85,11 @@ public class PaymentManageController {
         });
     }
 
+    private void storeValidation(){
+            map.put(txtOrderId, oIdPattern);
+            map.put(txtInvoiceNo, invoicePattern);
+    }
+
     private void paymentToTable(ArrayList<Payment> allPayment){
         ObservableList<PaymentTm> paymentList = FXCollections.observableArrayList();
         allPayment.forEach(e ->{
@@ -95,6 +115,7 @@ public class PaymentManageController {
             cancelDetail();
             setPaymentId();
             paymentToTable(controller.getAllPayment());
+            btnSave.setDisable(true);
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again");
         }
@@ -152,5 +173,18 @@ public class PaymentManageController {
         cmbMethod.setValue(payment.getPayMethod());
         txtInvoiceNo.setText(payment.getInvoiceNo());
 
+    }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
     }
 }

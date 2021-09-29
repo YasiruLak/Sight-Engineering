@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MostBuyItems" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="938af229-d8ce-4cba-bb0b-378dd2ffbbf1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sight_Engineering"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT iCode,sum(qty) AS qty FROM order_detail GROUP BY iCode ORDER BY qty DESC;]]>
+	</queryString>
+	<field name="iCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="iCode"/>
+		<property name="com.jaspersoft.studio.field.label" value="iCode"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_detail"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<image>
+				<reportElement x="80" y="0" width="80" height="77" uuid="bedcbad7-02ad-43e4-8243-00c27ad84c21"/>
+				<imageExpression><![CDATA["G:/Sight Engineering/src/assets/Logo.png"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="230" y="60" width="100" height="17" uuid="711355fb-5445-4835-895c-c931b6ab5436"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="30" forecolor="#037CA1" uuid="fb85b2c4-6450-4361-aa30-3ad98ec28638"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGHT Engineering]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="32" width="200" height="30" forecolor="#024D66" backcolor="#FFFFFF" uuid="b9eb2681-b783-45c6-8ab3-75869c368bcc"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Item Moveble Chart]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="356" splitType="Stretch">
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="555" height="330" uuid="a4d9a7b4-2af3-4bfb-af39-452dd173a91b"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{iCode}]]></seriesExpression>
+						<categoryExpression><![CDATA[0]]></categoryExpression>
+						<valueExpression><![CDATA[$F{qty}]]></valueExpression>
+						<labelExpression><![CDATA[$F{iCode}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<staticText>
+				<reportElement x="96" y="340" width="362" height="16" uuid="d88983f8-0c8b-4bbc-ab8e-afcf3744a6da"/>
+				<box padding="0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[All Right Reserved Created By Sight Engineering HRM Department]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

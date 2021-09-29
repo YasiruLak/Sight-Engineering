@@ -1,18 +1,27 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.Item;
 import model.OrderDetail;
 import model.Order;
 import model.Supplier;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import util.ItemController;
 import util.OrderController;
 import util.SupplierController;
+import util.ValidationUtil;
 import view.tm.StockTm;
 
 import java.sql.Date;
@@ -21,7 +30,9 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class OrderManageViewController {
     public ComboBox<String> cmbItemCode;
@@ -45,10 +56,24 @@ public class OrderManageViewController {
     public TableColumn colUnitPrice;
     public TextField txtQty;
     public TextField txtUnitPrice;
+    public JFXButton btnCancel;
+    public JFXButton btnSave;
+    public JFXButton btnAddStock;
+    public JFXButton btnRemove;
+    public JFXButton btnPrintDetail;
 
     int stockSelectRowForRemove = -1;
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern pricePattern = Pattern.compile("^[0-9]{2,7}[.][0]$");
+    Pattern qtyPattern = Pattern.compile("^[0-9]{1,5}$");
+
     public void initialize(){
+
+        btnAddStock.setDisable(true);
+        btnSave.setDisable(true);
+
+        storeValidation();
 
         colItmCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colItmName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -92,6 +117,11 @@ public class OrderManageViewController {
             stockSelectRowForRemove = (int) newValue;
         });
 
+    }
+
+    private void storeValidation() {
+        map.put(txtUnitPrice, pricePattern);
+        map.put(txtQty, qtyPattern);
     }
 
     private void setOrderId() throws SQLException, ClassNotFoundException {
@@ -189,6 +219,7 @@ public class OrderManageViewController {
         txtSupEmail.setDisable(true);
 
         calculateCost();
+        btnSave.setDisable(false);
     }
 
     private int isExist(StockTm tm){
@@ -234,6 +265,7 @@ public class OrderManageViewController {
             enable();
             tblStock.getItems().clear();
             txtTtl.setText("");
+            btnSave.setDisable(true);
         }else{
             new Alert(Alert.AlertType.ERROR , "Try Again").show();
         }
@@ -293,6 +325,28 @@ public class OrderManageViewController {
          txtItmSize.clear();
          txtQtyOnHand.clear();
          txtUnitPrice.clear();
-         txtQty.clear();
-     }
+      }
+
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnAddStock);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
+    }
+
+    public void printDetailOnAction(ActionEvent actionEvent) throws JRException {
+
+        JasperDesign jasperDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/OrderDetailReport.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(jasperDesign);
+        ObservableList<StockTm>items = tblStock.getItems();
+        JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, new JRBeanArrayDataSource(items.toArray()));
+        JasperViewer.viewReport(jasperPrint,false);
+
+    }
 }

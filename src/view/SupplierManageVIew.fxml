@@ -72,9 +72,9 @@
         <columns>
           <TableColumn fx:id="colSupId" prefWidth="127.0" text="Supplier Id" />
           <TableColumn fx:id="colSupName" prefWidth="224.0" text="Name" />
-            <TableColumn fx:id="colSupAddress" prefWidth="174.0" text="Address" />
-            <TableColumn fx:id="colSupMobile" prefWidth="293.0" text="Mobile" />
-            <TableColumn fx:id="colSupEmail" prefWidth="241.0" text="Email" />
+            <TableColumn fx:id="colSupAddress" prefWidth="300.0" text="Address" />
+            <TableColumn fx:id="colSupMobile" prefWidth="179.0" text="Mobile" />
+            <TableColumn fx:id="colSupEmail" prefWidth="229.0" text="Email" />
         </columns>
       </TableView>
       <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="623.0" layoutY="272.0" onAction="#cancelSupplierOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancle" textFill="WHITE">

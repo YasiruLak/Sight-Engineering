@@ -30,7 +30,7 @@
             <NumberAxis label="Employee" lowerBound="10.0" side="LEFT" upperBound="50.0" />
          </yAxis>
       </BarChart>
-      <PieChart fx:id="pieChart" layoutX="647.0" layoutY="201.0" prefHeight="440.0" prefWidth="440.0" />
+      <PieChart fx:id="pieChart" layoutX="647.0" layoutY="355.0" prefHeight="286.0" prefWidth="440.0" />
       <Pane layoutX="22.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -38,7 +38,7 @@
                   <Image url="@../assets/worker_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="EMPLOYEE" textFill="WHITE">
+            <JFXButton fx:id="employeeReport" buttonType="RAISED" layoutY="67.0" onAction="#goToEmployeeReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="EMPLOYEE" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -63,7 +63,7 @@
                   <Image url="@../assets/supplier_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="SUPPLIERS" textFill="WHITE">
+            <JFXButton fx:id="supplierReport" buttonType="RAISED" layoutY="67.0" onAction="#goToSupplierReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="SUPPLIERS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -88,7 +88,7 @@
                   <Image url="@../assets/leadership96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="MANAGERS" textFill="WHITE">
+            <JFXButton fx:id="managerReport" buttonType="RAISED" layoutY="67.0" onAction="#goToManagerReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="MANAGERS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -113,7 +113,7 @@
                   <Image url="@../assets/Shuttlebus_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="VEHICLE" textFill="WHITE">
+            <JFXButton fx:id="vehicleReport" buttonType="RAISED" layoutY="67.0" onAction="#goToVehicleReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="VEHICLE" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -131,14 +131,14 @@
             </JFXButton>
          </children>
       </Pane>
-      <Pane layoutX="858.0" layoutY="60.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
+      <Pane layoutX="647.0" layoutY="207.0" prefHeight="111.0" prefWidth="198.0" style="-fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 10; -fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="68.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/saw_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ITEMS" textFill="WHITE">
+            <JFXButton fx:id="itemReport" buttonType="RAISED" layoutY="67.0" onAction="#goToItemReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ITEMS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -163,7 +163,7 @@
                   <Image url="@../assets/payment_history_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="PAYMENTS" textFill="WHITE">
+            <JFXButton fx:id="paymentReport" buttonType="RAISED" layoutY="67.0" onAction="#goToPaymentReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="PAYMENTS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -188,7 +188,7 @@
                   <Image url="@../assets/order_history_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ORDERS" textFill="WHITE">
+            <JFXButton fx:id="orderReport" buttonType="RAISED" layoutY="67.0" onAction="#goToOrderReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ORDERS" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -213,7 +213,7 @@
                   <Image url="@../assets/attendance_96px.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutY="67.0" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ATTENDANCE" textFill="WHITE">
+            <JFXButton fx:id="attendanceReport" buttonType="RAISED" layoutY="67.0" onAction="#goToAttendanceReport" prefHeight="45.0" prefWidth="198.0" styleClass="button-add" stylesheets="@../style/Style.css" text="ATTENDANCE" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -231,5 +231,6 @@
             </JFXButton>
          </children>
       </Pane>
+      <JFXButton fx:id="btnItemMoveChart" buttonType="RAISED" layoutX="861.0" layoutY="62.0" onAction="#itemMoveChartOnAction" prefHeight="40.0" prefWidth="221.0" styleClass="button-add" stylesheets="@../style/Style.css" text="MOST BUY ITEMS" />
    </children>
 </AnchorPane>

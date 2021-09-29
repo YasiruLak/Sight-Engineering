@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SupplierWiseOrder" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="560217ac-47b6-48d4-9292-cd4a58ebcf71">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sight_Engineering"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT sid,COUNT(orderId) AS orderId FROM orders GROUP BY sid;]]>
+	</queryString>
+	<field name="sid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sid"/>
+		<property name="com.jaspersoft.studio.field.label" value="sid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="orders"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="orderId" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="orderId"/>
+		<property name="com.jaspersoft.studio.field.label" value="orderId"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<image>
+				<reportElement x="80" y="0" width="80" height="77" uuid="4818fb6c-69f9-42d3-a7bd-9c8eda151824"/>
+				<imageExpression><![CDATA["G:/Sight Engineering/src/assets/Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="180" y="0" width="300" height="30" forecolor="#037CA1" uuid="23e2b648-608d-42bc-9af7-c591eda6e583"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGHT Engineering]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="32" width="300" height="30" forecolor="#024D66" backcolor="#FFFFFF" uuid="38fc6aea-8cc3-4e02-9687-2d48338d11f8"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Supplier Wise Order Detail Report]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="280" y="60" width="100" height="17" uuid="917c1011-6e84-4a17-a1bc-06f8561b8b87"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="415" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="80" y="0" width="400" height="380" uuid="5676e2cb-4fd8-4270-9427-bf1fc73dbf8c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{sid}]]></keyExpression>
+					<valueExpression><![CDATA[$F{orderId}]]></valueExpression>
+					<labelExpression><![CDATA[$F{sid}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement x="99" y="390" width="362" height="16" uuid="b9fe76f1-b268-4a8a-ac55-001ec6d7431e"/>
+				<box padding="0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[All Right Reserved Created By Sight Engineering HRM Department]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AttendanceSqlReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81fbc238-27de-4c12-9de1-b016e561c5e4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sight_Engineering"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT * FROM attendance WHERE status='ATTEND';]]>
+	</queryString>
+	<field name="attendId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="attendId"/>
+		<property name="com.jaspersoft.studio.field.label" value="attendId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="eId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="eId"/>
+		<property name="com.jaspersoft.studio.field.label" value="eId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="inDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="inDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inTime" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="inTime"/>
+		<property name="com.jaspersoft.studio.field.label" value="inTime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="attendance"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<image>
+				<reportElement x="80" y="0" width="80" height="77" uuid="38c46f42-07ec-4c17-956c-1138828a7547"/>
+				<imageExpression><![CDATA["G:/Sight Engineering/src/assets/Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="180" y="32" width="200" height="30" forecolor="#024D66" backcolor="#FFFFFF" uuid="14918b08-7d09-432d-922d-33ed1ff9f49a"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Attendance Detail Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="400" height="30" forecolor="#037CA1" uuid="b90ddd7e-bcf8-46df-b675-127671f5dcfb"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGHT Engineering]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="230" y="60" width="100" height="17" uuid="58d21a98-8091-4d26-9af7-24aba44270e3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="30" uuid="6b28ea80-cb1a-4c35-a375-6e6d5ac6a6bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f06e2c6-4399-436d-bbee-06cb1e1ae7b1"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="10">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTEND ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="a6d1518b-504d-49eb-907b-48443f200aa5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43d866aa-f4ce-4669-9be3-f95d40c90463"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="29">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMP ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="153" height="30" uuid="e7cfcf0b-c03c-43bd-a59e-65a7ec7b3315">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92cafde8-46b8-4b26-a56c-844d9c3a0910"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="60">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="127" height="30" uuid="18b5515a-2fb5-4144-86ef-9ef7a01e3f69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64859622-68d5-49b8-b5a4-d4b49ab6e9eb"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="49">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="95" height="30" uuid="a61bd1b1-6d94-4261-99f9-28295b38e509">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="86949a3b-4e53-41ba-95a8-ed6ea2a5d083"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="25">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="2bd2247a-86ee-461a-bd9f-45bf4b45d0f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f06e2c6-4399-436d-bbee-06cb1e1ae7b1"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="16">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{attendId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="100" height="30" uuid="fa0becf7-e95b-472e-9cfc-a8e392ae93b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43d866aa-f4ce-4669-9be3-f95d40c90463"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="16">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{eId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="153" height="30" uuid="2c473a0f-54fe-4b3c-8fed-2650dcf0d5fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92cafde8-46b8-4b26-a56c-844d9c3a0910"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="16">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{inDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="127" height="30" uuid="7e4822c6-44bf-4fed-b6c3-c5f7639ba7b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64859622-68d5-49b8-b5a4-d4b49ab6e9eb"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="16">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{inTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="0" width="95" height="30" uuid="3e50b2f9-ac68-49d2-bef1-0d0f7f65168e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="86949a3b-4e53-41ba-95a8-ed6ea2a5d083"/>
+				</reportElement>
+				<box topPadding="6" leftPadding="16">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="4" width="362" height="16" uuid="9f2437eb-4b5a-4c14-a885-4d2bd87d0b09"/>
+				<box padding="0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[All Right Reserved Created By Sight Engineering HRM Department]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

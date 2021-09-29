@@ -12,10 +12,10 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpViewController">
    <children>
-      <TableView layoutX="14.0" layoutY="63.0" prefHeight="523.0" prefWidth="450.0" stylesheets="@../style/Style.css">
+      <TableView fx:id="tblHelp" layoutX="14.0" layoutY="63.0" prefHeight="523.0" prefWidth="450.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn prefWidth="193.0" text="Text Field Name" />
-          <TableColumn prefWidth="255.0" text="Text Type" />
+          <TableColumn fx:id="colTxtFieldName" prefWidth="177.0" text="Text Field Name" />
+          <TableColumn fx:id="colTxtType" prefWidth="271.0" text="Text Type" />
         </columns>
       </TableView>
       <Label layoutX="22.0" layoutY="21.0" prefHeight="35.0" prefWidth="319.0" text="Text Field Validation Like This">

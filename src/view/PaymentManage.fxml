@@ -46,29 +46,11 @@
       </Label>
       <AnchorPane layoutX="196.0" layoutY="82.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtOrderId" layoutX="23.0" layoutY="8.0" onAction="#getOrderDetailOnAction" prefHeight="28.0" prefWidth="187.0" promptText="O-0001" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtOrderId" layoutX="23.0" layoutY="8.0" onAction="#getOrderDetailOnAction" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="187.0" promptText="O-0001" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Order Id" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="418.0" layoutY="82.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtSupplierId" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto Fill" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Supplier Id" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="643.0" layoutY="82.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtOrderDate" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto fill" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Order Date" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="866.0" layoutY="82.0" prefHeight="42.0" prefWidth="208.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtAmount" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="187.0" promptText="Auto fill" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Amount" />
-         </children>
-      </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="965.0" layoutY="258.0" onAction="#payPaymentOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="965.0" layoutY="258.0" onAction="#payPaymentOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-add" stylesheets="@../style/Style.css" text="Save" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -84,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="847.0" layoutY="258.0" onAction="#cancelPaymentOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="847.0" layoutY="258.0" onAction="#cancelPaymentOnAction" prefHeight="40.0" prefWidth="104.0" styleClass="button-cancelOne" stylesheets="@../style/Style.css" text="Cancel" textFill="WHITE">
          <ripplerFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -100,23 +82,21 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="25.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="34.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8_search_64.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="58.0" layoutY="259.0" prefHeight="42.0" prefWidth="256.0" styleClass="textPane" stylesheets="@../style/Style.css">
+      <ComboBox fx:id="cmbMethod" layoutX="64.0" layoutY="165.0" prefHeight="35.0" prefWidth="161.0" promptText="Pay Method" />
+      <AnchorPane layoutX="241.0" layoutY="162.0" prefHeight="42.0" prefWidth="282.0" styleClass="textPane" stylesheets="@../style/Style.css">
          <children>
-            <TextField fx:id="txtSearch" layoutX="23.0" layoutY="8.0" onAction="#searchPaymentOnAction" prefHeight="28.0" prefWidth="242.0" promptText="P-0001" styleClass="textField" stylesheets="@../style/Style.css" />
-            <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Search" />
-         </children>
-      </AnchorPane>
-      <ComboBox fx:id="cmbMethod" layoutX="44.0" layoutY="165.0" prefHeight="35.0" prefWidth="161.0" promptText="Pay Method" />
-      <AnchorPane layoutX="221.0" layoutY="162.0" prefHeight="42.0" prefWidth="282.0" styleClass="textPane" stylesheets="@../style/Style.css">
-         <children>
-            <TextField fx:id="txtInvoiceNo" layoutX="23.0" layoutY="8.0" prefHeight="28.0" prefWidth="254.0" promptText="*********************" styleClass="textField" stylesheets="@../style/Style.css" />
+            <TextField fx:id="txtInvoiceNo" layoutX="23.0" layoutY="8.0" onKeyReleased="#textFields_Key_Released" prefHeight="28.0" prefWidth="254.0" promptText="*********************" styleClass="textField" stylesheets="@../style/Style.css" />
             <Label layoutY="-10.0" styleClass="textLabel" stylesheets="@../style/Style.css" text="Invoice No" />
          </children>
       </AnchorPane>
+      <TextField fx:id="txtSearch" layoutX="69.0" layoutY="271.0" onAction="#searchPaymentOnAction" prefHeight="35.0" prefWidth="242.0" promptText="P-0001" stylesheets="@../style/Style.css" />
+      <TextField fx:id="txtSupplierId" layoutX="430.0" layoutY="86.0" prefHeight="35.0" prefWidth="187.0" promptText="Supplier Id" stylesheets="@../style/Style.css" />
+      <TextField fx:id="txtOrderDate" layoutX="636.0" layoutY="86.0" prefHeight="35.0" prefWidth="200.0" promptText="Order Date" stylesheets="@../style/Style.css" />
+      <TextField fx:id="txtAmount" layoutX="858.0" layoutY="86.0" prefHeight="35.0" prefWidth="187.0" promptText="Amount" stylesheets="@../style/Style.css" />
    </children>
 </AnchorPane>

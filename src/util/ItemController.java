@@ -100,4 +100,22 @@ public class ItemController {
         }
         return numberRow;
     }
+
+    public static List<Item> searchItem(String value) throws SQLException, ClassNotFoundException {
+        Connection con = DbConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM item WHERE name LIKE '%"+value+"%' or itemCode LIKE '%"+value+"%'");
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Item> items=new ArrayList<>();
+        while (resultSet.next()) {
+            items.add(new Item(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getInt(5)
+            ));
+        }
+        return items;
+    }
 }

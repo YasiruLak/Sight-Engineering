@@ -42,9 +42,9 @@ public class SupplierManageViewController {
     LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
     Pattern idPattern = Pattern.compile("^(S00-)[0-9]{3,4}$");
     Pattern namePattern = Pattern.compile("^[A-z ]{3,30}$");
-    Pattern addressPattern = Pattern.compile("^[A-z0-9/ ]{6,30}$");
+    Pattern addressPattern = Pattern.compile("^[A-z0-9, ]{6,30}$");
     Pattern mobilePattern = Pattern.compile("^[0-9]{3}[-]?[0-9]{7}$");
-    Pattern emailPattern = Pattern.compile("^[a-z0-9]{3,}[@](gmail)[.][a-z]{3,}$");
+    Pattern emailPattern = Pattern.compile("^[a-z0-9]{3,}[@][a-z]{3,}[.][a-z]{3,}$");
 
     public void initialize(){
 

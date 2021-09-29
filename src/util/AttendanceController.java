@@ -85,7 +85,7 @@ public class AttendanceController {
         ArrayList<AttendanceView> list = new ArrayList();
         ResultSet resultSet = DbConnection.getInstance().getConnection().
                 prepareStatement
-                        ("SELECT a.attendId, e.empId, e.name, e.type, a.inTime FROM employee e JOIN attendance a ON a.eId=e.empId")
+                        ("SELECT a.attendId, e.empId, e.name, e.type, a.inTime FROM employee e JOIN attendance a ON a.eId=e.empId WHERE status='ATTEND'")
                 .executeQuery();
 
         while (resultSet.next()) {
@@ -104,15 +104,13 @@ public class AttendanceController {
     public ArrayList<ItemDetailView> getAllItemDetail(String attendanceId) throws SQLException, ClassNotFoundException {
         ArrayList<ItemDetailView> details = new ArrayList<>();
         ResultSet resultSet = DbConnection.getInstance().getConnection()
-                .prepareStatement("SELECT iId, name, qty FROM item_detail WHERE aId='"
-                        + attendanceId + "'").executeQuery();
+                .prepareStatement("SELECT iId, name, qty FROM item_detail WHERE aId='" + attendanceId + "'").executeQuery();
         while (resultSet.next()) {
             details.add(
                     new ItemDetailView(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getInt(3)
-
                     )
             );
         }

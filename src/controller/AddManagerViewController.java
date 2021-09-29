@@ -1,22 +1,25 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import enums.LoginRole;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Login;
 import model.Manager;
 import util.LoginController;
 import util.ManagerController;
+import util.ValidationUtil;
 import view.tm.ManagerTm;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.regex.Pattern;
 
 public class AddManagerViewController {
     public ComboBox cmbMngStatus;
@@ -38,10 +41,30 @@ public class AddManagerViewController {
     public AnchorPane managerContext;
     public TextField txtMngUserName;
     public PasswordField txtMngPassword;
+    public JFXButton btnCancel;
+    public JFXButton btnDelete;
+    public JFXButton btnSave;
+    public JFXButton btnUpdate;
 
     private ManagerController controller = new ManagerController();
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern nicPattern = Pattern.compile("^[0-9]{9}[V]$");
+    Pattern namePattern = Pattern.compile("^[A-z ]{3,30}$");
+    Pattern agePattern = Pattern.compile("^[0-9]{2}$");
+    Pattern addressPattern = Pattern.compile("^[A-z0-9, ]{6,40}$");
+    Pattern mobilePattern = Pattern.compile("^[0-9]{3}[-]?[0-9]{7}$");
+    Pattern emailPattern = Pattern.compile("^[a-z0-9]{3,}[@][a-z]{3,}[.][a-z]{3,}$");
+    Pattern userNamePattern = Pattern.compile("^[A-Z]+[a-z]+[0-9]{6,}$");
+    Pattern passwordPattern = Pattern.compile("^[A-Z]+[a-z]+[0-9]{6,}$");
+
     public void initialize() {
+
+        btnSave.setDisable(true);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+
+        storeValidation();
 
         try {
 
@@ -77,6 +100,18 @@ public class AddManagerViewController {
         });
 
     }
+
+    private void storeValidation(){
+        map.put(txtMngNic, nicPattern);
+        map.put(txtMngName, namePattern);
+        map.put(txtMngAge, agePattern);
+        map.put(txtMngAddress, addressPattern);
+        map.put(txtMngMobile, mobilePattern);
+        map.put(txtMngEmail, emailPattern);
+        map.put(txtMngUserName, userNamePattern);
+        map.put(txtMngPassword, passwordPattern);
+    }
+
     public void managerToTable(ArrayList<Manager> allManager) {
         ObservableList<ManagerTm> managerList = FXCollections.observableArrayList();
         allManager.forEach(e -> {
@@ -105,7 +140,7 @@ public class AddManagerViewController {
         Login login = new Login(
                 txtMngNic.getText(),
                 txtMngUserName.getText(),
-                txtMngPassword.getText(),
+                new String(Base64.getEncoder().encode(txtMngPassword.getText().getBytes())),
                 LoginRole.MANAGER.toString()
         );
         if(controller.saveManager(manager)){
@@ -113,6 +148,7 @@ public class AddManagerViewController {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
             clearDetail();
             managerToTable(controller.getAllManager());
+            btnSave.setDisable(true);
 
         }else{
             new Alert(Alert.AlertType.WARNING, "Try Again..").show();
@@ -131,6 +167,8 @@ public class AddManagerViewController {
             txtMngAddress.setText(manager.getAddress());
             txtMngMobile.setText(manager.getMobile());
             txtMngEmail.setText(manager.getEmail());
+            btnUpdate.setDisable(false);
+            btnDelete.setDisable(false);
 
         }
     }
@@ -149,6 +187,8 @@ public class AddManagerViewController {
             new Alert(Alert.AlertType.INFORMATION, "Updated").show();
             clearDetail();
             managerToTable(controller.getAllManager());
+            btnUpdate.setDisable(true);
+            btnDelete.setDisable(true);
         } else {
             new Alert(Alert.AlertType.ERROR, "Try Again").show();
         }
@@ -166,6 +206,8 @@ public class AddManagerViewController {
                 new Alert(Alert.AlertType.INFORMATION, "Deleted").show();
                 clearDetail();
                 managerToTable(controller.getAllManager());
+                btnUpdate.setDisable(true);
+                btnDelete.setDisable(true);
         }else {
                 clearDetail();
         }
@@ -187,4 +229,16 @@ public class AddManagerViewController {
         txtMngUserName.clear();
     }
 
+    public void textFields_Key_Released(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Success").showAndWait();
+            }
+        }
+    }
 }
