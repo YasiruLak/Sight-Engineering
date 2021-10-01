@@ -59,9 +59,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://www.linkedin.com/in/yasiru-dahanayaka-8bb47319a) - email@example.com
+Your Name - [https://www.linkedin.com/in/yasiru-dahanayaka-8bb47319a](https://www.linkedin.com/in/yasiru-dahanayaka-8bb47319a) 
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+email@example.com
+
+Project Link: [https://github.com/YasiruLak/Sight-Engineering](https://github.com/your_username/repo_name)
 
 
 
