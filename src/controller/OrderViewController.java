@@ -1,7 +1,5 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
-import db.DbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,13 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.OrderView;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import util.OrderController;
 import view.tm.OrderTm;
 import java.io.IOException;
@@ -38,7 +29,6 @@ public class OrderViewController {
     public TableColumn colOrderDate;
     public TableColumn colOrderTime;
     public TableColumn colTotalCost;
-    public JFXButton btnSupWiseOrder;
 
     public void initialize(){
 
@@ -103,13 +93,5 @@ public class OrderViewController {
 
     public void setCount() throws SQLException, ClassNotFoundException {
         lblOrderCount.setText(String.valueOf(new OrderController().orderCount()));
-    }
-
-
-    public void supplierWiseOrderChart(ActionEvent actionEvent) throws JRException, SQLException, ClassNotFoundException {
-        JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/SupplierWiseOrder.jrxml"));
-        JasperReport compileReport = JasperCompileManager.compileReport(design);
-        net.sf.jasperreports.engine.JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getInstance().getConnection());
-        JasperViewer.viewReport(jasperPrint, false);
     }
 }

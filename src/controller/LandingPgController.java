@@ -7,18 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Login;
 import util.LoginController;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Base64;
 
-public class LandingPgController{
+public class LandingPgController {
     public JFXPasswordField txtPassword;
     public JFXTextField txtUserName;
     public JFXButton btnLogIn;
@@ -30,7 +28,7 @@ public class LandingPgController{
 
         Login login = new LoginController().getUser(userName, password);
         if ( login != null ) {
-            if (login.getRole().equals("MANAGER")) {
+            if ( login.getRole().equals("MANAGER") ) {
 
                 Stage logStage = (Stage) btnLogIn.getScene().getWindow();
                 logStage.close();
@@ -43,7 +41,7 @@ public class LandingPgController{
                 stage.setScene(scene);
                 stage.show();
 
-            } else if (login.getRole().equals("ADMIN")) {
+            } else if ( login.getRole().equals("ADMIN") ) {
 
                 Stage logStage = (Stage) btnLogIn.getScene().getWindow();
                 logStage.close();
@@ -56,13 +54,10 @@ public class LandingPgController{
                 stage.setScene(scene);
                 stage.show();
 
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Invalid User Name Or Password ! ").show();
-                txtUserName.clear();
-                txtPassword.clear();
-
             }
         }
+        txtUserName.clear();
+        txtPassword.clear();
     }
 
     public void passwordOnAction(ActionEvent actionEvent) {

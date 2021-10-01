@@ -33,24 +33,9 @@
             <TableColumn fx:id="colEmpSalary" prefWidth="119.0" text="Salary" />
          </columns>
       </TableView>
-      <Pane layoutX="718.0" layoutY="80.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="718.0" layoutY="80.0" prefHeight="155.0" prefWidth="340.0" styleClass="Pane" stylesheets="@../style/Style.css">
          <children>
-            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/worker_96px.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblEmployee" layoutX="182.0" layoutY="66.0" prefHeight="40.0" prefWidth="65.0" text="100">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="108.0" layoutY="14.0" prefHeight="47.0" prefWidth="217.0" text="Registerd Employee">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="133.0" onAction="#goToAddEmployeeOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Employees &gt;&gt;" textFill="WHITE">
+            <JFXButton buttonType="RAISED" onAction="#goToAddEmployeeOnAction" prefHeight="155.0" prefWidth="340.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Add Employees" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -65,7 +50,19 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/worker_96px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
+            <Label fx:id="lblEmployee" layoutX="197.0" layoutY="14.0" prefHeight="40.0" prefWidth="65.0" text="100" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <ImageView fitHeight="229.0" fitWidth="367.0" layoutX="69.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">

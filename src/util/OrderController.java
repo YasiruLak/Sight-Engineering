@@ -4,7 +4,6 @@ import db.DbConnection;
 import model.OrderDetail;
 import model.Order;
 import model.OrderView;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

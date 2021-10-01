@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.Item;
-
 import java.io.IOException;
 import java.net.URL;
 

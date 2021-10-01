@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import enums.AttendType;
 import enums.ItemStatus;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -97,6 +99,13 @@ public class AttendanceManageViewController {
             e.printStackTrace();
         }
         popUp1.setVisible(false);
+
+        txtSearchName.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                searchItem(newValue);
+            }
+        });
     }
 
     private void setAttendId() throws SQLException, ClassNotFoundException {

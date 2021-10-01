@@ -14,8 +14,8 @@
    <children>
       <TableView fx:id="tblHelp" layoutX="14.0" layoutY="63.0" prefHeight="523.0" prefWidth="450.0" stylesheets="@../style/Style.css">
         <columns>
-          <TableColumn fx:id="colTxtFieldName" prefWidth="177.0" text="Text Field Name" />
-          <TableColumn fx:id="colTxtType" prefWidth="271.0" text="Text Type" />
+          <TableColumn fx:id="colTxtFieldName" prefWidth="180.0" text="Text Field Name" />
+          <TableColumn fx:id="colTxtType" prefWidth="268.0" text="Text Type" />
         </columns>
       </TableView>
       <Label layoutX="22.0" layoutY="21.0" prefHeight="35.0" prefWidth="319.0" text="Text Field Validation Like This">

@@ -25,24 +25,9 @@
             <Image url="@../assets/payment.png" />
          </image>
       </ImageView>
-      <Pane layoutX="689.0" layoutY="68.0" prefHeight="175.0" prefWidth="340.0" style="-fx-border-radius: 2; -fx-border-color: Black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #ffffff;">
+      <Pane layoutX="689.0" layoutY="68.0" prefHeight="155.0" prefWidth="340.0" styleClass="Pane" stylesheets="@../style/Style.css">
          <children>
-            <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="19.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/payment_history_96px.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblPaymentCount" layoutX="183.0" layoutY="62.0" prefHeight="40.0" prefWidth="65.0">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="163.0" layoutY="14.0" prefHeight="47.0" prefWidth="112.0" text="Payement">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="131.0" onAction="#goToManagePaymentOnAction" prefHeight="45.0" prefWidth="338.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Manage Payment &gt;&gt;" textFill="WHITE">
+            <JFXButton buttonType="RAISED" layoutX="1.0" layoutY="1.0" onAction="#goToManagePaymentOnAction" prefHeight="155.0" prefWidth="340.0" styleClass="button-goto" stylesheets="@../style/Style.css" text="Go To Manage Payment" textFill="WHITE">
                <ripplerFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -57,7 +42,19 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/payment_history_96px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
+            <Label fx:id="lblPaymentCount" layoutX="218.0" layoutY="13.0" prefHeight="40.0" prefWidth="65.0" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <TableView fx:id="tblPayment" layoutX="21.0" layoutY="290.0" prefHeight="360.0" prefWidth="1069.0" stylesheets="@../style/Style.css">

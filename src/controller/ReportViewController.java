@@ -32,6 +32,7 @@ public class ReportViewController {
     public JFXButton orderReport;
     public JFXButton attendanceReport;
     public JFXButton btnItemMoveChart;
+    public JFXButton supplierWiseOrder;
 
     public void initialize(){
 
@@ -157,6 +158,13 @@ public class ReportViewController {
 
     public void itemMoveChartOnAction(ActionEvent actionEvent) throws JRException, SQLException, ClassNotFoundException {
         JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/MostBuyItems.jrxml"));
+        JasperReport compileReport = JasperCompileManager.compileReport(design);
+        net.sf.jasperreports.engine.JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint, false);
+    }
+
+    public void goToSupplierWiseOrder(ActionEvent actionEvent) throws JRException, SQLException, ClassNotFoundException {
+        JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/view/reports/SupplierWiseOrder.jrxml"));
         JasperReport compileReport = JasperCompileManager.compileReport(design);
         net.sf.jasperreports.engine.JasperPrint jasperPrint = JasperFillManager.fillReport(compileReport, null, DbConnection.getInstance().getConnection());
         JasperViewer.viewReport(jasperPrint, false);
