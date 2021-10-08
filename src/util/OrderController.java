@@ -65,13 +65,7 @@ public class OrderController {
 
         }finally {
 
-            try {
-
-                connection.setAutoCommit(true);
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            connection.setAutoCommit(true);
         }
         return false;
     }

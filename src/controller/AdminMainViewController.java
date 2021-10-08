@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -16,10 +15,9 @@ public class AdminMainViewController {
     public JFXButton btnLogOut;
     public AnchorPane adminContext;
 
-
     public void logOutOnAction(ActionEvent actionEvent) throws IOException {
-        Stage closestage = (Stage) btnLogOut.getScene().getWindow();
-        closestage.close();
+        Stage closeStage = (Stage) btnLogOut.getScene().getWindow();
+        closeStage.close();
 
         URL resource = this.getClass().getResource("../view/LandingPg.fxml");
         Parent load = FXMLLoader.load(resource);

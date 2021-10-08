@@ -28,12 +28,12 @@
 .button-admin:hover{
     -fx-cursor: hand;
     -fx-background-color: #0984e3;
-    -fx-background-radius : 30 0 0 30;
+    -fx-background-radius : 30 30 30 30;
 }
 .button-manager:hover{
     -fx-cursor: hand;
     -fx-background-color: #0984e3;
-    -fx-background-radius : 30 0 0 30;
+    -fx-background-radius : 30 30 30 30;
 }
 .button-logout:hover{
     -fx-cursor: hand;
