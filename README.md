@@ -7,7 +7,7 @@ Final Project
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/yasiru-dahanayaka-8bb47319a)
 
 ![Screenshot (40)](https://user-images.githubusercontent.com/80274745/135560363-e3a5cce5-313b-4faa-bdba-389498a5cc3e.png)
 ![Screenshot (41)](https://user-images.githubusercontent.com/80274745/135560369-f69fe175-787b-47bf-a850-8fe88971645c.png)
