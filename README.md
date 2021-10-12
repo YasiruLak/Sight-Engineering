@@ -52,7 +52,7 @@ Contributions are what make the open source community such an amazing place to b
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Copyright @ 2021 SIGHT Engineering All Right Reserved By Yasiru Dahanayaka
 
 
 
